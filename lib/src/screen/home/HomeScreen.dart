@@ -1,9 +1,15 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_chatgpt_api/flutter_chatgpt_api.dart';
-import 'package:macos_window_utils/macos_window_utils.dart';
-import 'package:soundscribe/src/accessibility/main_area.dart';
-import 'package:soundscribe/src/utils/sidebar_content.dart';
-import 'package:soundscribe/src/utils/transparent_sidebar_and_content.dart';
+import 'package:macos_ui/macos_ui.dart';
+
+import 'package:sizer/sizer.dart';
+import 'package:soundscribe/src/screen/chat/ChatScreen.dart';
+import 'package:soundscribe/src/screen/whisper/WhisperScreen.dart';
+import 'package:window_manager/window_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,56 +19,56 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool _isSidebarOpen = false;
+  final FocusNode _focusNode = FocusNode();
+
+  final channel = MethodChannel('mcn');
+  static const batterChannel = MethodChannel('soundscribe.suy/battery');
+  String batteryLevel = 'Waiting...';
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return TransparentSidebarAndContent(
-      isOpen: _isSidebarOpen,
-      width: 280.0,
-      sidebarBuilder: () => const TitlebarSafeArea(
-        child: SidebarContent(),
-      ),
-      child: TitlebarSafeArea(
-        child: CupertinoPageScaffold(
-          backgroundColor: CupertinoColors.white,
-          navigationBar: CupertinoNavigationBar(
-            middle: const Text('macos_window_utils demo'),
-            leading: CupertinoButton(
-              padding: EdgeInsets.zero,
-              child: const Icon(
-                CupertinoIcons.sidebar_left,
-              ),
-              onPressed: () => setState(() {
-                _isSidebarOpen = !_isSidebarOpen;
-              }),
-            ),
-          ),
-          child: 
-       SafeArea(
-              child: MainArea(
-                setState: setState,
-              ),
-            ),
-          
-         /* Container(
-            color: CupertinoColors.white,
+    return Focus(
+      focusNode: _focusNode,
+      autofocus: true,
+      onKey: (node, event) {
+        if (event.isKeyPressed(LogicalKeyboardKey.capsLock)) {
+          print('basti');
+          return KeyEventResult.handled;
+        } else {
+          return KeyEventResult.handled;
+        }
+      },
+      child: CupertinoPageScaffold(
+          backgroundColor: CupertinoColors.systemGrey,
+          child: Container(
+            width: 100.w,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CupertinoButton(
-                    child: Text('ChatGPT'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/ChatScreen");
-                    }),
+                  child: Text('1'),
+                  onPressed: () async {},
+                ),
                 CupertinoButton(
-                    child: Text('Whisper'),
-                    onPressed: () {
-                      Navigator.pushNamed(context, "/WhisperScreen");
-                    })
+                  child: Text('2'),
+                  onPressed: getBatteryLevel,
+                ),
+                Text('HOMEPAGE'),
+                Text(batteryLevel)
               ],
             ),
-          ),*/
-        ),
-      ),
+          )),
     );
+  }
+
+  Future getBatteryLevel() async {
+    final arguments = {'name': 'Sarah Abs'};
+    var newBatterLevel =
+        await batterChannel.invokeMethod('getBatteryLevel', arguments);
+    setState(() => batteryLevel = '$newBatterLevel%');
   }
 }

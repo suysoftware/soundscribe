@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chatgpt_api/flutter_chatgpt_api.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:record/record.dart';
 import 'package:sizer/sizer.dart';
@@ -24,7 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
   final _textController = TextEditingController();
   final _scrollController = ScrollController();
   final List<ChatMessage> _messages = [];
-  late ChatGPTApi _api;
+
   final record = Record();
   var audioPath = "";
   bool switchValueLanguage = false;
@@ -41,52 +42,19 @@ class _ChatScreenState extends State<ChatScreen> {
     });
   }
 
-  Future<ChatGptModel> generateResponse(String prompt) async {
-    const openAIKey = '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';
-    const endpoint = 'https://api.openai.com/v1/completions';
-    var client = http.Client();
-    var uri = Uri.parse(endpoint);
-    var payload = jsonEncode({
-      "model": "text-davinci-003",
-      "prompt": prompt,
-      "temperature": 0,
-      "max_tokens": 200
-    });
-    var header = {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer $openAIKey",
-    };
-    var response = await client.post(
-      uri,
-      headers: header,
-      body: payload,
-    );
-    print(response.body);
-    print(response.statusCode);
 
-    if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      var cgptModel = chatGptModelFromJson(response.body);
-      return cgptModel;
-    } else {
-      throw Exception('Failed to generate response.');
-    }
-  }
 
   @override
   void initState() {
     super.initState();
-    _api = ChatGPTApi(
-      sessionToken:
-          "eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIn0..a4KpaCS0Ry1wUWES.45ZHyv46xXUwwAX7q8ZSjt0gPxdGPNgLsZed1Fj5Trr-Oc-anrMA-X-_SeAxCDrmGrf_wJgL25ljYbLTC4LxrMqYsc3wAqwKorNx1zfG6F8Wgo_LwGTz2Pm2c7ZFNZRUkPgINc6ehMM4_ihGoC20Vix33IzbWH58jj8db6kXTICxaXE0uAdINrzIJJwOi0e0Rn-OM6RiFLzzFNty0gJeB6L6xxd2uJJzacpof-bZ33aIMjPEsURC-nAY2-elRRO-Aqi2xDte-n4xgPUgk1L_QQDQVfBwlvJA_DBayGieL6p7w1MwjoGDa9XOIB-dZJcVWLOX6FBExFIa3PcSMyBH53PsOlGke3fnlem-nAicqiFV7fPOezOcWxJyWsBtz1qXlv88AWLrtv4g7VdHobSyLGxeQhAA8I4ZBjM4PtfKLlJNKM6NxmFK0YeuBsW5mRb3fLO8yV-4pZVPL8JImB5fLHvzQiiXx9Rl9FeycKYAohGt3OZT7KLZ5AaOgRMo7wTa5WiWmgUe44QoL4PGjojmCFq3WPIt29xq2tw3JWtIekiTilWXi-FIAtzhZggvB6mMrTXTteL5Ky-NE43VngsU4qO3fvnNUbDdC5qVnICjaP1Cl2wjVSrXI-DBWuwmiwNU0wHTd_S1GRQp_lR1m00YLj1So0Rb63Iy4oyRwj4RJGosf88pb7e0iiLjo90E_1LA4KNy1ZOC9VocpmuFVi1xT6I4KCPB7Q0iaUmZGgjcn-n05SzzIpswhQfjucAFWq-p6CY4mU6wuUYDxNhOyihzUNcG9XIJWSdOfSDThZ9W0qyYMchBERb9W5Qnp2pTgvqS8by46oY-gXiVPbJ2Nwkz2Ohv-eV8Pnv2DkKRH4c6T96KfzQyyGnD7CJt3D72-HcBCbLn1K8534Gugtix0dOdQKYWFQKarKcyBMxw2yjdVRB-8540ZadoNBQdR2zH56b-USICHuMSThtFBA_hEn3vOjdJMzKD5TV3inlgEYUEhWM-kf84aL5WpfmDdW77Y4wXNyu5c0XiO2o7Uargk0F6u28HadFPHsSNS4ozo1K4O-hMwg5CBw1kb4jZ4hQsMNSdx6PNpi15KMi9t7bGRzcMPVnBKpwbRgnaXvnWqaHmNai3Qyiu0kosEyV48elLbWPg1ruLp-QLl4EeSNAtZ6lTHopGrUl5yaL6LIEGYDugRV8omDxEFukRlmRHs6SBXyeE-EJuS7XIlIk4uNhD5_1tvXnYl5pgJ6IM3BX0MTEiS8VoQk7shU2OCznk6LEri0Ay9mu_9l6JM56T8eozTHOHgfMspRBNBW9mOrZ3SzztHSSasdwcKXt4N2Rie-iX959ty2W5n2kED52dk8o_00zz3bULs7d0c4qjveqwxz6eORzgjwuHX-18z9VTJ8PM3oh7w83Qq46grCCYrB6rTaH_x2Br204HFolTjYOiUhyxYn35QgqgoqGDayLOdYxI2dUtiuSXV_Uvgicq9sL6Ypp7PGCKtZRAXttopN5hxfjbj4bkwdwhQzmLIwiMlI-IfadVFTdXi11wGq8atzxfVNXLBuEoh4_GCoX2oNK-wSIw1HfxCFmfelCpYGmnttWJUD48RMB4S_2KJXBzMCmR9oNX7bZJ2XUh_7DqCzxv_B11gupcLnFtu-Sn3oIAhbyHNhjZMqwe6RGNjCg89rNbNoqwVMUSsg6WSspC_XSUEnfcx5IsbYnVQaSszMsvKJ27cI4Y9ZD8wZeg19YiejzD9RUhFJJOq5-ZxZDP_r2fihaKYDQluBBs93xE5GeLZFc7o7TCOcZt3GOnqlOrHiMR3xdXzlHXrgOJyEuOGNja4LGRgMbSWFa8640T3Eeo1fNfBMbm2LRbPZ6x_mY5krrI4gCd51DFa-apnP3HhWUoaW5Zpwk8NkwvdbycR8r2vgvFfrTTA9XWHnE8kDUpeSIu4k5vOV1zkLJPICk5wzhGrLtN7phomC-ZPY9XDgp9Ow2dsqzgNBoM8aEPoEvJhowXfMxtybQ3zEEDVP0NXt92hTRMUoGtks4LR7BhD-iJ_mGeu5ulR5FXHdgBZZMrANpMTOU3we2xqZ-0Cl-l6f7_yWZ1Y0mlGbKawlFfPDT7jbfTtPW7C0zESCypq23x3VoMEw-J6DdphxQTWO4xOLYNGLsQbRAYhKbTJGpZFI_MgaZY0c8Vjch9k8fFSLkUTNu4tuHAfs2jroDi016WGeA176olbzS3i5rTmAice2S1rDtjeAIBQd2yRMulevLAgJu6E-O0sc-_5bkcz46CQjzbUsxbS-fR7g15idI-bQ2QjRQy9Fb0v_CzH3mr9Aq4QPpZL_aSpe_frIVEFPVQAmF9lnbsR_VMTvCgBlRHt3MCooSP-EdwMaOmacVYiSC9NfdaWAnf62qPP2PhboyPLiZ3fPocCYAhgxbM7YtA3CGCyy00C5eBm3bhLnNLySyQGmHO9l_N3dKxPn5eZinySS4rIRRkdhZaUBpfygujiH27p5jtivIbD0hylKlS7h4oI0DWHpbQ811rbKShnpjZri9GD6DCTIM.bYRH4v3zZqt50o3v8oMcVg",
-      clearanceToken:
-          "dZFHAUodm5cjBzn6aham1hXeveVMJ8HxM8vmnQPLRy4-1677960337-0-1-f14c6b06.f29c2655.192061b8-160",
-    );
+    print(dotenv.env['OPEN_AI_API_KEY'].toString());
     isLoading = false;
   }
 
   @override
   Widget build(BuildContext context) {
+    print('Language: ${switchValueLanguage ? 'English' : 'Turkish'}');
+    print('Language ${switchValueQuestion?'Soru':'STT'}');
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Row(
@@ -186,7 +154,7 @@ class _ChatScreenState extends State<ChatScreen> {
             _textController.clear();
             Future.delayed(const Duration(milliseconds: 50))
                 .then((_) => _scrollDown());
-            var newMessage = await generateResponse(input);
+            var newMessage = await OpenAiServices.openAiQuestionRequest(input);
             setState(() {
               isLoading = false;
               _messages.add(
@@ -253,8 +221,6 @@ class _ChatScreenState extends State<ChatScreen> {
             await OpenAiServices.audioSender(switchValueLanguage, audioPath);
 
         if (switchValueQuestion) {
-
-
           setState(() {
             isLoading = true;
             _messages.add(
@@ -265,9 +231,7 @@ class _ChatScreenState extends State<ChatScreen> {
             );
           });
 
-
-          var answer = await generateResponse(result);
-
+          var answer = await OpenAiServices.openAiQuestionRequest(result);
 
           setState(() {
             isLoading = false;

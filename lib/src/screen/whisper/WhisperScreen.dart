@@ -4,28 +4,12 @@ import "package:flutter/services.dart";
 import 'package:http/http.dart' as http;
 import "package:flutter/cupertino.dart";
 import "package:http_parser/http_parser.dart";
-import "package:macos_window_utils/macos_window_utils.dart";
+
 import "package:path_provider/path_provider.dart";
 import "package:record/record.dart";
 import "package:sizer/sizer.dart";
 import "package:soundscribe/src/services/OpenAiServices.dart";
 
-final options = NSAppPresentationOptions.from({
-  // fullScreen needs to be present as a fullscreen presentation option at all
-  // times.
-  NSAppPresentationOption.fullScreen,
-
-  // Hide the toolbar automatically in fullscreen mode.
-  NSAppPresentationOption.autoHideToolbar,
-
-  // autoHideToolbar must be accompanied by autoHideMenuBar.
-  NSAppPresentationOption.autoHideMenuBar,
-
-  // autoHideMenuBar must be accompanied by either autoHideDock or hideDock.
-  NSAppPresentationOption.autoHideDock,
-});
-
-// Apply the options as fullscreen presentation options.
 
 const openAIKey = "";
 const endpointSpeechToText = "";
@@ -215,46 +199,6 @@ class _WhisperScreenState extends State<WhisperScreen> {
                   await testFunc();
                 }),
             Text(richText),
-            CupertinoButton(
-                child: Text('enablefullsize'),
-                onPressed: () {
-                  WindowManipulator.enableFullSizeContentView();
-                }),
-            CupertinoButton(
-                child: Text('acknowledgemouseevent'),
-                onPressed: () {
-                  WindowManipulator.acknowledgeMouseEvents();
-                }),
-            CupertinoButton(
-                child: Text('add tool bar'),
-                onPressed: () {
-                  WindowManipulator.addToolbar();
-                }),
-            CupertinoButton(
-                child: Text('disable shadow'),
-                onPressed: () {
-                  WindowManipulator.disableShadow();
-                }),
-            CupertinoButton(
-                child: Text('enable zoom button'),
-                onPressed: () {
-                  WindowManipulator.enableZoomButton();
-                }),
-                   CupertinoButton(
-                child: Text('ff'),
-                onPressed: () {
-                  WindowManipulator.showTitle();
-                }),
-                   CupertinoButton(
-                child: Text('ff'),
-                onPressed: () {
-                  WindowManipulator.showCloseButton();
-                }),
-                   CupertinoButton(
-                child: Text('ff'),
-                onPressed: () {
-                  WindowManipulator.isWindowFullscreened();
-                }),
           ],
         ),
       ),

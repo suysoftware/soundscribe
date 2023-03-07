@@ -11,6 +11,7 @@
 migrate_working_dir/
 *.env
 code-trash.dart
+self-notes.dart
 
 
 

@@ -1,44 +1,36 @@
 // To parse this JSON data, do
 //
-//     final chatGptModel = chatGptModelFromJson(jsonString);
+//     final chatGptEditModel = chatGptEditModelFromJson(jsonString);
 
 import 'dart:convert';
 
-ChatGptModel chatGptModelFromJson(String str) => ChatGptModel.fromJson(json.decode(str));
+ChatGptEditModel chatGptEditModelFromJson(String str) => ChatGptEditModel.fromJson(json.decode(str));
 
-String chatGptModelToJson(ChatGptModel data) => json.encode(data.toJson());
+String chatGptEditModelToJson(ChatGptEditModel data) => json.encode(data.toJson());
 
-class ChatGptModel {
-    ChatGptModel({
-        required this.id,
+class ChatGptEditModel {
+    ChatGptEditModel({
         required this.object,
         required this.created,
-        required this.model,
         required this.choices,
         required this.usage,
     });
 
-    String id;
     String object;
     int created;
-    String model;
     List<Choice> choices;
     Usage usage;
 
-    factory ChatGptModel.fromJson(Map<String, dynamic> json) => ChatGptModel(
-        id: json["id"],
+    factory ChatGptEditModel.fromJson(Map<String, dynamic> json) => ChatGptEditModel(
         object: json["object"],
         created: json["created"],
-        model: json["model"],
         choices: List<Choice>.from(json["choices"].map((x) => Choice.fromJson(x))),
         usage: Usage.fromJson(json["usage"]),
     );
 
     Map<String, dynamic> toJson() => {
-        "id": id,
         "object": object,
         "created": created,
-        "model": model,
         "choices": List<dynamic>.from(choices.map((x) => x.toJson())),
         "usage": usage.toJson(),
     };
@@ -48,27 +40,19 @@ class Choice {
     Choice({
         required this.text,
         required this.index,
-        this.logprobs,
-        this.finishReason,
     });
 
     String text;
     int index;
-    dynamic logprobs;
-    String? finishReason;
 
     factory Choice.fromJson(Map<String, dynamic> json) => Choice(
         text: json["text"],
         index: json["index"],
-        logprobs: json["logprobs"],
-        finishReason: json["finish_reason"],
     );
 
     Map<String, dynamic> toJson() => {
         "text": text,
         "index": index,
-        "logprobs": logprobs,
-        "finish_reason": finishReason,
     };
 }
 

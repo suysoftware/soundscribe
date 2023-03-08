@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
+import 'package:soundscribe/src/model/ChatGptEditModel.dart';
 import 'package:soundscribe/src/model/ChatGptModel.dart';
 
 class OpenAiServices {
@@ -49,8 +50,7 @@ class OpenAiServices {
     }
   }
 
-    static Future<ChatGptModel> openAiQuestionRequest(String prompt) async {
-
+  static Future<ChatGptModel> openAiQuestionRequest(String prompt) async {
     const endpoint = 'https://api.openai.com/v1/completions';
     var client = http.Client();
     var uri = Uri.parse(endpoint);
@@ -69,17 +69,48 @@ class OpenAiServices {
       headers: header,
       body: payload,
     );
-    print(response.body);
+
     print(response.statusCode);
 
     if (response.statusCode == 200) {
-      final data = jsonDecode(response.body);
-      var cgptModel = chatGptModelFromJson(response.body);
+      final data = utf8.decode(response.bodyBytes);
+      print(data);
+      var cgptModel = chatGptModelFromJson(utf8.decode(response.bodyBytes));
       return cgptModel;
     } else {
       throw Exception('Failed to generate response.');
     }
   }
 
+  static Future<ChatGptEditModel> openAiEditRequest(
+      String input, String instruction) async {
+    const endpoint = 'https://api.openai.com/v1/edits';
+    var client = http.Client();
+    var uri = Uri.parse(endpoint);
+    var payload = jsonEncode({
+      "model": "text-davinci-edit-001",
+      "input": input,
+      "instruction": instruction,
+      "temperature": 0,
+    });
+    var header = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${dotenv.env['OPEN_AI_API_KEY'].toString()}",
+    };
+    var response = await client.post(
+      uri,
+      headers: header,
+      body: payload,
+    );
+    print(response.body);
+    print(response.statusCode);
 
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body);
+      var cgptModel = chatGptEditModelFromJson(response.body);
+      return cgptModel;
+    } else {
+      throw Exception('Failed to generate response.');
+    }
+  }
 }

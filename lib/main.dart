@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:sizer/sizer.dart';
@@ -18,10 +19,9 @@ Future<void> main() async {
 }
 
 Future<void> init() async {
-  
   WidgetsFlutterBinding.ensureInitialized();
   await windowManager.ensureInitialized();
-   WindowOptions windowOptions = const WindowOptions(
+  WindowOptions windowOptions = const WindowOptions(
     alwaysOnTop: true,
     size: Size(800, 600),
     center: true,
@@ -54,12 +54,11 @@ class _cupertinoApp extends StatefulWidget {
   State<_cupertinoApp> createState() => _cupertinoAppState();
 }
 
-class _cupertinoAppState extends State<_cupertinoApp>  {
- 
-
+class _cupertinoAppState extends State<_cupertinoApp> {
   @override
   Widget build(BuildContext context) {
     return MacosApp(
+
       home: MiddleWare(),
 
       /*  routes: {
@@ -71,5 +70,4 @@ class _cupertinoAppState extends State<_cupertinoApp>  {
       debugShowCheckedModeBanner: false,
     );
   }
-
 }

@@ -30,7 +30,7 @@ public class InternalFinder {
     }
 
     fileprivate func open() {
-        self.serviceInternal = IOServiceGetMatchingService(kIOMasterPortDefault, IOServiceMatching("AppleSmartBattery"))
+        self.serviceInternal = IOServiceGetMatchingService(kIOMainPortDefault, IOServiceMatching("AppleSmartBattery"))
     }
 
     fileprivate func close() {

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:soundscribe/src/screen/chat/ChatScreen.dart';
 import 'package:soundscribe/src/screen/home/HomeScreen.dart';
@@ -17,7 +18,6 @@ class MainArea extends StatefulWidget {
 
 class _MainAreaState extends State<MainArea> {
   int pageIndex = 0;
-
 
   late final searchFieldController = TextEditingController();
   final List<Widget> pages = [
@@ -40,21 +40,48 @@ class _MainAreaState extends State<MainArea> {
     //const TabViewPage(),
     //const SelectorsPage(),
   ];
-  
 
   @override
   Widget build(BuildContext context) {
     return PlatformMenuBar(
+      
       menus: const [
+   
         PlatformMenu(
           label: 'macos_ui Widget Gallery',
           menus: [
             PlatformProvidedMenuItem(
-              
               type: PlatformProvidedMenuItemType.about,
             ),
             PlatformProvidedMenuItem(
               type: PlatformProvidedMenuItemType.quit,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.arrangeWindowsInFront,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.hideOtherApplications,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.minimizeWindow,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.servicesSubmenu,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.showAllApplications,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.startSpeaking,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.stopSpeaking,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.toggleFullScreen,
+            ),
+            PlatformProvidedMenuItem(
+              type: PlatformProvidedMenuItemType.zoomWindow,
             ),
           ],
         ),
@@ -174,7 +201,7 @@ class _MainAreaState extends State<MainArea> {
                   ),
                   label: Text('Fields'),
                 ),
-                        /*  const SidebarItem(
+                /*  const SidebarItem(
                   leading: MacosIcon(CupertinoIcons.square_on_square),
                   label: Text('Dialogs & Sheets'),
                 ),
@@ -267,7 +294,5 @@ class _MainAreaState extends State<MainArea> {
         ),
       ),
     );
-
-
   }
 }

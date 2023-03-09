@@ -33,6 +33,8 @@
 		F018ABEE29B89EF100BCC8D4 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */; };
 		F018ABF029B8A2D100BCC8D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
+		F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */; };
+		F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +87,8 @@
 		F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
 		F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
+		F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarContent.swift; sourceTree = "<group>"; };
+		F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,8 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F0DDBF5E29BA2D3A00625D8F /* trash */,
+				F0DDBF5929BA153100625D8F /* StatusBar */,
 				F018ABF129B8B82200BCC8D4 /* assets */,
 				F018ABE629B7670B00BCC8D4 /* Classes */,
 				33CC10F02044A3C60003C045 /* AppDelegate.swift */,
@@ -190,8 +196,6 @@
 				F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */,
 				F018ABE929B7676100BCC8D4 /* InternalBattery.swift */,
 				F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */,
-				F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */,
-				F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -202,6 +206,24 @@
 				F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		F0DDBF5929BA153100625D8F /* StatusBar */ = {
+			isa = PBXGroup;
+			children = (
+				F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */,
+				F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */,
+			);
+			path = StatusBar;
+			sourceTree = "<group>";
+		};
+		F0DDBF5E29BA2D3A00625D8F /* trash */ = {
+			isa = PBXGroup;
+			children = (
+				F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */,
+				F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */,
+			);
+			path = trash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -375,10 +397,12 @@
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
 				F018ABEE29B89EF100BCC8D4 /* StatusBarController.swift in Sources */,
 				F018ABF029B8A2D100BCC8D4 /* ContentView.swift in Sources */,
+				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
+				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

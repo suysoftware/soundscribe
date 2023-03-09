@@ -30,9 +30,11 @@ Future<void> init() async {
     titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.show();
-    await windowManager.focus();
+    await windowManager.hide();
+    //await windowManager.show();
+    //await windowManager.focus();
   });
+
   await dotenv.load(fileName: ".env");
 }
 
@@ -58,7 +60,6 @@ class _cupertinoAppState extends State<_cupertinoApp> {
   @override
   Widget build(BuildContext context) {
     return MacosApp(
-
       home: MiddleWare(),
 
       /*  routes: {

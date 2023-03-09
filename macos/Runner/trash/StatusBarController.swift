@@ -8,6 +8,7 @@
 import Foundation
 import AppKit
 import SwiftUI
+import Cocoa
 
 class StatusBarController {
     private var statusBar: NSStatusBar
@@ -19,13 +20,24 @@ class StatusBarController {
         statusBar = NSStatusBar()
         statusItem = statusBar.statusItem(withLength: NSStatusItem.variableLength)
         
+        
+     
+        
+        
+        
         let iconSwiftUI = ZStack(alignment:.center) {
                  Rectangle()
                      .fill(Color.green)
                      .cornerRadius(10)
                      .padding(0)
-                
              }
+        
+        
+        
+       
+        
+        
+        
         let iconView = NSHostingView(rootView: iconSwiftUI)
                 iconView.frame = NSRect(x: 0, y: 0, width: 15, height: 15)
         if let statusBarButton = statusItem.button {
@@ -36,8 +48,12 @@ class StatusBarController {
             let menuItem = NSMenuItem()
             menuItem.view = mainView
             let menu = NSMenu()
+            
+           
+            
             menu.addItem(menuItem)
             statusItem.menu = menu
         }
+        
     }
 }

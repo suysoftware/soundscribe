@@ -49,8 +49,8 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
   @override
   void onWindowClose() async {
     bool _isPreventClose = await windowManager.isPreventClose();
- await windowManager.blur();
-      await windowManager.minimize();
+    await windowManager.blur();
+    await windowManager.minimize();
     if (_isPreventClose) {
       await windowManager.blur();
       await windowManager.minimize();
@@ -100,7 +100,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
   void onWindowMinimize() async {
     print('calis köpek');
     // do something
-     WindowOptions windowOptions = const WindowOptions(
+    WindowOptions windowOptions = const WindowOptions(
       alwaysOnTop: true,
       size: Size(800, 600),
       center: true,
@@ -109,7 +109,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
       titleBarStyle: TitleBarStyle.hidden,
     );
     await windowManager.setSize(
-      Size(400, 300),
+      Size(300, 300),
     );
     await windowManager.setAlignment(Alignment.topRight);
   }

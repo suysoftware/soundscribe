@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:clipboard_watcher/clipboard_watcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,11 +22,12 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
   final FocusNode _focusNode = FocusNode();
   final record = Record();
   static const methodChannel = MethodChannel('soundscribe.suy/methods');
-  static const intentsChannel = EventChannel('soundscribe.suy/intents/events');
+  static const statusBarMethodChannel =
+      MethodChannel('soundscribe.suy/statusBarChannel');
   static const testMethodChannel = MethodChannel("soundscribe.suy/methodTest");
 
   String batteryLevel = 'Waiting...';
@@ -33,9 +35,58 @@ class _HomeScreenState extends State<HomeScreen> {
   String clipboardText = "";
   String clipboardAnswer = "";
 
+  void fastRequester(String task) async {
+    var clipData = await Clipboard.getData(Clipboard.kTextPlain);
+
+    var coppiedText = clipData!.text.toString();
+
+    var answer = await OpenAiServices.openAiQuestionRequest(
+        '"' + coppiedText + '"' + task);
+
+    //await windowManager.setSize(Size(800, 600));
+    //await windowManager.setAlignment(Alignment.topRight, animate: true);
+
+    await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
+    print('OPERATION FINISHED');
+  }
+
   @override
   void initState() {
+    clipboardWatcher.addListener(this);
+    // start watch
+    clipboardWatcher.start();
+    statusBarMethodChannel.setMethodCallHandler((methodCall) async {
+      debugPrint(
+          "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
+      switch (methodCall.method) {
+        case "fastAnswerTr":
+          //debugPrint("Click 1 basti"); // Never comes here
+          fastRequester("Bu maile cevap hazırla");
+          await methodChannel.invokeMethod('firstTaskFinished');
+
+          return;
+        case "fastAnswerEn":
+          //debugPrint("Click 2 basti"); //
+          fastRequester("Bu maile ingilizce cevap hazırla");
+
+          return;
+        case "fastConclusion":
+          //debugPrint("Click 2 basti"); //
+          fastRequester("Bu metni özetle");
+          return;
+        default:
+          throw MissingPluginException('Not Implemented'); // Never comes here
+      }
+    });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    clipboardWatcher.removeListener(this);
+    // stop watch
+    clipboardWatcher.stop();
+    super.dispose();
   }
 
   @override
@@ -56,17 +107,19 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Container(
             width: 100.w,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-              /*  CupertinoButton(
+                /*  CupertinoButton(
                   child: Text('1'),
                   onPressed: () async {},
                 ),*/
+
                 CupertinoButton(
                   child: Text('Battery Level'),
                   onPressed: getBatteryLevel,
                 ),
-                Text('HOMEPAGE'),
+                //Text('HOMEPAGE'),
                 Text(batteryLevel),
                 /*      CupertinoButton(
                     child: Text('clipboard'),
@@ -76,30 +129,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         clipboardText = data.toString();
                       });
                     }),*/
-                Text(clipboardText),
-                _voiceRecorder(),
+
+                /*  _voiceRecorder(),
                 Text(clipboardAnswer),
+                _fastMailBuild("Hızlı Yanıt - TR", "Bu maile cevap hazırla"),
+                _fastMailBuild(
+                    "Hızlı Yanıt - EN", "Bu maile ingilizce cevap hazırla"),
+                _fastMailBuild("Özet", "Bu metni özetle"),*/
+
                 CupertinoButton(
                     child: Text('intent test'), onPressed: getAppIntents),
                 Text(intentsResult),
-                /*  CupertinoButton(
-                    child: Text('noono'),
-                    onPressed: () {
-                      testMethodChannel
-                          .setMethodCallHandler((methodCall) async {
-                        debugPrint(
-                            "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
-                        switch (methodCall.method) {
-                          case "onFinish":
-                    
-                            debugPrint("onFinish"); // Never comes here
-                            return;
-                          default:
-                            throw MissingPluginException(
-                                'Not Implemented'); // Never comes here
-                        }
-                      });
-                    }),*/
               ],
             ),
           )),
@@ -146,10 +186,36 @@ class _HomeScreenState extends State<HomeScreen> {
         var answer = await OpenAiServices.openAiQuestionRequest(
             '"' + data.toString() + '"' + result);
 
+        windowManager.setSize(Size(800, 600));
+        windowManager.setAlignment(Alignment.topRight, animate: true);
         setState(() {
           clipboardAnswer = answer.choices.first.text;
         });
       },
     );
   }
+
+  @override
+  void onClipboardChanged() async {
+    ClipboardData? newClipboardData =
+        await Clipboard.getData(Clipboard.kTextPlain);
+    clipboardText = newClipboardData!.text.toString();
+    //windowManager.restore();
+    print(newClipboardData?.text ?? "");
+  }
+
+  /* Widget _fastMailBuild(String taskName, String task) {
+    return CupertinoButton(
+        child: Text(task),
+        onPressed: () async {
+          var answer = await OpenAiServices.openAiQuestionRequest(
+              '"' + clipboardText + '"' + task);
+
+          windowManager.setSize(Size(800, 600));
+          windowManager.setAlignment(Alignment.topRight, animate: true);
+          setState(() {
+            clipboardAnswer = answer.choices.first.text;
+          });
+        });
+  }*/
 }

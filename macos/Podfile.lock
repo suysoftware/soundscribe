@@ -11,6 +11,8 @@ PODS:
     - FlutterMacOS
   - screen_retriever (0.0.1):
     - FlutterMacOS
+  - screen_text_extractor (0.1.0):
+    - FlutterMacOS
   - window_manager (0.2.0):
     - FlutterMacOS
 
@@ -21,6 +23,7 @@ DEPENDENCIES:
   - path_provider_foundation (from `Flutter/ephemeral/.symlinks/plugins/path_provider_foundation/macos`)
   - record_macos (from `Flutter/ephemeral/.symlinks/plugins/record_macos/macos`)
   - screen_retriever (from `Flutter/ephemeral/.symlinks/plugins/screen_retriever/macos`)
+  - screen_text_extractor (from `Flutter/ephemeral/.symlinks/plugins/screen_text_extractor/macos`)
   - window_manager (from `Flutter/ephemeral/.symlinks/plugins/window_manager/macos`)
 
 EXTERNAL SOURCES:
@@ -36,6 +39,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/record_macos/macos
   screen_retriever:
     :path: Flutter/ephemeral/.symlinks/plugins/screen_retriever/macos
+  screen_text_extractor:
+    :path: Flutter/ephemeral/.symlinks/plugins/screen_text_extractor/macos
   window_manager:
     :path: Flutter/ephemeral/.symlinks/plugins/window_manager/macos
 
@@ -46,6 +51,7 @@ SPEC CHECKSUMS:
   path_provider_foundation: c68054786f1b4f3343858c1e1d0caaded73f0be9
   record_macos: 937889e0f2a7a12b6fc14e97a3678e5a18943de6
   screen_retriever: 59634572a57080243dd1bf715e55b6c54f241a38
+  screen_text_extractor: 2c310f54af1dee881522e2b76bec9a668ebfe0cf
   window_manager: 3a1844359a6295ab1e47659b1a777e36773cd6e8
 
 PODFILE CHECKSUM: d34eb706582eff25f7788f83664bc56d490af8fc

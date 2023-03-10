@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   permission_handler_windows
   record_windows
   screen_retriever
+  screen_text_extractor
   window_manager
 )
 

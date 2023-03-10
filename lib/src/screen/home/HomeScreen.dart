@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_chatgpt_api/flutter_chatgpt_api.dart';
 import 'package:macos_ui/macos_ui.dart';
 import 'package:record/record.dart';
+import 'package:screen_text_extractor/screen_text_extractor.dart';
 
 import 'package:sizer/sizer.dart';
 import 'package:soundscribe/src/screen/chat/ChatScreen.dart';
@@ -110,16 +111,25 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                /*  CupertinoButton(
+                CupertinoButton(
                   child: Text('1'),
-                  onPressed: () async {},
-                ),*/
+                  onPressed: () async {
+                    ExtractedData data;
+
+                    //data = await ScreenTextExtractor.instance.extractFromClipboard();
+                    data = await ScreenTextExtractor.instance
+                        .extractFromScreenSelection(
+                            useAccessibilityAPIFirst: true);
+                    print(data.text);
+                  },
+                ),
 
                 CupertinoButton(
                   child: Text('Battery Level'),
                   onPressed: getBatteryLevel,
                 ),
                 //Text('HOMEPAGE'),
+
                 Text(batteryLevel),
                 /*      CupertinoButton(
                     child: Text('clipboard'),

@@ -1,7 +1,8 @@
 import Cocoa
 import FlutterMacOS
 import window_manager
-
+import AppKit
+import SwiftUI
 
 class MainFlutterWindow: NSWindow {
 
@@ -11,7 +12,18 @@ class MainFlutterWindow: NSWindow {
       let windowFrame = self.frame
       self.contentViewController = flutterViewController
       self.setFrame(windowFrame, display: true)
-
+      
+      
+      
+      
+     
+      
+      
+      
+      
+      
+      
+      
     RegisterGeneratedPlugins(registry: flutterViewController)
 
     super.awakeFromNib()

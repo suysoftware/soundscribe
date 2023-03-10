@@ -30,9 +30,13 @@
 		F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */; };
 		F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE929B7676100BCC8D4 /* InternalBattery.swift */; };
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
-		F018ABEE29B89EF100BCC8D4 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */; };
-		F018ABF029B8A2D100BCC8D4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
+		F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */; };
+		F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */; };
+		F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */; };
+		F0D8D55F29BB7FF6008D515A /* SelectionBarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */; };
+		F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56229BB809C008D515A /* SelectionBarButton.swift */; };
+		F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56629BB9122008D515A /* SelectionBarView.swift */; };
 		F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */; };
 		F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */; };
 /* End PBXBuildFile section */
@@ -84,9 +88,13 @@
 		F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalFinder.swift; sourceTree = "<group>"; };
 		F018ABE929B7676100BCC8D4 /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
-		F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
-		F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
+		F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSingletonFile.swift; sourceTree = "<group>"; };
+		F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSingletonFile.swift; sourceTree = "<group>"; };
+		F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSingletonFile.swift; sourceTree = "<group>"; };
+		F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarPanel.swift; sourceTree = "<group>"; };
+		F0D8D56229BB809C008D515A /* SelectionBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarButton.swift; sourceTree = "<group>"; };
+		F0D8D56629BB9122008D515A /* SelectionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarView.swift; sourceTree = "<group>"; };
 		F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarContent.swift; sourceTree = "<group>"; };
 		F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -168,6 +176,8 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F0D8D54D29BB688A008D515A /* singletons */,
+				F0D8D54529BB481A008D515A /* SelectionBar */,
 				F0DDBF5E29BA2D3A00625D8F /* trash */,
 				F0DDBF5929BA153100625D8F /* StatusBar */,
 				F018ABF129B8B82200BCC8D4 /* assets */,
@@ -208,6 +218,26 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
+		F0D8D54529BB481A008D515A /* SelectionBar */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */,
+				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
+				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
+			);
+			path = SelectionBar;
+			sourceTree = "<group>";
+		};
+		F0D8D54D29BB688A008D515A /* singletons */ = {
+			isa = PBXGroup;
+			children = (
+				F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */,
+				F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */,
+				F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */,
+			);
+			path = singletons;
+			sourceTree = "<group>";
+		};
 		F0DDBF5929BA153100625D8F /* StatusBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,8 +250,6 @@
 		F0DDBF5E29BA2D3A00625D8F /* trash */ = {
 			isa = PBXGroup;
 			children = (
-				F018ABEF29B8A2D100BCC8D4 /* ContentView.swift */,
-				F018ABED29B89EF100BCC8D4 /* StatusBarController.swift */,
 			);
 			path = trash;
 			sourceTree = "<group>";
@@ -395,15 +423,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
-				F018ABEE29B89EF100BCC8D4 /* StatusBarController.swift in Sources */,
-				F018ABF029B8A2D100BCC8D4 /* ContentView.swift in Sources */,
+				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
+				F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */,
+				F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */,
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
+				F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
+				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
+				F0D8D55F29BB7FF6008D515A /* SelectionBarPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -483,6 +515,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/DebugProfile.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 23ASGL6FCV;
@@ -611,6 +644,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/DebugProfile.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 23ASGL6FCV;
@@ -633,6 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Release.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 23ASGL6FCV;

@@ -15,31 +15,10 @@ import AppKit
 
 
 
-class FirstTaskSingleton {
-    static let instance = FirstTaskSingleton()
-    var data: Bool = false;
-
-    private init() { }
-
-    func SetData(value: Bool){
-        data = value
-    }
-
-    func GetData() -> Bool{
-        return data
-    }
-}
 
 
-class WindowSingleton {
-static let shared = WindowSingleton()
-var window: FlutterViewController = FlutterViewController()
-}
 
-class ChannelSingleton {
-static let shared = ChannelSingleton()
-var channel: FlutterMethodChannel = FlutterMethodChannel()
-}
+
 
 struct StatusBarContent: View {
     @State private var textField:String = ""

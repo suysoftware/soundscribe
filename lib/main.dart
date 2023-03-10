@@ -30,9 +30,9 @@ Future<void> init() async {
     titleBarStyle: TitleBarStyle.hidden,
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
-    await windowManager.hide();
-    //await windowManager.show();
-    //await windowManager.focus();
+    //await windowManager.hide();
+    await windowManager.show();
+    await windowManager.focus();
   });
 
   await dotenv.load(fileName: ".env");

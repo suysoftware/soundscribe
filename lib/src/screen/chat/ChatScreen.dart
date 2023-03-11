@@ -47,14 +47,13 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-    print(dotenv.env['OPEN_AI_API_KEY'].toString());
+
     isLoading = false;
   }
 
   @override
   Widget build(BuildContext context) {
-    print('Language: ${switchValueLanguage ? 'English' : 'Turkish'}');
-    print('Language ${switchValueQuestion?'Soru':'STT'}');
+
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
         middle: Row(

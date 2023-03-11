@@ -35,13 +35,13 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   void onWindowEvent(String eventName) {
-    print('[WindowManager] onWindowEvent: $eventName');
+   
   }
 
   @override
   void onWindowFocus() {
     // Make sure to call once.
-    print('sfaaff');
+
     setState(() {});
     // do something
   }
@@ -98,7 +98,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   void onWindowMinimize() async {
-    print('calis köpek');
+
     // do something
     WindowOptions windowOptions = const WindowOptions(
       alwaysOnTop: true,
@@ -121,7 +121,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   void onWindowResize() {
-    print('resize oldu');
+    
     // do something
   }
 

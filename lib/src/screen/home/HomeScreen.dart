@@ -48,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
     //await windowManager.setAlignment(Alignment.topRight, animate: true);
 
     await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
-    print('OPERATION FINISHED');
+  
   }
 
   @override
@@ -60,7 +60,23 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
       debugPrint(
           "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
       switch (methodCall.method) {
-        case "fastAnswerTr":
+        case "sBar/reply":
+          //debugPrint("Click 1 basti"); // Never comes here
+          fastRequester("Bu maile cevap hazırla");
+          await methodChannel.invokeMethod('firstTaskFinished');
+
+          return;
+        case "sBar/trans":
+          //debugPrint("Click 2 basti"); //
+          fastRequester("Bu maile ingilizce cevap hazırla");
+
+          return;
+        case "sBar/concl":
+          //debugPrint("Click 2 basti"); //
+          fastRequester("Bu metni özetle");
+          return;
+        
+          case "fastAnswerTr":
           //debugPrint("Click 1 basti"); // Never comes here
           fastRequester("Bu maile cevap hazırla");
           await methodChannel.invokeMethod('firstTaskFinished');

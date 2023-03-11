@@ -10,7 +10,6 @@ import "package:record/record.dart";
 import "package:sizer/sizer.dart";
 import "package:soundscribe/src/services/OpenAiServices.dart";
 
-
 const openAIKey = "";
 const endpointSpeechToText = "";
 var audioPath = "";

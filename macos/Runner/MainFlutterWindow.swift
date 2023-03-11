@@ -4,9 +4,14 @@ import window_manager
 import AppKit
 import SwiftUI
 
+
 class MainFlutterWindow: NSWindow {
+    
+    
+
 
   override func awakeFromNib() {
+      
       
       let flutterViewController = FlutterViewController.init()
       let windowFrame = self.frame
@@ -14,13 +19,8 @@ class MainFlutterWindow: NSWindow {
       self.setFrame(windowFrame, display: true)
       
       
-      
-      
-     
-      
-      
-      
-      
+  
+ 
       
       
       
@@ -34,3 +34,5 @@ class MainFlutterWindow: NSWindow {
       hiddenWindowAtLaunch()
    }
 }
+
+

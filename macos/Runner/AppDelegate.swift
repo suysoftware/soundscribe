@@ -17,6 +17,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     var customPanel: SelectionBarPanel?
     //var menuItem: NSMenuItem?//v2
     var mouseEventMonitor: Any?
+    var anyEventMonitor: Any?
     var textSelectionObserver: Any?
     
     //
@@ -28,7 +29,26 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
    
     
  
-  
+    func checkAccess() -> Bool{
+       //get the value for accesibility
+       let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
+       //set the options: false means it wont ask
+       //true means it will popup and ask
+       let options = [checkOptPrompt: true]
+       //translate into boolean value
+       let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary?)
+
+       if accessEnabled == true {
+           print("Access Granted")
+           //label.stringValue = "Access Granted"
+       } else {
+           print("Access not allowed")
+           //label.placeholderString = "Access not allowed"
+           //label.stringValue = "Access not allowed"
+       }
+
+       return accessEnabled
+   }
     
     
     override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -39,9 +59,17 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
     
     override func applicationDidFinishLaunching(_ notification: Notification) {
-      
+      checkAccess()
         
-        
+  
+  /* let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
+
+      let options = [checkOptPrompt: true]
+      let isAppTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary?);
+      if(isAppTrusted != true)
+      {
+          print(  "please allow accessibility API access to this app.");
+      }*/
         //
      
    
@@ -51,9 +79,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         WindowSingleton.shared.window = mainFlutterWindow?.contentViewController as! FlutterViewController
         
         
-        let prompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String
-        let options: NSDictionary = [prompt: true]
-        let appHasPermission = AXIsProcessTrustedWithOptions(options)
+        //let prompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String
+        //let options: NSDictionary = [prompt: true]
+        //let appHasPermission = AXIsProcessTrustedWithOptions(options)
         
         //
         
@@ -131,9 +159,8 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         self.customPanel = SelectionBarPanel(contentRect: panelRect, styleMask: [.borderless, .nonactivatingPanel], backing: .buffered, defer: false)
         
         // Create a custom button and add it to the panel
-        
-        
-        self.customPanel?.level = .floating
+      
+    self.customPanel?.level = .floating
         
         
         let replyButton = SelectionBarCustomButton(title: "reply", frame: NSRect(x: 0, y: 0, width: 40, height: 30))
@@ -143,6 +170,11 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         let concButton = SelectionBarCustomButton(title: "concl", frame: NSRect(x: 140, y: 0, width: 40, height: 30))
         self.customPanel?.contentView?.addSubview(concButton)
         
+        
+        
+        
+      
+    
         
         
         
@@ -158,12 +190,27 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                  
            
                 
-                print("left")
+                //print("left")
                 self.customPanel?.orderOut(nil)
             }
           
             else if    event.type == .leftMouseUp && clickedArea != nil {
+
+            
+            
                 
+                print("/*")
+                print(NSApplication.shared.keyWindow?.attributeKeys)
+                print("*/")
+               /* print(NSAccessibility.Attribute.children)
+                print(NSAccessibility.Attribute.visibleCharacterRange)
+                print(NSAccessibility.Attribute.focusedUIElement)
+                print(NSAccessibility.Attribute.value)
+                print(NSAccessibility.Attribute.warningValue)
+    
+                print(NSAccessibility.Attribute.selectedText)*/
+                
+  
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
                     
@@ -174,7 +221,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                      event.locationInWindow.y != (clickedArea?.y-10)
                  */
                    
-                 print("other")
+                 //print("other")
            //
                   
                 
@@ -210,8 +257,12 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                  // Check if any text is selected and show the custom panel if necessary
                  
                  let selectedRange = NSApplication.shared.keyWindow?.fieldEditor(true, for: nil)?.selectedRange
-              
+                    
+                   
                  if selectedRange?.length ?? 0 > 0 || selectedRange?.length ==  nil, let customPanel = self.customPanel {
+                     
+                     
+                   
                      // Calculate the location of the mouse click in screen coordinates
                      print("calisti")
                      let mouseLocation = NSEvent.mouseLocation
@@ -240,8 +291,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
              }
          }
          self.textSelectionObserver = NotificationCenter.default.addObserver(forName: NSTextView.didChangeSelectionNotification, object: nil, queue: nil) { [weak self] notification in
-             guard let self = self else { return }
              
+           
+             guard let self = self else { return }
              
              
          }

@@ -168,6 +168,7 @@ class _MainAreaState extends State<MainArea> {
               SearchResultItem('Selectors'),
             ],
           ),
+          
           minWidth: 200,
           builder: (context, scrollController) {
             return SidebarItems(

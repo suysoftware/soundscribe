@@ -65,15 +65,15 @@ struct StatusBarContent: View {
                    // let channel = FlutterMethodChannel.init(name: channelName, binaryMessenger: controller.engine.binaryMessenger)
                     
             
-                    ChannelSingleton.shared.channel.invokeMethod("fastAnswerTr", arguments: nil, result: {(r:Any?) -> () in
+                   /* ChannelSingleton.shared.channel.invokeMethod("fastAnswerTr", arguments: nil, result: {(r:Any?) -> () in
                            print("fastAnswerTr Calisti");
                         
                         FirstTaskSingleton.instance.SetData(value: false)
                         print(r.debugDescription);  // Never comes here
-                                })
+                                })*/
                     
             
-                })
+                }).accessibilityAddTraits(.isHeader)
                 
                 
             }

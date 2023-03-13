@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:soundscribe/MainArea.dart';
+import 'package:soundscribe/src/selected_bar/SelectedBarMainArea.dart';
 import 'package:window_manager/window_manager.dart';
 
 class MiddleWare extends StatefulWidget {
@@ -9,9 +10,16 @@ class MiddleWare extends StatefulWidget {
 }
 
 class _MiddleWareState extends State<MiddleWare> with WindowListener {
+
+
   @override
   void initState() {
     windowManager.addListener(this);
+
+    
+   
+
+
     _init();
     super.initState();
   }
@@ -30,13 +38,11 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   Widget build(BuildContext context) {
-    return MainArea();
+    return  MainArea();
   }
 
   @override
-  void onWindowEvent(String eventName) {
-   
-  }
+  void onWindowEvent(String eventName) {}
 
   @override
   void onWindowFocus() {
@@ -98,7 +104,6 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   void onWindowMinimize() async {
-
     // do something
     WindowOptions windowOptions = const WindowOptions(
       alwaysOnTop: true,
@@ -121,7 +126,6 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   void onWindowResize() {
-    
     // do something
   }
 

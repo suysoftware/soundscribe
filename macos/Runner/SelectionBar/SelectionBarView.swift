@@ -16,6 +16,7 @@ import SwiftUI
 
 
 
+
 class SelectionBarView: NSView {
     
     
@@ -28,8 +29,10 @@ class SelectionBarView: NSView {
       override init(frame frameRect: NSRect) {
           super.init(frame: frameRect)
           wantsLayer = true
-          //layer?.backgroundColor = NSColor.selectedTextBackgroundColor.cgColor
-          layer?.opacity = 0.9
+          layer?.backgroundColor = Color(white: 0.1445,opacity: 0.75).cgColor
+          
+          layer?.cornerRadius = 5.0
+        
       }
       
       required init?(coder: NSCoder) {
@@ -78,12 +81,12 @@ class SelectionBarView: NSView {
 
     //
     
-  /*  override func draw(_ dirtyRect: NSRect) {
+    override func draw(_ dirtyRect: NSRect) {
         // draw your custom appearance for the panel here
         // for example, a colored background with rounded corners
-        NSColor.blue.setFill()
-        let path = NSBezierPath(roundedRect: dirtyRect, xRadius: 10, yRadius: 10)
-        path.fill()
-    }*/
+        //NSColor.blue.setFill()
+        //let path = NSBezierPath(roundedRect: dirtyRect, xRadius: 10, yRadius: 10)
+        //path.fill()
+    }
     
 }

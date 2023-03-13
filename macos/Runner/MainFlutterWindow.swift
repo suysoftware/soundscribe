@@ -17,11 +17,11 @@ class MainFlutterWindow: NSWindow {
       let windowFrame = self.frame
       self.contentViewController = flutterViewController
       self.setFrame(windowFrame, display: true)
-      
+      print(self.attributeKeys)
       
   
  
-      
+    
       
       
     RegisterGeneratedPlugins(registry: flutterViewController)

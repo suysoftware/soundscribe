@@ -14,10 +14,15 @@ import SwiftUI
 
 class SelectionBarPanel: NSPanel {
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
-        super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel], backing: backingStoreType, defer: flag)
+        super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel,], backing: backingStoreType, defer: flag)
         self.contentView = SelectionBarView(frame: contentRect)
         self.isOpaque = false
+     
+        
+       
         self.backgroundColor = NSColor.clear
+        
+        
     }
     
     required init?(coder: NSCoder) {

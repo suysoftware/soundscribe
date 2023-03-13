@@ -33,6 +33,7 @@
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
 		F078B7F429BCE8D000C33CA1 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */; };
 		F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */; };
+		F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */; };
 		F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */; };
 		F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */; };
 		F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */; };
@@ -71,7 +72,7 @@
 		333000ED22D3DE5D00554162 /* Warnings.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		335BBD1A22A9A15E00E9071D /* GeneratedPluginRegistrant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedPluginRegistrant.swift; sourceTree = "<group>"; };
 		33CC10ED2044A3C60003C045 /* soundscribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = soundscribe.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		33CC10F02044A3C60003C045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		33CC10F02044A3C60003C045 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		33CC10F22044A3C60003C045 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Runner/Assets.xcassets; sourceTree = "<group>"; };
 		33CC10F52044A3C60003C045 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		33CC10F72044A3C60003C045 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Runner/Info.plist; sourceTree = "<group>"; };
@@ -93,6 +94,7 @@
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
 		F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextMainView.swift; sourceTree = "<group>"; };
+		F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 		F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSingletonFile.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 				F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
 				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
+				F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */,
 			);
 			path = SelectionBar;
 			sourceTree = "<group>";
@@ -444,6 +447,7 @@
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
+				F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */,
 				F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,

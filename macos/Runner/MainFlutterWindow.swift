@@ -20,9 +20,7 @@ class MainFlutterWindow: NSWindow {
       print(self.attributeKeys)
       
   
- 
-    
-      
+     
       
     RegisterGeneratedPlugins(registry: flutterViewController)
 

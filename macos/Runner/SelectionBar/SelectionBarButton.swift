@@ -136,8 +136,17 @@ class SelectionBarCustomButton: NSButton {
 override func mouseDown(with event: NSEvent) {
  
 
+    if let menu = NSApplication.shared.mainMenu {
 
-     //
+                    
+                     //let editMenu = menu.item(withTitle: "Edit")
+                     print(menu.items)
+                     //let copyItem = editMenu?.submenu
+                     //let item = copyItem?.item(withTitle: "Copy")
+                     
+                     //print(item)
+               }
+    
     
    // let text = self.getSelectedText()
     //print(text)

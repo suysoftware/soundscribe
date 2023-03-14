@@ -21,7 +21,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
 
  
 
-
+    let menuDelegate = NSMenuDelegate.self
 
     
    /* func copyToClipboard(_ string: String) {
@@ -34,7 +34,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     // Set the layer's properties
    
  
-   /* func checkAccess() -> Bool{
+    func checkAccess() -> Bool{
        //get the value for accesibility
        let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
        //set the options: false means it wont ask
@@ -53,9 +53,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
        }
 
        return accessEnabled
-   }*/
+   }
 
-   /* func simulateCopyKeystroke(wNumber : Int) {
+    func simulateCopyKeystroke(wNumber : Int) {
         
         print("siml")
         let commandKey = NSEvent.ModifierFlags.command.rawValue
@@ -83,7 +83,12 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         NSApplication.shared.sendEvent(keyDownEvent!)
         NSApplication.shared.sendEvent(keyUpEvent!)
     }
-    */
+    
+    
+    
+    
+    
+    
     override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         
         
@@ -92,8 +97,17 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
     
     override func applicationDidFinishLaunching(_ notification: Notification) {
-      //checkAccess()
+        
+        WindowSingleton.shared.window = mainFlutterWindow?.contentViewController as! FlutterViewController
+        
+        
+      checkAccess()
+        
  
+ 
+        
+        
+   
   
   /* let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
 
@@ -109,7 +123,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         //
  
  
-        WindowSingleton.shared.window = mainFlutterWindow?.contentViewController as! FlutterViewController
+        
         
         
         //let prompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String
@@ -228,9 +242,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
         print("*/")
        
-        
 
-     
+
+       
         
         self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel ]) { [weak self] event in
             guard let self = self else { return }
@@ -300,6 +314,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                  clickedArea = event.locationInWindow
  
                 self.customPanel?.orderOut(nil)
+               
+         
+                   
             }
             else if event.type == .scrollWheel {
                 self.customPanel?.orderOut(nil)
@@ -307,12 +324,40 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             }
           
             else if    event.type == .leftMouseUp && clickedArea != nil {
+                
+         
+
+                //if let menu = NSApplication.shared {
+                  //  print(menu.mainMenu?.items)
+                                
+                                 //let editMenu = menu.item(withTitle: "Edit")
+                                 //print(menu.items)
+                                 //let copyItem = editMenu?.submenu
+                                 //let item = copyItem?.item(withTitle: "Copy")
+                                 
+                                 //print(item)
+                        //     }
         
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
+                    
+                    
+                    
+                    
+                 
+        
+                    
+                
+                    
+
 
                  // Check if any text is selected and show the custom panel if necessary
                  
+                    
+                 //   self.simulateCopyKeystroke(wNumber: event.windowNumber
+                   // )
+                    
+                    
                  let selectedRange = NSApplication.shared.keyWindow?.fieldEditor(true, for: nil)?.selectedRange
                     
                    

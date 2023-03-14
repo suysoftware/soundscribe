@@ -23,7 +23,8 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
 
     let menuDelegate = NSMenuDelegate.self
 
-    
+    let editMenu = NSMenuItem()
+    let accessibilityElement = AXUIElementCreateSystemWide
    /* func copyToClipboard(_ string: String) {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
@@ -100,11 +101,24 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         
         WindowSingleton.shared.window = mainFlutterWindow?.contentViewController as! FlutterViewController
         
+    
+
         
-      checkAccess()
-        
+      
  
- 
+        editMenu.submenu = NSMenu(title: "Edit")
+        editMenu.submenu?.items = [
+        NSMenuItem(title: "Undo", action: #selector(UndoManager.undo), keyEquivalent: "z"),
+        NSMenuItem(title: "Redo", action: #selector(UndoManager.redo), keyEquivalent: "Z"),
+        NSMenuItem.separator(),
+        NSMenuItem(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"),
+        NSMenuItem(title: "Copy", action: #selector(NSText.copy(_:)), keyEquivalent: "c"),
+        NSMenuItem(title: "Paste", action: #selector(NSText.paste(_:)), keyEquivalent: "v"),
+        NSMenuItem.separator(),
+        NSMenuItem(title: "Select All", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a"),
+        NSMenuItem.separator(),
+        NSMenuItem(title: "Duplicate", action: #selector(NSApplication.copy), keyEquivalent: "d"),
+        ]
         
         
    
@@ -326,23 +340,43 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             else if    event.type == .leftMouseUp && clickedArea != nil {
                 
          
-
-                //if let menu = NSApplication.shared {
-                  //  print(menu.mainMenu?.items)
-                                
-                                 //let editMenu = menu.item(withTitle: "Edit")
+                //print(self.editMenu.submenu?.items)
+                
+                if let menu = self.editMenu.submenu
+                     {
+                       
+                    
+                                      //let editMenu = menu.item(withTitle: "Edit")
+                                      //print(menu.items)
+                                      //let copyItem = editMenu?.submenu
+                    let item = menu.item(withTitle: "Copy")
+                
+                
+                             }
+                
+                
+           /*     if let menu = NSApp.mainMenu
+                {
+                  
+               
+                                 let editMenu = menu.item(withTitle: "Edit")
                                  //print(menu.items)
-                                 //let copyItem = editMenu?.submenu
-                                 //let item = copyItem?.item(withTitle: "Copy")
+                                 let copyItem = editMenu?.submenu
+                                 let item = copyItem?.item(withTitle: "Copy")
                                  
                                  //print(item)
-                        //     }
+                        }*/
         
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
                     
                     
                     
+                    var windowTitle: AnyObject?
+                    
+                    print(AXUIElementCopyAttributeValue(self.accessibilityElement(), kAXTitleAttribute as CFString, &windowTitle))
+                      
+              
                     
                  
         

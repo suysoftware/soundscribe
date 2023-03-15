@@ -132,21 +132,12 @@ class SelectionBarCustomButton: NSButton {
     }
    
 
+  
     
 override func mouseDown(with event: NSEvent) {
  
 
-    if let menu = NSApplication.shared.mainMenu {
 
-                    
-                     //let editMenu = menu.item(withTitle: "Edit")
-                     print(menu.items)
-                     //let copyItem = editMenu?.submenu
-                     //let item = copyItem?.item(withTitle: "Copy")
-                     
-                     //print(item)
-               }
-    
     
    // let text = self.getSelectedText()
     //print(text)
@@ -155,12 +146,12 @@ override func mouseDown(with event: NSEvent) {
     
         
         
-        /*ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
+        ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
             
       
             print(r.debugDescription);  // Never comes here
                     })
-                print(title)*/
+                print(title)
         // handle button click event
     }
 

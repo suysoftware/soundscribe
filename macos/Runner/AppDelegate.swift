@@ -2,7 +2,9 @@ import Cocoa
 import FlutterMacOS
 import AppKit
 import SwiftUI
-
+import Carbon
+import ApplicationServices // Import the ApplicationServices framework
+import CoreGraphics
 
 
 
@@ -13,77 +15,102 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     var customPanel: SelectionBarPanel?
     //var menuItem: NSMenuItem?//v2
     var mouseEventMonitor: Any?
+    var mouseCGEventMonitor: Any?
     var textSelectionObserver: Any?
-    let pasteBoard = NSPasteboard.general
     
+    let systemWideElement = AXUIElementCreateSystemWide()
+    var focusedElement : AnyObject?
+
+    
+
+    let getSelectedTextScript = """
+        tell application "System Events"
+            set frontmostProcess to first process where it is frontmost
+            set appName to name of frontmostProcess
+        end tell
+
+        tell application appName
+            try
+                set selectedText to the clipboard
+                set currentClipboard to the clipboard
+                set the clipboard to ""
+                tell application "System Events" to keystroke "c" using {command down}
+                delay 0.5
+                set selectedText to the clipboard as text
+                set the clipboard to currentClipboard
+            on error errMsg
+                return errMsg
+            end try
+        end tell
+
+        return selectedText
+    """
+   
     
     //
+    func sendGlobalCommandC() {
+        let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
+        let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
 
- 
+        let cKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: true) // C key down
+        let cKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: false) // C key up
+
+        cmdKeyDown?.flags = .maskCommand
+        cKeyDown?.flags = .maskCommand
+
+        let eventTapLocation = CGEventTapLocation.cghidEventTap // System-wide event tap
+
+        cmdKeyDown?.post(tap: eventTapLocation)
+        cKeyDown?.post(tap: eventTapLocation)
+        cKeyUp?.post(tap: eventTapLocation)
+        cmdKeyUp?.post(tap: eventTapLocation)
+    }
+    
+    
+    func runAppleScript(_ source: String) -> String? {
+        var error: NSDictionary?
+        if let scriptObject = NSAppleScript(source: source) {
+            let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(&error)
+            if error != nil {
+                print("AppleScript execution failed: \(error!)")
+                return nil
+            } else {
+                return output.stringValue
+            }
+        } else {
+            print("AppleScript compilation failed")
+            return nil
+        }
+    }
+    
 
     let menuDelegate = NSMenuDelegate.self
 
     let editMenu = NSMenuItem()
-    let accessibilityElement = AXUIElementCreateSystemWide
+
    /* func copyToClipboard(_ string: String) {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setString(string, forType: .string)
     }*/
-
+   
     
     // Set the layer's properties
-   
- 
-    func checkAccess() -> Bool{
-       //get the value for accesibility
-       let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
-       //set the options: false means it wont ask
-       //true means it will popup and ask
-       let options = [checkOptPrompt: true]
-       //translate into boolean value
-       let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary?)
+    
+    /*
+   func getClipboardText() -> String? {
+        let pasteboard = NSPasteboard.general
+        let items = pasteboard.pasteboardItems
+        let item = items?.first
 
-       if accessEnabled == true {
-           print("Access Granted")
-           //label.stringValue = "Access Granted"
-       } else {
-           print("Access not allowed")
-           //label.placeholderString = "Access not allowed"
-           //label.stringValue = "Access not allowed"
-       }
-
-       return accessEnabled
-   }
-
-    func simulateCopyKeystroke(wNumber : Int) {
-        
-        print("siml")
-        let commandKey = NSEvent.ModifierFlags.command.rawValue
-        let cKey = 8 // the virtual keycode for the letter 'c'
-        let keyDownEvent = NSEvent.keyEvent(with: .keyDown,
-                                           location: NSPoint(x: 0, y: 0),
-                                            modifierFlags: NSEvent.ModifierFlags(rawValue: commandKey),
-                                            timestamp: 0,
-                                            windowNumber: wNumber,
-                                            context: nil,
-                                            characters: "",
-                                            charactersIgnoringModifiers: "",
-                                            isARepeat: false,
-                                            keyCode: UInt16(cKey))
-        let keyUpEvent = NSEvent.keyEvent(with: .keyUp,
-                                          location: NSPoint(x: 0, y: 0),
-                                          modifierFlags: NSEvent.ModifierFlags(rawValue: commandKey),
-                                          timestamp: 0,
-                                          windowNumber: wNumber,
-                                          context: nil,
-                                          characters: "",
-                                          charactersIgnoringModifiers: "",
-                                          isARepeat: false,
-                                          keyCode: UInt16(cKey))
-        NSApplication.shared.sendEvent(keyDownEvent!)
-        NSApplication.shared.sendEvent(keyUpEvent!)
+        return item?.string(forType: .string)
     }
+  */
+ 
+
+
+  
+   
     
     
     
@@ -96,56 +123,19 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         return false
     }
     
-    
+ 
+
     override func applicationDidFinishLaunching(_ notification: Notification) {
         
         WindowSingleton.shared.window = mainFlutterWindow?.contentViewController as! FlutterViewController
         
     
-
-        
       
- 
-        editMenu.submenu = NSMenu(title: "Edit")
-        editMenu.submenu?.items = [
-        NSMenuItem(title: "Undo", action: #selector(UndoManager.undo), keyEquivalent: "z"),
-        NSMenuItem(title: "Redo", action: #selector(UndoManager.redo), keyEquivalent: "Z"),
-        NSMenuItem.separator(),
-        NSMenuItem(title: "Cut", action: #selector(NSText.cut(_:)), keyEquivalent: "x"),
-        NSMenuItem(title: "Copy", action: #selector(NSText.copy(_:)), keyEquivalent: "c"),
-        NSMenuItem(title: "Paste", action: #selector(NSText.paste(_:)), keyEquivalent: "v"),
-        NSMenuItem.separator(),
-        NSMenuItem(title: "Select All", action: #selector(NSText.selectAll(_:)), keyEquivalent: "a"),
-        NSMenuItem.separator(),
-        NSMenuItem(title: "Duplicate", action: #selector(NSApplication.copy), keyEquivalent: "d"),
-        ]
         
+        
+        // First, get a reference to the other application's window that contains the selected text.
         
    
-  
-  /* let checkOptPrompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as NSString
-
-      let options = [checkOptPrompt: true]
-      let isAppTrusted = AXIsProcessTrustedWithOptions(options as CFDictionary?);
-      if(isAppTrusted != true)
-      {
-          print(  "please allow accessibility API access to this app.");
-      }*/
-        //
-     
-   
-        //
- 
- 
-        
-        
-        
-        //let prompt = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String
-        //let options: NSDictionary = [prompt: true]
-        //let appHasPermission = AXIsProcessTrustedWithOptions(options)
-        
-        //
-        
       
         var clickedArea : NSPoint?
         
@@ -161,14 +151,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         
         ChannelSingleton.shared.channel = channel
         
-        //let channelSender = FlutterMethodChannel.init(name: CHANNEL_SENDER_NAME, binaryMessenger: controller.engine.binaryMessenger)
-        
-        //let contentView = ContentView()
-        //let mainView = NSHostingView(rootView: contentView)
-        //mainView.frame =  NSRect(x: 0, y: 0, width: 300, height: 200)
-        //statusBar = StatusBarController(mainView)
-        
-        
+   
         let statusBarContent = StatusBarContent()
         let mainExtraView = NSHostingView(rootView: statusBarContent)
         mainExtraView.frame =  NSRect(x: 0, y: 0, width: 250, height: 300)
@@ -236,6 +219,8 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         
         
         
+    
+        
         let replyButton = SelectionBarCustomButton(title: "reply", frame: NSRect(x: 0, y: 0, width: 50, height: 25))
         //replyButton.isHighlighted = true
         self.customPanel?.contentView?.addSubview(replyButton)
@@ -249,15 +234,15 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
        
   
         
-        print("/*")
+     //   print("/*")
       
 
       
     
-        print("*/")
+       // print("*/")
        
 
-
+   
        
         
         self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel ]) { [weak self] event in
@@ -340,61 +325,38 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             else if    event.type == .leftMouseUp && clickedArea != nil {
                 
          
-                //print(self.editMenu.submenu?.items)
                 
-                if let menu = self.editMenu.submenu
-                     {
-                       
-                    
-                                      //let editMenu = menu.item(withTitle: "Edit")
-                                      //print(menu.items)
-                                      //let copyItem = editMenu?.submenu
-                    let item = menu.item(withTitle: "Copy")
-                
-                
-                             }
-                
-                
-           /*     if let menu = NSApp.mainMenu
-                {
-                  
-               
-                                 let editMenu = menu.item(withTitle: "Edit")
-                                 //print(menu.items)
-                                 let copyItem = editMenu?.submenu
-                                 let item = copyItem?.item(withTitle: "Copy")
-                                 
-                                 //print(item)
-                        }*/
-        
+              
+
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
                     
+                   
+                    
+             /*if let selectedText = self.runAppleScript(self.getSelectedTextScript) {
+                        print("Selected text: \(selectedText)")
+                    } else {
+                        print("Failed to get selected text")
+                    }
+            */
+                    self.sendGlobalCommandC()
+               
+               // self.sendGlobalCommandC() //solved tik
                     
                     
-                    var windowTitle: AnyObject?
-                    
-                    print(AXUIElementCopyAttributeValue(self.accessibilityElement(), kAXTitleAttribute as CFString, &windowTitle))
-                      
-              
-                    
+                 //   self.simulateCopyKeystroke(wNumber:self.mainFlutterWindow.windowNumber ) //problem
                  
-        
-                    
                 
                     
-
-
-                 // Check if any text is selected and show the custom panel if necessary
-                 
                     
-                 //   self.simulateCopyKeystroke(wNumber: event.windowNumber
-                   // )
+                    
                     
                     
                  let selectedRange = NSApplication.shared.keyWindow?.fieldEditor(true, for: nil)?.selectedRange
                     
-                   
+                    
+                    
+                    
                  if selectedRange?.length ?? 0 > 0 || selectedRange?.length ==  nil, let customPanel = self.customPanel {
 
                      // Calculate the location of the mouse click in screen coordinates
@@ -425,20 +387,14 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
              }
          }
                 }
-        self.textSelectionObserver = NotificationCenter.default.addObserver(forName: NSTextView.didChangeSelectionNotification, object: AnyObject.self, queue: nil) { [weak self] notification in
-            
-          
-            guard let self = self else {return }
-            
-            //self.pasteBoard.clearContents()
-         
-            //self.pasteBoard.writeObjects([notification.object])
-            
-            print("k1")
-            print(notification.object!)
-            print("k2")
-            
-        }
+/*        self.textSelectionObserver = NotificationCenter.default.addObserver(forName: NSTextView.didChangeSelectionNotification, object: AnyObject.self, queue: nil) { [weak self] notification in
+ 
+ 
+ guard self != nil else {return }
+ 
+
+ 
+}*/
     }
     
     

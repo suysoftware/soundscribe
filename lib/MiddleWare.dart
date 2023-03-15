@@ -10,15 +10,9 @@ class MiddleWare extends StatefulWidget {
 }
 
 class _MiddleWareState extends State<MiddleWare> with WindowListener {
-
-
   @override
   void initState() {
     windowManager.addListener(this);
-
-    
-   
-
 
     _init();
     super.initState();
@@ -38,7 +32,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
 
   @override
   Widget build(BuildContext context) {
-    return  MainArea();
+    return MainArea();
   }
 
   @override
@@ -47,6 +41,7 @@ class _MiddleWareState extends State<MiddleWare> with WindowListener {
   @override
   void onWindowFocus() {
     // Make sure to call once.
+    print("focus");
 
     setState(() {});
     // do something

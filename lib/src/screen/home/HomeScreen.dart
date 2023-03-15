@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'dart:math';
 import 'package:clipboard_watcher/clipboard_watcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,6 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
     //await windowManager.setAlignment(Alignment.topRight, animate: true);
 
     await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
-  
   }
 
   @override
@@ -72,11 +71,12 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
 
           return;
         case "sBar/concl":
+          print("budondu");
           //debugPrint("Click 2 basti"); //
           fastRequester("Bu metni özetle");
           return;
-        
-          case "fastAnswerTr":
+
+        case "fastAnswerTr":
           //debugPrint("Click 1 basti"); // Never comes here
           fastRequester("Bu maile cevap hazırla");
           await methodChannel.invokeMethod('firstTaskFinished');
@@ -227,7 +227,9 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
         await Clipboard.getData(Clipboard.kTextPlain);
     clipboardText = newClipboardData!.text.toString();
     //windowManager.restore();
-    print(newClipboardData?.text ?? "");
+     print(newClipboardData?.text ?? "");
+    print("");
+    
   }
 
   /* Widget _fastMailBuild(String taskName, String task) {

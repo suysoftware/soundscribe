@@ -21,7 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		0B1844BF1AD1656DC2906D7B /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C300E818C274342AF97DF3 /* Pods_Runner.framework */; };
+		0B1844BF1AD1656DC2906D7B /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5C300E818C274342AF97DF3 /* Pods_Runner.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335BBD1A22A9A15E00E9071D /* GeneratedPluginRegistrant.swift */; };
 		33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC10F02044A3C60003C045 /* AppDelegate.swift */; };
 		33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F22044A3C60003C045 /* Assets.xcassets */; };
@@ -31,6 +31,7 @@
 		F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE929B7676100BCC8D4 /* InternalBattery.swift */; };
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
+		F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */; };
 		F078B7F429BCE8D000C33CA1 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */; };
 		F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */; };
 		F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */; };
@@ -92,6 +93,7 @@
 		F018ABE929B7676100BCC8D4 /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
+		F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextMainView.swift; sourceTree = "<group>"; };
 		F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */,
 				0B1844BF1AD1656DC2906D7B /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,6 +205,7 @@
 		D73912EC22F37F3D000D13A0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */,
 				A5C300E818C274342AF97DF3 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;

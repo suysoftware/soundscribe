@@ -35,6 +35,13 @@
 		F078B7F429BCE8D000C33CA1 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */; };
 		F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */; };
 		F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */; };
+		F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */; };
+		F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */; };
+		F0D604B029C3467E00809808 /* DiscordPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AF29C3467E00809808 /* DiscordPanel.swift */; };
+		F0D604B229C3476500809808 /* XcodePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B129C3476500809808 /* XcodePanel.swift */; };
+		F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */; };
+		F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B529C35F1800809808 /* ButtonSingleton.swift */; };
+		F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B729C3610D00809808 /* DefaultPanel.swift */; };
 		F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */; };
 		F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */; };
 		F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */; };
@@ -97,6 +104,13 @@
 		F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
 		F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextMainView.swift; sourceTree = "<group>"; };
 		F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
+		F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserScriptGetter.swift; sourceTree = "<group>"; };
+		F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformButtonGetter.swift; sourceTree = "<group>"; };
+		F0D604AF29C3467E00809808 /* DiscordPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPanel.swift; sourceTree = "<group>"; };
+		F0D604B129C3476500809808 /* XcodePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XcodePanel.swift; sourceTree = "<group>"; };
+		F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedPanelGetter.swift; sourceTree = "<group>"; };
+		F0D604B529C35F1800809808 /* ButtonSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSingleton.swift; sourceTree = "<group>"; };
+		F0D604B729C3610D00809808 /* DefaultPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPanel.swift; sourceTree = "<group>"; };
 		F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSingletonFile.swift; sourceTree = "<group>"; };
@@ -185,6 +199,7 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F0D604A929C33F8200809808 /* FocusedPlatform */,
 				F078B7F529BCECAE00C33CA1 /* SelectedText */,
 				F0D8D54D29BB688A008D515A /* singletons */,
 				F0D8D54529BB481A008D515A /* SelectionBar */,
@@ -238,9 +253,30 @@
 			path = SelectedText;
 			sourceTree = "<group>";
 		};
+		F0D604A929C33F8200809808 /* FocusedPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */,
+				F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */,
+				F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */,
+			);
+			path = FocusedPlatform;
+			sourceTree = "<group>";
+		};
+		F0D604AE29C3466900809808 /* PlatformPanels */ = {
+			isa = PBXGroup;
+			children = (
+				F0D604AF29C3467E00809808 /* DiscordPanel.swift */,
+				F0D604B129C3476500809808 /* XcodePanel.swift */,
+				F0D604B729C3610D00809808 /* DefaultPanel.swift */,
+			);
+			path = PlatformPanels;
+			sourceTree = "<group>";
+		};
 		F0D8D54529BB481A008D515A /* SelectionBar */ = {
 			isa = PBXGroup;
 			children = (
+				F0D604AE29C3466900809808 /* PlatformPanels */,
 				F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
 				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
@@ -255,6 +291,7 @@
 				F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */,
 				F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */,
 				F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */,
+				F0D604B529C35F1800809808 /* ButtonSingleton.swift */,
 			);
 			path = singletons;
 			sourceTree = "<group>";
@@ -446,8 +483,14 @@
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
 				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
 				F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */,
+				F0D604B229C3476500809808 /* XcodePanel.swift in Sources */,
 				F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */,
+				F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */,
+				F0D604B029C3467E00809808 /* DiscordPanel.swift in Sources */,
+				F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */,
 				F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */,
+				F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */,
+				F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */,
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
@@ -459,6 +502,7 @@
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
+				F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */,
 				F0D8D55F29BB7FF6008D515A /* SelectionBarPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

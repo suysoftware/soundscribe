@@ -16,9 +16,12 @@ import SwiftUI
 
 
 class SelectionBarCustomButton: NSButton {
+    var mouseEventMonitor: Any?
+    
     required init(title string: String, frame rect: NSRect) {
           super.init(frame: rect)
           self.title = string
+ 
         
       }
       
@@ -31,7 +34,7 @@ class SelectionBarCustomButton: NSButton {
     override func draw(_ dirtyRect: NSRect) {
         // draw your custom appearance for the button here
         // for example, a colored background with a border and text label
-      
+        
         if self.isHighlighted {
             NSColor.systemBlue.setFill()
             //NSColor(red: 55, green: 116, blue: 244, alpha: 2.0).setFill()
@@ -79,16 +82,40 @@ class SelectionBarCustomButton: NSButton {
         let textRect = NSRect(x: dirtyRect.midX - (textSize.width / 2), y: dirtyRect.midY - (textSize.height / 2), width: textSize.width, height: textSize.height)
         text.draw(in: textRect, withAttributes: attributes)
         
+        
+        
+ 
+        
+    }
+    
+    
+    
+    func sendGlobalCommandC() -> Bool?{
+        
+        
+        let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
+        let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
+
+        let cKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: true) // C key down
+        let cKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: false) // C key up
+
+        cmdKeyDown?.flags = .maskCommand
+        cKeyDown?.flags = .maskCommand
+
+        let eventTapLocation = CGEventTapLocation.cghidEventTap // System-wide event tap
+
+        cmdKeyDown?.post(tap: eventTapLocation)
+        cKeyDown?.post(tap: eventTapLocation)
+        cKeyUp?.post(tap: eventTapLocation)
+        cmdKeyUp?.post(tap: eventTapLocation)
+        
+        return true
     }
     
     
     
     
-    
-    
-    
-    
-    func getSelectedText() -> String? {
+  /*  func getSelectedText() -> String? {
         // Get the currently active application
         guard let frontmostApplication = NSWorkspace.shared.frontmostApplication,
               let _ = NSRunningApplication(processIdentifier: frontmostApplication.processIdentifier) else {
@@ -129,7 +156,7 @@ class SelectionBarCustomButton: NSButton {
                 return nil
             }
         }
-    }
+    }*/
    
 
   
@@ -142,16 +169,18 @@ override func mouseDown(with event: NSEvent) {
    // let text = self.getSelectedText()
     //print(text)
          //
-  
-    
-        
-        
+    if sendGlobalCommandC() != nil {
         ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
             
       
             print(r.debugDescription);  // Never comes here
                     })
                 print(title)
+    }
+    
+        
+        
+       
         // handle button click event
     }
 
@@ -181,7 +210,7 @@ override func mouseDown(with event: NSEvent) {
 }
 
 
-extension AXUIElement {
+/*extension AXUIElement {
   static var focusedElement: AXUIElement? {
     systemWide.element(for: kAXFocusedUIElementAttribute)
   }
@@ -203,3 +232,4 @@ extension AXUIElement {
     return error == .success ? rawValue : nil
   }
 }
+*/

@@ -227,8 +227,8 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
         await Clipboard.getData(Clipboard.kTextPlain);
     clipboardText = newClipboardData!.text.toString();
     //windowManager.restore();
-     print(newClipboardData?.text ?? "");
-    print("");
+  // print(newClipboardData?.text ?? "");
+    //print("");
     
   }
 

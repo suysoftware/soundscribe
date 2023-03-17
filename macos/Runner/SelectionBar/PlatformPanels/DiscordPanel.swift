@@ -17,24 +17,19 @@ class DiscordPanel: NSPanel {
         super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel,], backing: backingStoreType, defer: flag)
         self.contentView = SelectionBarView(frame: contentRect)
         self.isOpaque = false
-     
-      /*
-       let platformName = "com.hnc.Discord"
+        self.level = .floating
         
-        let firstButton = platformFirstButtonGetter(platformName)
-        self.contentView?.addSubview(firstButton)
-        let secondButton = platformSecondButtonGetter(platformName)
-        self.contentView?.addSubview(secondButton)
-        let thirdButton = platformThirdButtonGetter(platformName)
-        self.contentView?.addSubview(thirdButton)
+        firstSelectionBarButton.title = "dc1"
+        secondSelectionBarButton.title = "dc2"
+        thirdSelectionBarButton.title = "dc3"
+        forthSelectionBarButton.title = "dc4"
         
-    
-    
-        
-        let speakButton = SelectionBarCustomButton(title: "speak", frame: NSRect(x: 150, y: 0, width: 50, height: 25))
-        self.contentView?.addSubview(speakButton)
-       */
-       
+        self.contentView?.addSubview(firstSelectionBarButton)
+        self.contentView?.addSubview(secondSelectionBarButton)
+        self.contentView?.addSubview(thirdSelectionBarButton)
+        self.contentView?.addSubview(forthSelectionBarButton)
+
+
         self.backgroundColor = NSColor.clear
         
         

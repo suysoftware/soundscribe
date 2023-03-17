@@ -32,9 +32,6 @@
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
 		F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */; };
-		F078B7F429BCE8D000C33CA1 /* SelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */; };
-		F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */; };
-		F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */; };
 		F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */; };
 		F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */; };
 		F0D604B029C3467E00809808 /* DiscordPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AF29C3467E00809808 /* DiscordPanel.swift */; };
@@ -42,10 +39,36 @@
 		F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */; };
 		F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B529C35F1800809808 /* ButtonSingleton.swift */; };
 		F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B729C3610D00809808 /* DefaultPanel.swift */; };
+		F0D604BB29C4A88C00809808 /* SpotifyPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604BA29C4A88C00809808 /* SpotifyPanel.swift */; };
+		F0D604BD29C4A89B00809808 /* VscodePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604BC29C4A89B00809808 /* VscodePanel.swift */; };
+		F0D604BF29C4A8AB00809808 /* AppleNotesPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604BE29C4A8AB00809808 /* AppleNotesPanel.swift */; };
+		F0D604C129C4A8CF00809808 /* AppleAppstorePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604C029C4A8CF00809808 /* AppleAppstorePanel.swift */; };
+		F0D604C329C4A8D800809808 /* FigmaPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604C229C4A8D800809808 /* FigmaPanel.swift */; };
+		F0D604C529C4A8E100809808 /* BinancePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604C429C4A8E100809808 /* BinancePanel.swift */; };
+		F0D604C729C4A8FC00809808 /* TrandingviewPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604C629C4A8FC00809808 /* TrandingviewPanel.swift */; };
+		F0D604C929C4A90600809808 /* WhatsappPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604C829C4A90600809808 /* WhatsappPanel.swift */; };
+		F0D604CB29C4A91100809808 /* WordPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604CA29C4A91100809808 /* WordPanel.swift */; };
+		F0D604CD29C4A9A200809808 /* PowerpointPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604CC29C4A9A200809808 /* PowerpointPanel.swift */; };
+		F0D604CF29C4A9BA00809808 /* ExcelPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604CE29C4A9BA00809808 /* ExcelPanel.swift */; };
+		F0D604D129C4A9E700809808 /* AndroidstudioPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604D029C4A9E700809808 /* AndroidstudioPanel.swift */; };
+		F0D604D529C4E4AC00809808 /* YoutubePanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604D429C4E4AC00809808 /* YoutubePanel.swift */; };
+		F0D604D729C4E7A400809808 /* GithubPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604D629C4E7A400809808 /* GithubPanel.swift */; };
+		F0D604DB29C4E7CD00809808 /* GmailPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604DA29C4E7CD00809808 /* GmailPanel.swift */; };
+		F0D604DD29C4E7D600809808 /* TwitterPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604DC29C4E7D600809808 /* TwitterPanel.swift */; };
+		F0D604DF29C4E7DF00809808 /* FacebookPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604DE29C4E7DF00809808 /* FacebookPanel.swift */; };
+		F0D604E129C4E7EB00809808 /* WikipediaPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604E029C4E7EB00809808 /* WikipediaPanel.swift */; };
+		F0D604E329C4E83500809808 /* YahooPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604E229C4E83500809808 /* YahooPanel.swift */; };
+		F0D604E529C4E84300809808 /* AmazonPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604E429C4E84300809808 /* AmazonPanel.swift */; };
+		F0D604E729C4E85700809808 /* OutlookPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604E629C4E85700809808 /* OutlookPanel.swift */; };
+		F0D604E929C4E86200809808 /* LinkedinPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604E829C4E86200809808 /* LinkedinPanel.swift */; };
+		F0D604EB29C4E86C00809808 /* RedditPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604EA29C4E86C00809808 /* RedditPanel.swift */; };
+		F0D604ED29C4E87600809808 /* NetflixPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604EC29C4E87600809808 /* NetflixPanel.swift */; };
+		F0D604EF29C4E87F00809808 /* TwitchPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604EE29C4E87F00809808 /* TwitchPanel.swift */; };
+		F0D604F129C4E88B00809808 /* EbayPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604F029C4E88B00809808 /* EbayPanel.swift */; };
+		F0D604F329C4E89400809808 /* TiktokPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604F229C4E89400809808 /* TiktokPanel.swift */; };
 		F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */; };
 		F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */; };
 		F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */; };
-		F0D8D55F29BB7FF6008D515A /* SelectionBarPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */; };
 		F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56229BB809C008D515A /* SelectionBarButton.swift */; };
 		F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56629BB9122008D515A /* SelectionBarView.swift */; };
 		F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */; };
@@ -101,9 +124,6 @@
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
 		F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
-		F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionViewController.swift; sourceTree = "<group>"; };
-		F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTextMainView.swift; sourceTree = "<group>"; };
-		F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedViewController.swift; sourceTree = "<group>"; };
 		F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserScriptGetter.swift; sourceTree = "<group>"; };
 		F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformButtonGetter.swift; sourceTree = "<group>"; };
 		F0D604AF29C3467E00809808 /* DiscordPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscordPanel.swift; sourceTree = "<group>"; };
@@ -111,10 +131,36 @@
 		F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedPanelGetter.swift; sourceTree = "<group>"; };
 		F0D604B529C35F1800809808 /* ButtonSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSingleton.swift; sourceTree = "<group>"; };
 		F0D604B729C3610D00809808 /* DefaultPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPanel.swift; sourceTree = "<group>"; };
+		F0D604BA29C4A88C00809808 /* SpotifyPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpotifyPanel.swift; sourceTree = "<group>"; };
+		F0D604BC29C4A89B00809808 /* VscodePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VscodePanel.swift; sourceTree = "<group>"; };
+		F0D604BE29C4A8AB00809808 /* AppleNotesPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleNotesPanel.swift; sourceTree = "<group>"; };
+		F0D604C029C4A8CF00809808 /* AppleAppstorePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleAppstorePanel.swift; sourceTree = "<group>"; };
+		F0D604C229C4A8D800809808 /* FigmaPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FigmaPanel.swift; sourceTree = "<group>"; };
+		F0D604C429C4A8E100809808 /* BinancePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinancePanel.swift; sourceTree = "<group>"; };
+		F0D604C629C4A8FC00809808 /* TrandingviewPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrandingviewPanel.swift; sourceTree = "<group>"; };
+		F0D604C829C4A90600809808 /* WhatsappPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsappPanel.swift; sourceTree = "<group>"; };
+		F0D604CA29C4A91100809808 /* WordPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPanel.swift; sourceTree = "<group>"; };
+		F0D604CC29C4A9A200809808 /* PowerpointPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerpointPanel.swift; sourceTree = "<group>"; };
+		F0D604CE29C4A9BA00809808 /* ExcelPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelPanel.swift; sourceTree = "<group>"; };
+		F0D604D029C4A9E700809808 /* AndroidstudioPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AndroidstudioPanel.swift; sourceTree = "<group>"; };
+		F0D604D429C4E4AC00809808 /* YoutubePanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubePanel.swift; sourceTree = "<group>"; };
+		F0D604D629C4E7A400809808 /* GithubPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubPanel.swift; sourceTree = "<group>"; };
+		F0D604DA29C4E7CD00809808 /* GmailPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GmailPanel.swift; sourceTree = "<group>"; };
+		F0D604DC29C4E7D600809808 /* TwitterPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitterPanel.swift; sourceTree = "<group>"; };
+		F0D604DE29C4E7DF00809808 /* FacebookPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookPanel.swift; sourceTree = "<group>"; };
+		F0D604E029C4E7EB00809808 /* WikipediaPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaPanel.swift; sourceTree = "<group>"; };
+		F0D604E229C4E83500809808 /* YahooPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YahooPanel.swift; sourceTree = "<group>"; };
+		F0D604E429C4E84300809808 /* AmazonPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmazonPanel.swift; sourceTree = "<group>"; };
+		F0D604E629C4E85700809808 /* OutlookPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlookPanel.swift; sourceTree = "<group>"; };
+		F0D604E829C4E86200809808 /* LinkedinPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkedinPanel.swift; sourceTree = "<group>"; };
+		F0D604EA29C4E86C00809808 /* RedditPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditPanel.swift; sourceTree = "<group>"; };
+		F0D604EC29C4E87600809808 /* NetflixPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixPanel.swift; sourceTree = "<group>"; };
+		F0D604EE29C4E87F00809808 /* TwitchPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwitchPanel.swift; sourceTree = "<group>"; };
+		F0D604F029C4E88B00809808 /* EbayPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EbayPanel.swift; sourceTree = "<group>"; };
+		F0D604F229C4E89400809808 /* TiktokPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiktokPanel.swift; sourceTree = "<group>"; };
 		F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSingletonFile.swift; sourceTree = "<group>"; };
-		F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarPanel.swift; sourceTree = "<group>"; };
 		F0D8D56229BB809C008D515A /* SelectionBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarButton.swift; sourceTree = "<group>"; };
 		F0D8D56629BB9122008D515A /* SelectionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarView.swift; sourceTree = "<group>"; };
 		F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarContent.swift; sourceTree = "<group>"; };
@@ -199,8 +245,8 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F0D604B929C49F0F00809808 /* AppleScripts */,
 				F0D604A929C33F8200809808 /* FocusedPlatform */,
-				F078B7F529BCECAE00C33CA1 /* SelectedText */,
 				F0D8D54D29BB688A008D515A /* singletons */,
 				F0D8D54529BB481A008D515A /* SelectionBar */,
 				F0DDBF5E29BA2D3A00625D8F /* trash */,
@@ -244,19 +290,9 @@
 			path = assets;
 			sourceTree = "<group>";
 		};
-		F078B7F529BCECAE00C33CA1 /* SelectedText */ = {
-			isa = PBXGroup;
-			children = (
-				F078B7F329BCE8D000C33CA1 /* SelectionViewController.swift */,
-				F078B7F629BCECC900C33CA1 /* SelectedTextMainView.swift */,
-			);
-			path = SelectedText;
-			sourceTree = "<group>";
-		};
 		F0D604A929C33F8200809808 /* FocusedPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */,
 				F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */,
 				F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */,
 			);
@@ -269,18 +305,51 @@
 				F0D604AF29C3467E00809808 /* DiscordPanel.swift */,
 				F0D604B129C3476500809808 /* XcodePanel.swift */,
 				F0D604B729C3610D00809808 /* DefaultPanel.swift */,
+				F0D604BA29C4A88C00809808 /* SpotifyPanel.swift */,
+				F0D604BC29C4A89B00809808 /* VscodePanel.swift */,
+				F0D604BE29C4A8AB00809808 /* AppleNotesPanel.swift */,
+				F0D604C029C4A8CF00809808 /* AppleAppstorePanel.swift */,
+				F0D604C229C4A8D800809808 /* FigmaPanel.swift */,
+				F0D604C429C4A8E100809808 /* BinancePanel.swift */,
+				F0D604C629C4A8FC00809808 /* TrandingviewPanel.swift */,
+				F0D604C829C4A90600809808 /* WhatsappPanel.swift */,
+				F0D604CA29C4A91100809808 /* WordPanel.swift */,
+				F0D604CC29C4A9A200809808 /* PowerpointPanel.swift */,
+				F0D604CE29C4A9BA00809808 /* ExcelPanel.swift */,
+				F0D604D029C4A9E700809808 /* AndroidstudioPanel.swift */,
+				F0D604D429C4E4AC00809808 /* YoutubePanel.swift */,
+				F0D604D629C4E7A400809808 /* GithubPanel.swift */,
+				F0D604DA29C4E7CD00809808 /* GmailPanel.swift */,
+				F0D604DC29C4E7D600809808 /* TwitterPanel.swift */,
+				F0D604DE29C4E7DF00809808 /* FacebookPanel.swift */,
+				F0D604E029C4E7EB00809808 /* WikipediaPanel.swift */,
+				F0D604E229C4E83500809808 /* YahooPanel.swift */,
+				F0D604E429C4E84300809808 /* AmazonPanel.swift */,
+				F0D604E629C4E85700809808 /* OutlookPanel.swift */,
+				F0D604E829C4E86200809808 /* LinkedinPanel.swift */,
+				F0D604EA29C4E86C00809808 /* RedditPanel.swift */,
+				F0D604EC29C4E87600809808 /* NetflixPanel.swift */,
+				F0D604EE29C4E87F00809808 /* TwitchPanel.swift */,
+				F0D604F029C4E88B00809808 /* EbayPanel.swift */,
+				F0D604F229C4E89400809808 /* TiktokPanel.swift */,
 			);
 			path = PlatformPanels;
+			sourceTree = "<group>";
+		};
+		F0D604B929C49F0F00809808 /* AppleScripts */ = {
+			isa = PBXGroup;
+			children = (
+				F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */,
+			);
+			path = AppleScripts;
 			sourceTree = "<group>";
 		};
 		F0D8D54529BB481A008D515A /* SelectionBar */ = {
 			isa = PBXGroup;
 			children = (
 				F0D604AE29C3466900809808 /* PlatformPanels */,
-				F0D8D55E29BB7FF6008D515A /* SelectionBarPanel.swift */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
 				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
-				F0BF828029BF3EFB00DA7552 /* SegmentedViewController.swift */,
 			);
 			path = SelectionBar;
 			sourceTree = "<group>";
@@ -480,30 +549,53 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0D604C729C4A8FC00809808 /* TrandingviewPanel.swift in Sources */,
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
+				F0D604E929C4E86200809808 /* LinkedinPanel.swift in Sources */,
+				F0D604ED29C4E87600809808 /* NetflixPanel.swift in Sources */,
+				F0D604F329C4E89400809808 /* TiktokPanel.swift in Sources */,
+				F0D604D129C4A9E700809808 /* AndroidstudioPanel.swift in Sources */,
 				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
 				F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */,
+				F0D604DB29C4E7CD00809808 /* GmailPanel.swift in Sources */,
+				F0D604C329C4A8D800809808 /* FigmaPanel.swift in Sources */,
+				F0D604DD29C4E7D600809808 /* TwitterPanel.swift in Sources */,
+				F0D604C929C4A90600809808 /* WhatsappPanel.swift in Sources */,
+				F0D604EF29C4E87F00809808 /* TwitchPanel.swift in Sources */,
 				F0D604B229C3476500809808 /* XcodePanel.swift in Sources */,
-				F078B7F729BCECC900C33CA1 /* SelectedTextMainView.swift in Sources */,
+				F0D604E529C4E84300809808 /* AmazonPanel.swift in Sources */,
 				F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */,
 				F0D604B029C3467E00809808 /* DiscordPanel.swift in Sources */,
+				F0D604DF29C4E7DF00809808 /* FacebookPanel.swift in Sources */,
 				F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */,
 				F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */,
+				F0D604D529C4E4AC00809808 /* YoutubePanel.swift in Sources */,
 				F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */,
 				F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */,
+				F0D604BB29C4A88C00809808 /* SpotifyPanel.swift in Sources */,
+				F0D604E129C4E7EB00809808 /* WikipediaPanel.swift in Sources */,
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
+				F0D604D729C4E7A400809808 /* GithubPanel.swift in Sources */,
+				F0D604C129C4A8CF00809808 /* AppleAppstorePanel.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
+				F0D604CF29C4A9BA00809808 /* ExcelPanel.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
-				F0BF828129BF3EFB00DA7552 /* SegmentedViewController.swift in Sources */,
 				F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */,
+				F0D604BF29C4A8AB00809808 /* AppleNotesPanel.swift in Sources */,
+				F0D604CB29C4A91100809808 /* WordPanel.swift in Sources */,
+				F0D604BD29C4A89B00809808 /* VscodePanel.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
+				F0D604E329C4E83500809808 /* YahooPanel.swift in Sources */,
+				F0D604E729C4E85700809808 /* OutlookPanel.swift in Sources */,
+				F0D604EB29C4E86C00809808 /* RedditPanel.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
-				F078B7F429BCE8D000C33CA1 /* SelectionViewController.swift in Sources */,
+				F0D604F129C4E88B00809808 /* EbayPanel.swift in Sources */,
+				F0D604CD29C4A9A200809808 /* PowerpointPanel.swift in Sources */,
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
+				F0D604C529C4A8E100809808 /* BinancePanel.swift in Sources */,
 				F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */,
-				F0D8D55F29BB7FF6008D515A /* SelectionBarPanel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

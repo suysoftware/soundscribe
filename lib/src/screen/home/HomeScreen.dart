@@ -39,15 +39,21 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
   void fastRequester(String task) async {
     var clipData = await Clipboard.getData(Clipboard.kTextPlain);
 
-    var coppiedText = clipData!.text.toString();
+    var coppiedText;
+    if (clipData != null) {
+      coppiedText = clipData.text.toString();
+    }
 
-    var answer = await OpenAiServices.openAiQuestionRequest(
-        '"' + coppiedText + '"' + task);
+    if (coppiedText == null || coppiedText == "" || coppiedText == " ") {
+      print("clip empty");
+    } else {
+      var answer = await OpenAiServices.openAiQuestionRequest(
+          '"' + coppiedText + '"' + task);
+      await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
+    }
 
     //await windowManager.setSize(Size(800, 600));
     //await windowManager.setAlignment(Alignment.topRight, animate: true);
-
-    await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
   }
 
   @override
@@ -59,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
       debugPrint(
           "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
       switch (methodCall.method) {
-        case "sBar/reply":
+        case "sBar/xc1":
           //debugPrint("Click 1 basti"); // Never comes here
           fastRequester("Bu maile cevap hazırla");
           await methodChannel.invokeMethod('firstTaskFinished');
@@ -225,11 +231,10 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
   void onClipboardChanged() async {
     ClipboardData? newClipboardData =
         await Clipboard.getData(Clipboard.kTextPlain);
-    clipboardText = newClipboardData!.text.toString();
+    //  clipboardText = newClipboardData!.text.toString();
     //windowManager.restore();
-  // print(newClipboardData?.text ?? "");
+    // print(newClipboardData?.text ?? "");
     //print("");
-    
   }
 
   /* Widget _fastMailBuild(String taskName, String task) {

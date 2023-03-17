@@ -1,11 +1,9 @@
 //
-//  DefaultPanel.swift
+//  AppleAppstorePanel.swift
 //  Runner
 //
-//  Created by ILION INC on 16.03.2023.
+//  Created by ILION INC on 17.03.2023.
 //
-
-
 
 import Foundation
 import Cocoa
@@ -14,7 +12,7 @@ import AppKit
 import SwiftUI
 
 
-class DefaultPanel: NSPanel {
+class AppleAppstorePanel: NSPanel {
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel,], backing: backingStoreType, defer: flag)
@@ -22,17 +20,19 @@ class DefaultPanel: NSPanel {
         self.isOpaque = false
         self.backgroundColor = NSColor.clear
         self.level = .floating
-    
         
-        firstSelectionBarButton.title = "dea1"
-        secondSelectionBarButton.title = "defa"
-        thirdSelectionBarButton.title = "defa3"
-        forthSelectionBarButton.title = "defa4"
+ 
+        //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
+        firstSelectionBarButton.title = "appstr1"
+        secondSelectionBarButton.title = "appstr2"
+        thirdSelectionBarButton.title = "apstr3"
+        forthSelectionBarButton.title = "apstr4"
+
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)
         self.contentView?.addSubview(thirdSelectionBarButton)
         self.contentView?.addSubview(forthSelectionBarButton)
-        
+
   
     }
     

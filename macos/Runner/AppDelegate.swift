@@ -17,7 +17,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     var discordPanel: NSPanel?
     var defaultPanel: NSPanel?
     var mouseEventMonitor: Any?
-    
+    let pasteboard = NSPasteboard.general
 
 
     let chromium_variants = ["Google Chrome", "Chromium", "Opera", "Vivaldi", "Brave Browser", "Microsoft Edge","Safari","Tor Browser","Yandex"]
@@ -39,7 +39,43 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         }
     }
     
+    func getClipboardItem() -> String? {
+        guard let string = NSPasteboard.general.string(forType: .string) else {
+            // The clipboard is empty or does not contain a string
+            return nil
+        }
+        // Found a string item on the clipboard
+        return string
+    }
+    func sendGlobalCommandCForAppDelegate() -> Bool{
+        
+        
+       
+        
+        
+        
+        let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
+        let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
+        
+        let cKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: true) // C key down
+        let cKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: false) // C key up
+        
+        cmdKeyDown?.flags = .maskCommand
+        cKeyDown?.flags = .maskCommand
+        
+        let eventTapLocation = CGEventTapLocation.cghidEventTap // System-wide event tap
+        
+        cmdKeyDown?.post(tap: eventTapLocation)
+        cKeyDown?.post(tap: eventTapLocation)
+        cKeyUp?.post(tap: eventTapLocation)
+        cmdKeyUp?.post(tap: eventTapLocation)
+        
+       
+        return true
+        
     
+
+    }
     func whichPlatformActive() -> String {
             // Get the app that currently has the focus.
        if let frontApp = NSWorkspace.shared.frontmostApplication{
@@ -49,7 +85,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                    let repOc = selectedText.replacingOccurrences(of:"https://", with: "")
                    let index = repOc.firstIndex(of: "/") ?? repOc.endIndex
                    let result = repOc[..<index]
-                   copyToClipboard(String(result))
+                   //copyToClipboard(String(result))
                    return String(result)
                       } else {
                           return "default"
@@ -92,6 +128,13 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             if ("getAppIntents" == call.method) {
                 result("test")
                 return
+            }
+            if ("showUrlImage" == call.method) {
+               
+           
+
+                let strURL = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-ur1r8htH8m8O4WqadZg771wj/user-b1echiaFvB5gGcZoZPLW4b4V/img-QAzp8lGBOCz0ysOBCSnBHDcO.png?st=2023-03-18T18%3A14%3A06Z&se=2023-03-18T20%3A14%3A06Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-18T00%3A39%3A59Z&ske=2023-03-19T00%3A39%3A59Z&sks=b&skv=2021-08-06&sig=tcMz9mvVYILHkWcrlUnONG5wKCSSqYrle2zi7x4tR58%3D"
+               return
             }
             if ("firstTaskFinished" == call.method) {
                 FirstTaskSingleton.instance.SetData(value: true)
@@ -273,39 +316,41 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                 self.customPanel = focusedPanelGetter(self.whichPlatformActive())
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
                     
-              
-                
+             
+                        if  let customPanel = self.customPanel {
+
+                            // Calculate the location of the mouse click in screen coordinates
+                            let mouseLocation = NSEvent.mouseLocation
+                            let panelOrigin = NSPoint(x: mouseLocation.x - panelRect.width*0.6 , y: mouseLocation.y + panelRect.height*0.2 )
+                            let screenFrame = NSScreen.main?.frame ?? NSRect.zero
+                            
+                            // Check if the panel would be offscreen and adjust if necessary
+                            var panelFrame = NSRect(origin: panelOrigin, size: panelRect.size)
+                            if panelFrame.origin.x < screenFrame.origin.x {
+                                panelFrame.origin.x = screenFrame.origin.x
+                            }
+                            if panelFrame.origin.y < screenFrame.origin.y {
+                                panelFrame.origin.y = screenFrame.origin.y
+                            }
+                            if panelFrame.maxX > screenFrame.maxX {
+                                panelFrame.origin.x = screenFrame.maxX - panelFrame.width
+                            }
+                            if panelFrame.maxY > screenFrame.maxY {
+                                panelFrame.origin.y = screenFrame.maxY - panelFrame.height
+                            }
+                            // Show the custom panel at the calculated location
+                            customPanel.setFrame(panelFrame, display: true)
+                            
+                           
+                            customPanel.makeKeyAndOrderFront(nil)
+                        }
+                        
+                    
                   
                     
                  
                     
-                    if  let customPanel = self.customPanel {
-
-                        // Calculate the location of the mouse click in screen coordinates
-                        let mouseLocation = NSEvent.mouseLocation
-                        let panelOrigin = NSPoint(x: mouseLocation.x - panelRect.width*0.6 , y: mouseLocation.y + panelRect.height*0.2 )
-                        let screenFrame = NSScreen.main?.frame ?? NSRect.zero
-                        
-                        // Check if the panel would be offscreen and adjust if necessary
-                        var panelFrame = NSRect(origin: panelOrigin, size: panelRect.size)
-                        if panelFrame.origin.x < screenFrame.origin.x {
-                            panelFrame.origin.x = screenFrame.origin.x
-                        }
-                        if panelFrame.origin.y < screenFrame.origin.y {
-                            panelFrame.origin.y = screenFrame.origin.y
-                        }
-                        if panelFrame.maxX > screenFrame.maxX {
-                            panelFrame.origin.x = screenFrame.maxX - panelFrame.width
-                        }
-                        if panelFrame.maxY > screenFrame.maxY {
-                            panelFrame.origin.y = screenFrame.maxY - panelFrame.height
-                        }
-                        // Show the custom panel at the calculated location
-                        customPanel.setFrame(panelFrame, display: true)
-                        
-                       
-                        customPanel.makeKeyAndOrderFront(nil)
-                    }
+                   
               
              }
          }

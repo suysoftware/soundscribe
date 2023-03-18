@@ -23,7 +23,7 @@ class AppleNotesPanel: NSPanel {
         
  
         //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
-        firstSelectionBarButton.title = "note1"
+        firstSelectionBarButton.title = "Dall-E"
         secondSelectionBarButton.title = "note2"
         thirdSelectionBarButton.title = "note3"
         forthSelectionBarButton.title = "note4"
@@ -32,6 +32,9 @@ class AppleNotesPanel: NSPanel {
         self.contentView?.addSubview(secondSelectionBarButton)
         self.contentView?.addSubview(thirdSelectionBarButton)
         self.contentView?.addSubview(forthSelectionBarButton)
+        
+        
+
 
   
     }

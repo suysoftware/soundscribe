@@ -88,6 +88,8 @@ func focusedPanelGetter(_ source: String) -> NSPanel {
         return TiktokPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
     case "web.whatsapp.com":
         return WhatsappPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
+    case "ImagePreview":
+        return ImagePreviewPanel(contentRect: NSRect(x: 0, y: 0, width: 1000, height: 1000), styleMask: styleMask, backing: .buffered, defer: false)
     case "default":
        return DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
     default:

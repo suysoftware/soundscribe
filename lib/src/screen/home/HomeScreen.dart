@@ -12,6 +12,7 @@ import 'package:screen_text_extractor/screen_text_extractor.dart';
 import 'package:sizer/sizer.dart';
 import 'package:soundscribe/src/screen/chat/ChatScreen.dart';
 import 'package:soundscribe/src/screen/whisper/WhisperScreen.dart';
+import 'package:soundscribe/src/services/DalleServices.dart';
 import 'package:soundscribe/src/services/OpenAiServices.dart';
 import 'package:soundscribe/src/utils/audio_recorder.dart';
 import 'package:window_manager/window_manager.dart';
@@ -65,10 +66,17 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
       debugPrint(
           "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
       switch (methodCall.method) {
+        case "sBar/Dall-E":
+          //debugPrint("Click 2 basti"); //
+          //await DalleServices.dalleGenerationsRequest(clipboardText);
+          var channelResult = await statusBarMethodChannel.invokeMethod('showUrlImage');
+          print(channelResult);
+
+          return;
         case "sBar/xc1":
           //debugPrint("Click 1 basti"); // Never comes here
           fastRequester("Bu maile cevap hazırla");
-          await methodChannel.invokeMethod('firstTaskFinished');
+          //await methodChannel.invokeMethod('firstTaskFinished');
 
           return;
         case "sBar/trans":
@@ -151,7 +159,7 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
                   onPressed: getBatteryLevel,
                 ),
                 //Text('HOMEPAGE'),
-
+                CupertinoButton(child: Text('dalle'), onPressed: () async {}),
                 Text(batteryLevel),
                 /*      CupertinoButton(
                     child: Text('clipboard'),
@@ -231,7 +239,7 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
   void onClipboardChanged() async {
     ClipboardData? newClipboardData =
         await Clipboard.getData(Clipboard.kTextPlain);
-    //  clipboardText = newClipboardData!.text.toString();
+    clipboardText = newClipboardData!.text.toString();
     //windowManager.restore();
     // print(newClipboardData?.text ?? "");
     //print("");

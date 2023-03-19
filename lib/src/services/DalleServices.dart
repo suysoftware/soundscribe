@@ -3,18 +3,17 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import 'package:soundscribe/main.dart';
 import 'package:soundscribe/src/model/DalleModel.dart';
 
+import '../utils/download_save_image.dart';
+
 class DalleServices {
-  static Future<String> dalleGenerationsRequest(String prompt) async {
-
-
-
-
+  static Future<void> dalleGenerationsRequest(String prompt) async {
     const endpoint = 'https://api.openai.com/v1/images/generations';
     var client = http.Client();
     var uri = Uri.parse(endpoint);
-    var payload = jsonEncode({"prompt": prompt, "n": 1, "size": "1024x1024"});
+    var payload = jsonEncode({"prompt": prompt, "n": 1, "size": "512x512"});
     var header = {
       "Content-Type": "application/json",
       "Authorization": "Bearer ${dotenv.env['OPEN_AI_API_KEY'].toString()}",
@@ -31,9 +30,8 @@ class DalleServices {
       final data = utf8.decode(response.bodyBytes);
 
       var dalleModel = dalleModelFromJson(data);
-      await Clipboard.setData(ClipboardData(text: dalleModel.data.first.url));
 
-      return data;
+      await downloadAndSaveImage(dalleModel.data.first.url);
     } else {
       throw Exception('Failed to generate response.');
     }

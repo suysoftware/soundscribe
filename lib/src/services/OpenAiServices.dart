@@ -1,10 +1,12 @@
 import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:soundscribe/src/model/ChatGptEditModel.dart';
 import 'package:soundscribe/src/model/ChatGptModel.dart';
+import 'package:soundscribe/src/model/ChatGptTurboModel.dart';
 
 class OpenAiServices {
   static Future<String> audioSender(bool isTranslate, String audioPath) async {
@@ -76,6 +78,39 @@ class OpenAiServices {
       final data = utf8.decode(response.bodyBytes);
       print(data);
       var cgptModel = chatGptModelFromJson(utf8.decode(response.bodyBytes));
+      await Clipboard.setData(ClipboardData(text: cgptModel.choices.first.text));
+      return cgptModel;
+    } else {
+      throw Exception('Failed to generate response.');
+    }
+  }
+
+    static Future<ChatGptTurboModel> openAiChatRequest(String prompt) async {
+    const endpoint = 'https://api.openai.com/v1/chat/completions';
+    var client = http.Client();
+    var uri = Uri.parse(endpoint);
+    var payload = jsonEncode({
+      "model": "gpt-3.5-turbo",
+      "messages": [{"role": "user", "content": prompt}]
+     
+    });
+    var header = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer ${dotenv.env['OPEN_AI_API_KEY'].toString()}",
+    };
+    var response = await client.post(
+      uri,
+      headers: header,
+      body: payload,
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      final data = utf8.decode(response.bodyBytes);
+      print(data);
+      var cgptModel = chatGptTurboModelFromJson(utf8.decode(response.bodyBytes));
+      await Clipboard.setData(ClipboardData(text: cgptModel.choices.first.message.content));
       return cgptModel;
     } else {
       throw Exception('Failed to generate response.');

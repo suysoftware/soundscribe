@@ -1,16 +1,16 @@
-import 'package:flutter/cupertino.dart';
+import 'dart:io';
+import 'package:deepl_dart/deepl_dart.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sizer/sizer.dart';
-import 'package:soundscribe/MainArea.dart';
-import 'package:soundscribe/src/screen/home/HomeScreen.dart';
-import 'package:soundscribe/src/screen/whisper/WhisperScreen.dart';
 import 'package:soundscribe/MiddleWare.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:path/path.dart' as p;
 
-import 'src/screen/chat/ChatScreen.dart';
+
 
 Future<void> main() async {
   await init();
@@ -35,12 +35,13 @@ Future<void> init() async {
     //await windowManager.focus();
   });
 
+
   await dotenv.load(fileName: ".env");
+
 }
 
 class SoundscribeApp extends StatelessWidget {
   const SoundscribeApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Sizer(builder: ((context, orientation, deviceType) {
@@ -51,7 +52,6 @@ class SoundscribeApp extends StatelessWidget {
 
 class _cupertinoApp extends StatefulWidget {
   const _cupertinoApp({super.key});
-
   @override
   State<_cupertinoApp> createState() => _cupertinoAppState();
 }
@@ -61,13 +61,11 @@ class _cupertinoAppState extends State<_cupertinoApp> {
   Widget build(BuildContext context) {
     return MacosApp(
       home: MiddleWare(),
-
       /*  routes: {
         "/": (BuildContext context) => const HomeScreen(),
         "/ChatScreen": (BuildContext context) => const ChatScreen(),
         "/WhisperScreen": (BuildContext context) => const WhisperScreen()
       },*/
-
       debugShowCheckedModeBanner: false,
     );
   }

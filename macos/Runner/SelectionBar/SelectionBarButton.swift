@@ -92,9 +92,7 @@ class SelectionBarCustomButton: NSButton {
     
     func sendGlobalCommandC() -> Bool?{
         
-       
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
+   
         
         
         
@@ -114,7 +112,7 @@ class SelectionBarCustomButton: NSButton {
         cKeyUp?.post(tap: eventTapLocation)
         cmdKeyUp?.post(tap: eventTapLocation)
         
-return true
+        return true
         
     }
     
@@ -169,27 +167,21 @@ return true
     
 override func mouseDown(with event: NSEvent) {
  
-
+    if let keyResult = sendGlobalCommandC() {
+        
+        
+        ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
+            
+      
+            print(r.debugDescription);  // Never comes here
+                    })
+                print(title)
+        
+    }
 
   
-    if sendGlobalCommandC() != nil {
-        
-      
-
-            
-            
-            ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
-                
-          
-                print(r.debugDescription);  // Never comes here
-                        })
-                    print(title)
-        
-        
-        
-     
-    }
-    
+   
+   
    // let text = self.getSelectedText()
     //print(text)
          //

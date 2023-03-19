@@ -48,6 +48,12 @@ dependencies:
   window_manager: ^0.3.1
   permission_handler: ^10.2.0
   screen_text_extractor: ^0.1.0
+  file_saver: ^0.1.1
+  network_to_file_image: ^4.0.1
+  background_downloader: ^5.2.0
+  file_selector: ^0.9.2+4
+  file_picker: ^5.2.6
+  deepl_dart: ^1.2.0
 
 
 dev_dependencies:

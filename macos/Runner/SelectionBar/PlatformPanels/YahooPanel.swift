@@ -19,7 +19,7 @@ class YahooPanel: NSPanel {
         self.isOpaque = false
         self.level = .floating
         
-        firstSelectionBarButton.title = "yaho1"
+        firstSelectionBarButton.title = "Reply"
         secondSelectionBarButton.title = "yaho2"
         thirdSelectionBarButton.title = "yaho3"
         forthSelectionBarButton.title = "yaho4"

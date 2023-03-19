@@ -4,6 +4,8 @@
 
 list(APPEND FLUTTER_PLUGIN_LIST
   clipboard_watcher
+  file_saver
+  file_selector_windows
   permission_handler_windows
   record_windows
   screen_retriever

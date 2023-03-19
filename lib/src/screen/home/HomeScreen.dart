@@ -1,18 +1,29 @@
 import 'dart:async';
+import 'dart:io';
 import 'dart:math';
+import 'package:background_downloader/background_downloader.dart';
 import 'package:clipboard_watcher/clipboard_watcher.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:file_saver/file_saver.dart';
+import 'package:file_selector/file_selector.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_chatgpt_api/flutter_chatgpt_api.dart';
 import 'package:macos_ui/macos_ui.dart';
+import 'package:network_to_file_image/network_to_file_image.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:record/record.dart';
 import 'package:screen_text_extractor/screen_text_extractor.dart';
 
 import 'package:sizer/sizer.dart';
+import 'package:soundscribe/main.dart';
 import 'package:soundscribe/src/screen/chat/ChatScreen.dart';
 import 'package:soundscribe/src/screen/whisper/WhisperScreen.dart';
 import 'package:soundscribe/src/services/DalleServices.dart';
+import 'package:soundscribe/src/services/DeepLServices.dart';
 import 'package:soundscribe/src/services/OpenAiServices.dart';
 import 'package:soundscribe/src/utils/audio_recorder.dart';
 import 'package:window_manager/window_manager.dart';
@@ -31,26 +42,27 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
   static const statusBarMethodChannel =
       MethodChannel('soundscribe.suy/statusBarChannel');
   static const testMethodChannel = MethodChannel("soundscribe.suy/methodTest");
-
+  int count = 0;
   String batteryLevel = 'Waiting...';
   String intentsResult = 'no-result';
   String clipboardText = "";
   String clipboardAnswer = "";
 
   void fastRequester(String task) async {
-    var clipData = await Clipboard.getData(Clipboard.kTextPlain);
+    /*var clipData = await Clipboard.getData(Clipboard.kTextPlain);
+    print(clipData!.text.toString());
 
     var coppiedText;
     if (clipData != null) {
       coppiedText = clipData.text.toString();
     }
-
-    if (coppiedText == null || coppiedText == "" || coppiedText == " ") {
+*/
+    if (clipboardText == null || clipboardText == "" || clipboardText == " ") {
       print("clip empty");
     } else {
-      var answer = await OpenAiServices.openAiQuestionRequest(
-          '"' + coppiedText + '"' + task);
-      await Clipboard.setData(ClipboardData(text: answer.choices.first.text));
+      var answer = await OpenAiServices.openAiChatRequest(
+          '"' + clipboardText + '"' + task);
+      
     }
 
     //await windowManager.setSize(Size(800, 600));
@@ -62,15 +74,29 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
     clipboardWatcher.addListener(this);
     // start watch
     clipboardWatcher.start();
+
     statusBarMethodChannel.setMethodCallHandler((methodCall) async {
       debugPrint(
           "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
       switch (methodCall.method) {
         case "sBar/Dall-E":
           //debugPrint("Click 2 basti"); //
-          //await DalleServices.dalleGenerationsRequest(clipboardText);
-          var channelResult = await statusBarMethodChannel.invokeMethod('showUrlImage');
-          print(channelResult);
+          var dalleResult =
+              await DalleServices.dalleGenerationsRequest(clipboardText);
+
+          return;
+        case "sBar/DeepL":
+          //debugPrint("Click 2 basti"); //
+          var deepLResult =
+              await DeepLServices.deepLTranslateRequest(clipboardText);
+
+          print(deepLResult);
+
+          return;
+        case "sBar/Reply":
+          //debugPrint("Click 2 basti"); //
+
+          fastRequester("Bu maile cevap hazırla");
 
           return;
         case "sBar/xc1":
@@ -142,25 +168,13 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CupertinoButton(
-                  child: Text('1'),
-                  onPressed: () async {
-                    ExtractedData data;
-
-                    //data = await ScreenTextExtractor.instance.extractFromClipboard();
-                    data = await ScreenTextExtractor.instance
-                        .extractFromScreenSelection(
-                            useAccessibilityAPIFirst: true);
-                    print(data.text);
-                  },
-                ),
-
-                CupertinoButton(
                   child: Text('Battery Level'),
                   onPressed: getBatteryLevel,
                 ),
                 //Text('HOMEPAGE'),
-                CupertinoButton(child: Text('dalle'), onPressed: () async {}),
+
                 Text(batteryLevel),
+
                 /*      CupertinoButton(
                     child: Text('clipboard'),
                     onPressed: () async {
@@ -241,7 +255,7 @@ class _HomeScreenState extends State<HomeScreen> with ClipboardListener {
         await Clipboard.getData(Clipboard.kTextPlain);
     clipboardText = newClipboardData!.text.toString();
     //windowManager.restore();
-    // print(newClipboardData?.text ?? "");
+    //print(newClipboardData?.text ?? "");
     //print("");
   }
 

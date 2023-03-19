@@ -24,7 +24,7 @@ class AppleNotesPanel: NSPanel {
  
         //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
         firstSelectionBarButton.title = "Dall-E"
-        secondSelectionBarButton.title = "note2"
+        secondSelectionBarButton.title = "DeepL"
         thirdSelectionBarButton.title = "note3"
         forthSelectionBarButton.title = "note4"
 

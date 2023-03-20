@@ -27,7 +27,7 @@ class SpotifyPanel: NSPanel {
         firstSelectionBarButton.title = "sptf"
         secondSelectionBarButton.title = "sptf"
         thirdSelectionBarButton.title = "sptf"
-        forthSelectionBarButton.title = "sptf"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

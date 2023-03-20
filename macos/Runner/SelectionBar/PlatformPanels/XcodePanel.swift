@@ -29,7 +29,7 @@ class XcodePanel: NSPanel {
         firstSelectionBarButton.title = "xc1"
         secondSelectionBarButton.title = "xc2"
         thirdSelectionBarButton.title = "xc3"
-        forthSelectionBarButton.title = "xc4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

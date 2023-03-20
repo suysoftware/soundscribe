@@ -22,7 +22,7 @@ class LinkedinPanel: NSPanel {
         firstSelectionBarButton.title = "lnk1"
         secondSelectionBarButton.title = "lnk2"
         thirdSelectionBarButton.title = "lnk3"
-        forthSelectionBarButton.title = "lnk4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

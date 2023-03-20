@@ -26,7 +26,7 @@ class BinancePanel: NSPanel {
         firstSelectionBarButton.title = "bnc1"
         secondSelectionBarButton.title = "bnc2"
         thirdSelectionBarButton.title = "bnc3"
-        forthSelectionBarButton.title = "bnc4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

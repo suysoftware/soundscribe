@@ -75,6 +75,7 @@
 		F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */; };
 		F0E2E15729C6470E008978A7 /* ImagePreviewPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15629C6470E008978A7 /* ImagePreviewPanel.swift */; };
 		F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15829C64D4A008978A7 /* FileDownloader.swift */; };
+		F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -169,6 +170,7 @@
 		F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtraController.swift; sourceTree = "<group>"; };
 		F0E2E15629C6470E008978A7 /* ImagePreviewPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePreviewPanel.swift; sourceTree = "<group>"; };
 		F0E2E15829C64D4A008978A7 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
+		F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -355,6 +357,7 @@
 				F0D604AE29C3466900809808 /* PlatformPanels */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
 				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
+				F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */,
 			);
 			path = SelectionBar;
 			sourceTree = "<group>";
@@ -575,6 +578,7 @@
 				F0D604B029C3467E00809808 /* DiscordPanel.swift in Sources */,
 				F0D604DF29C4E7DF00809808 /* FacebookPanel.swift in Sources */,
 				F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */,
+				F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */,
 				F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */,
 				F0D604D529C4E4AC00809808 /* YoutubePanel.swift in Sources */,
 				F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */,

@@ -21,7 +21,7 @@ class EbayPanel: NSPanel {
         firstSelectionBarButton.title = "eba1"
         secondSelectionBarButton.title = "eba2"
         thirdSelectionBarButton.title = "eba3"
-        forthSelectionBarButton.title = "eba4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

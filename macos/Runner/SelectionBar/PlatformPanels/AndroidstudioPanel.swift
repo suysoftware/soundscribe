@@ -26,7 +26,7 @@ class AndroidstudioPanel: NSPanel {
         firstSelectionBarButton.title = "ands1"
         secondSelectionBarButton.title = "ands2"
         thirdSelectionBarButton.title = "ands3"
-        forthSelectionBarButton.title = "ands4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

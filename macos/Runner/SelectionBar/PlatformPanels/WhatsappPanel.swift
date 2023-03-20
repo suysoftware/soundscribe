@@ -26,7 +26,7 @@ class WhatsappPanel: NSPanel {
         firstSelectionBarButton.title = "wp1"
         secondSelectionBarButton.title = "wp2"
         thirdSelectionBarButton.title = "wp3"
-        forthSelectionBarButton.title = "wp4"
+     
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

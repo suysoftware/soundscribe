@@ -26,7 +26,7 @@ class AppleAppstorePanel: NSPanel {
         firstSelectionBarButton.title = "appstr1"
         secondSelectionBarButton.title = "appstr2"
         thirdSelectionBarButton.title = "apstr3"
-        forthSelectionBarButton.title = "apstr4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

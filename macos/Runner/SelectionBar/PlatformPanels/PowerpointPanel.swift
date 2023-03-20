@@ -26,7 +26,7 @@ class PowerpointPanel: NSPanel {
         firstSelectionBarButton.title = "pwrp1"
         secondSelectionBarButton.title = "pwrp2"
         thirdSelectionBarButton.title = "pwrp3"
-        forthSelectionBarButton.title = "pwrp4"
+      
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

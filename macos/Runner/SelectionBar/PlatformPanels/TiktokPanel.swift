@@ -21,7 +21,7 @@ class TiktokPanel: NSPanel {
         firstSelectionBarButton.title = "tik1"
         secondSelectionBarButton.title = "tik2"
         thirdSelectionBarButton.title = "tik3"
-        forthSelectionBarButton.title = "tik4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

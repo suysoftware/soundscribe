@@ -39,6 +39,33 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         }
     }
     
+    func sendGlobalCommandC() -> Bool?{
+        
+   
+        
+        
+        
+        let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
+        let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
+
+        let cKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: true) // C key down
+        let cKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: false) // C key up
+
+        cmdKeyDown?.flags = .maskCommand
+        cKeyDown?.flags = .maskCommand
+
+        let eventTapLocation = CGEventTapLocation.cghidEventTap // System-wide event tap
+
+        cmdKeyDown?.post(tap: eventTapLocation)
+        cKeyDown?.post(tap: eventTapLocation)
+        cKeyUp?.post(tap: eventTapLocation)
+        cmdKeyUp?.post(tap: eventTapLocation)
+        
+        return true
+        
+    }
+    
+    
     func getClipboardItem() -> String? {
         guard let string = NSPasteboard.general.string(forType: .string) else {
             // The clipboard is empty or does not contain a string
@@ -95,6 +122,11 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         statusBarExtra = StatusBarExtraController(mainExtraView)
         
         
+        
+        
+        
+        
+        
         channel.setMethodCallHandler({ (_ call: FlutterMethodCall, _ result: FlutterResult) -> Void in
             
             if ("getAppIntents" == call.method) {
@@ -104,8 +136,6 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             if ("showUrlImage" == call.method) {
                
            
-
-                let strURL = "https://oaidalleapiprodscus.blob.core.windows.net/private/org-ur1r8htH8m8O4WqadZg771wj/user-b1echiaFvB5gGcZoZPLW4b4V/img-QAzp8lGBOCz0ysOBCSnBHDcO.png?st=2023-03-18T18%3A14%3A06Z&se=2023-03-18T20%3A14%3A06Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-03-18T00%3A39%3A59Z&ske=2023-03-19T00%3A39%3A59Z&sks=b&skv=2021-08-06&sig=tcMz9mvVYILHkWcrlUnONG5wKCSSqYrle2zi7x4tR58%3D"
                return
             }
             if ("firstTaskFinished" == call.method) {
@@ -145,79 +175,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         let styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
         
         
-       // self.customPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-        //Panels
-        /*
-        self.xcodePanel = XcodePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-        self.customPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-        self.discordPanel = DiscordPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-        self.defaultPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-       */
-        
-        
-        
-        // Panels Level
-  
-     /*   self.customPanel?.level = .floating
-        self.discordPanel?.level = .floating
-        self.defaultPanel?.level = .floating
-        self.xcodePanel?.level = .floating*/
-        
-        
-   /*
-        //default buttons add to default panel
-        let platformDefault = "default"
-        let firstDefaultButton = platformFirstButtonGetter(platformDefault)
-        //self.customPanel?.contentView?.addSubview(firstDefaultButton)
-        self.customPanel?.contentView?.addSubview(firstTestButton)
-        let secondDefaultButton = platformSecondButtonGetter(platformDefault)
-        //self.customPanel?.contentView?.addSubview(secondDefaultButton)
-        self.customPanel?.contentView?.addSubview(secondTestButton)
-        let thirdDefaultButton = platformThirdButtonGetter(platformDefault)
-        //self.customPanel?.contentView?.addSubview(thirdDefaultButton)
-        self.customPanel?.contentView?.addSubview(thirdTestButton)
-        let forthDefaultButton = platformForthButtonGetter(platformDefault)
-        //self.customPanel?.contentView?.addSubview(forthDefaultButton)
-        self.customPanel?.contentView?.addSubview(forthTestButton)
-         
-        
-        /*
-        self.defaultPanel?.contentView?.addSubview(firstDefaultButton)
-        self.defaultPanel?.contentView?.addSubview(secondDefaultButton)
-        self.defaultPanel?.contentView?.addSubview(thirdDefaultButton)
-        self.defaultPanel?.contentView?.addSubview(forthDefaultButton)
-        */
-        self.defaultPanel?.contentView?.addSubview(firstTestButton)
-        self.defaultPanel?.contentView?.addSubview(secondTestButton)
-        self.defaultPanel?.contentView?.addSubview(thirdTestButton)
-        self.defaultPanel?.contentView?.addSubview(forthTestButton)
-        
-        
-        //xcode buttons add to xcode panel
-        let platformXcode = "com.apple.dt.Xcode"
-        let firstXcodeButton = platformFirstButtonGetter(platformXcode)
-        self.xcodePanel?.contentView?.addSubview(firstXcodeButton)
-        let secondXcodeButton = platformSecondButtonGetter(platformXcode)
-        self.xcodePanel?.contentView?.addSubview(secondXcodeButton)
-        let thirdXcodeButton = platformThirdButtonGetter(platformXcode)
-        self.xcodePanel?.contentView?.addSubview(thirdXcodeButton)
-        let forthXcodeButton = platformForthButtonGetter(platformXcode)
-        self.xcodePanel?.contentView?.addSubview(forthXcodeButton)
-  
-        
-        //discord buttons add to discord panel
-        let platformDiscord = "com.hnc.Discord"
-        let firstDiscordButton = platformFirstButtonGetter(platformDiscord)
-        self.discordPanel?.contentView?.addSubview(firstDiscordButton)
-        let secondDiscordButton = platformSecondButtonGetter(platformDiscord)
-        self.discordPanel?.contentView?.addSubview(secondDiscordButton)
-        let thirdDiscordButton = platformThirdButtonGetter(platformDiscord)
-        self.discordPanel?.contentView?.addSubview(thirdDiscordButton)
-        let forthDiscordButton = platformForthButtonGetter(platformDiscord)
-        self.discordPanel?.contentView?.addSubview(forthDiscordButton)
- 
-   */
-       
+
         
         self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel ]) { [weak self] event in
             guard let self = self else { return }
@@ -282,13 +240,15 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             }
           
             else if    event.type == .leftMouseUp && clickedArea != nil {
+                
+           
         
                 self.customPanel?.orderOut(nil)
                 
                 self.customPanel = focusedPanelGetter(self.whichPlatformActive())
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
                     
-             
+                    self.sendGlobalCommandC()
                         if  let customPanel = self.customPanel {
 
                             // Calculate the location of the mouse click in screen coordinates

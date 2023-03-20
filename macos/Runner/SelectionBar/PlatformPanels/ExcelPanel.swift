@@ -26,7 +26,7 @@ class ExcelPanel: NSPanel {
         firstSelectionBarButton.title = "excl1"
         secondSelectionBarButton.title = "excl2"
         thirdSelectionBarButton.title = "excl3"
-        forthSelectionBarButton.title = "excl4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

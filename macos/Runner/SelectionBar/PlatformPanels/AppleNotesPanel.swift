@@ -26,7 +26,7 @@ class AppleNotesPanel: NSPanel {
         firstSelectionBarButton.title = "Dall-E"
         secondSelectionBarButton.title = "DeepL"
         thirdSelectionBarButton.title = "note3"
-        forthSelectionBarButton.title = "note4"
+        
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

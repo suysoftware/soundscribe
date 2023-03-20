@@ -26,7 +26,7 @@ class VscodePanel: NSPanel {
         firstSelectionBarButton.title = "vsc1"
         secondSelectionBarButton.title = "vsc2"
         thirdSelectionBarButton.title = "vsc3"
-        forthSelectionBarButton.title = "vsc4"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

@@ -10,7 +10,10 @@ import '../utils/download_save_image.dart';
 
 class DalleServices {
   static Future<void> dalleGenerationsRequest(String prompt) async {
-    const endpoint = 'https://api.openai.com/v1/images/generations';
+   
+
+  
+      const endpoint = 'https://api.openai.com/v1/images/generations';
     var client = http.Client();
     var uri = Uri.parse(endpoint);
     var payload = jsonEncode({"prompt": prompt, "n": 1, "size": "512x512"});

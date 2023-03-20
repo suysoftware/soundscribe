@@ -22,7 +22,7 @@ class AmazonPanel: NSPanel {
         firstSelectionBarButton.title = "amzn1"
         secondSelectionBarButton.title = "amzn2"
         thirdSelectionBarButton.title = "amzn3"
-        forthSelectionBarButton.title = "amzn4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

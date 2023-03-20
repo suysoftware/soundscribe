@@ -26,7 +26,7 @@ class FigmaPanel: NSPanel {
         firstSelectionBarButton.title = "figm"
         secondSelectionBarButton.title = "figm"
         thirdSelectionBarButton.title = "figm"
-        forthSelectionBarButton.title = "figm"
+
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

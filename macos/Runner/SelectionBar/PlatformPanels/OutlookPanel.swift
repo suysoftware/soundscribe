@@ -22,7 +22,7 @@ class OutlookPanel: NSPanel {
         firstSelectionBarButton.title = "outlk1"
         secondSelectionBarButton.title = "outlk2"
         thirdSelectionBarButton.title = "outlk3"
-        forthSelectionBarButton.title = "outlk4"
+       
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

@@ -22,7 +22,7 @@ class GithubPanel: NSPanel {
         firstSelectionBarButton.title = "git1"
         secondSelectionBarButton.title = "git2"
         thirdSelectionBarButton.title = "git3"
-        forthSelectionBarButton.title = "git4"
+        
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

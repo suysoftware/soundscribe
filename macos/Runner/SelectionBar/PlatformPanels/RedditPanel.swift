@@ -21,7 +21,7 @@ class RedditPanel: NSPanel {
         firstSelectionBarButton.title = "rdt1"
         secondSelectionBarButton.title = "rdt2"
         thirdSelectionBarButton.title = "rdt3"
-        forthSelectionBarButton.title = "rdt4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

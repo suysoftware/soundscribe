@@ -22,7 +22,7 @@ class GmailPanel: NSPanel {
         firstSelectionBarButton.title = "gmai1"
         secondSelectionBarButton.title = "gmai2"
         thirdSelectionBarButton.title = "gmai3"
-        forthSelectionBarButton.title = "gmai4"
+   
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

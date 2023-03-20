@@ -26,7 +26,7 @@ class TrandingviewPanel: NSPanel {
         firstSelectionBarButton.title = "tw1"
         secondSelectionBarButton.title = "tw2"
         thirdSelectionBarButton.title = "tw3"
-        forthSelectionBarButton.title = "tw4"
+     
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

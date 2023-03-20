@@ -26,7 +26,7 @@ class YoutubePanel: NSPanel {
         firstSelectionBarButton.title = "ytb"
         secondSelectionBarButton.title = "ytb2"
         thirdSelectionBarButton.title = "ytb3"
-        forthSelectionBarButton.title = "ytb4"
+    
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

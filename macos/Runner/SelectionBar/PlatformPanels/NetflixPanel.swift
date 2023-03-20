@@ -21,7 +21,7 @@ class NetflixPanel: NSPanel {
         firstSelectionBarButton.title = "netf1"
         secondSelectionBarButton.title = "netf2"
         thirdSelectionBarButton.title = "netf3"
-        forthSelectionBarButton.title = "netf4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

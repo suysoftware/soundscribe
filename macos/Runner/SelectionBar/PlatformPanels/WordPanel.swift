@@ -26,7 +26,7 @@ class WordPanel: NSPanel {
         firstSelectionBarButton.title = "word1"
         secondSelectionBarButton.title = "word2"
         thirdSelectionBarButton.title = "word3"
-        forthSelectionBarButton.title = "word4"
+     
 
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

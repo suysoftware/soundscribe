@@ -21,7 +21,7 @@ class TwitchPanel: NSPanel {
         firstSelectionBarButton.title = "twc1"
         secondSelectionBarButton.title = "twc2"
         thirdSelectionBarButton.title = "twc3"
-        forthSelectionBarButton.title = "twc4"
+  
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

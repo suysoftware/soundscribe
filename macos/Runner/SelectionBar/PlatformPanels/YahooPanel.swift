@@ -22,7 +22,7 @@ class YahooPanel: NSPanel {
         firstSelectionBarButton.title = "Reply"
         secondSelectionBarButton.title = "yaho2"
         thirdSelectionBarButton.title = "yaho3"
-        forthSelectionBarButton.title = "yaho4"
+  
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

@@ -22,7 +22,7 @@ class DiscordPanel: NSPanel {
         firstSelectionBarButton.title = "dc1"
         secondSelectionBarButton.title = "dc2"
         thirdSelectionBarButton.title = "dc3"
-        forthSelectionBarButton.title = "dc4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

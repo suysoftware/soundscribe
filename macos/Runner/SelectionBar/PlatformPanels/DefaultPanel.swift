@@ -27,7 +27,7 @@ class DefaultPanel: NSPanel {
         firstSelectionBarButton.title = "dea1"
         secondSelectionBarButton.title = "defa"
         thirdSelectionBarButton.title = "defa3"
-        forthSelectionBarButton.title = "defa4"
+
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)
         self.contentView?.addSubview(thirdSelectionBarButton)

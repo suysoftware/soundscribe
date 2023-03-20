@@ -22,7 +22,7 @@ class TwitterPanel: NSPanel {
         firstSelectionBarButton.title = "twet1"
         secondSelectionBarButton.title = "twet2"
         thirdSelectionBarButton.title = "twet3"
-        forthSelectionBarButton.title = "twet4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

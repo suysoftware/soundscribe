@@ -22,7 +22,7 @@ class FacebookPanel: NSPanel {
         firstSelectionBarButton.title = "face1"
         secondSelectionBarButton.title = "face2"
         thirdSelectionBarButton.title = "face3"
-        forthSelectionBarButton.title = "face4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

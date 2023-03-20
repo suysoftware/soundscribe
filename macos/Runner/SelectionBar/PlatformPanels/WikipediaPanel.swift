@@ -22,7 +22,7 @@ class WikipediaPanel: NSPanel {
         firstSelectionBarButton.title = "wik1"
         secondSelectionBarButton.title = "wik2"
         thirdSelectionBarButton.title = "wik3"
-        forthSelectionBarButton.title = "wik4"
+
         
         self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)

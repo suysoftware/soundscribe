@@ -116,7 +116,7 @@ class SpeakButton: NSButton {
     
     
     override func mouseDown(with event: NSEvent) {
-        forthSelectionBarButton.isEnabled = false
+        sixthSelectionBarButton.isEnabled = false
         
         
         ChannelSingleton.shared.channel.invokeMethod("sBar/startRecord", arguments: nil, result: {(r:Any?) -> () in
@@ -137,7 +137,7 @@ class SpeakButton: NSButton {
     }
     override func mouseUp(with event: NSEvent) {
         
-        forthSelectionBarButton.isEnabled = true
+        sixthSelectionBarButton.isEnabled = true
         
         ChannelSingleton.shared.channel.invokeMethod("sBar/stopRecord", arguments: nil, result: {(r:Any?) -> () in
             

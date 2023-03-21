@@ -18,20 +18,39 @@ class DefaultPanel: NSPanel {
     
     override init(contentRect: NSRect, styleMask style: NSWindow.StyleMask, backing backingStoreType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel,], backing: backingStoreType, defer: flag)
+       
+        
+               //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
+        /*
+             firstSelectionBarButton.title = "Default saasf1"
+             secondSelectionBarButton.title = "default asfas2"
+             thirdSelectionBarButton.title = "default3"
+             forthSelectionBarButton.title = "Podcast Recommendations"
+             fifthSelectionBarButton.title = "Song Recognition"
+             sixthSelectionBarButton.title = "Talk"
+               
+        changerFF()
+     */
         self.contentView = SelectionBarView(frame: contentRect)
         self.isOpaque = false
         self.backgroundColor = NSColor.clear
         self.level = .floating
-    
         
-        firstSelectionBarButton.title = "dea1"
-        secondSelectionBarButton.title = "defa"
-        thirdSelectionBarButton.title = "defa3"
-
-        self.contentView?.addSubview(firstSelectionBarButton)
+ 
+        
+     
+      
+        
+        
+        
+       self.contentView?.addSubview(firstSelectionBarButton)
         self.contentView?.addSubview(secondSelectionBarButton)
         self.contentView?.addSubview(thirdSelectionBarButton)
         self.contentView?.addSubview(forthSelectionBarButton)
+        self.contentView?.addSubview(fifthSelectionBarButton)
+        self.contentView?.addSubview(sixthSelectionBarButton)
+        
+        
         
   
     }

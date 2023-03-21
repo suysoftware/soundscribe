@@ -1,4 +1,5 @@
 import Cocoa
+import TabularData
 import FlutterMacOS
 import AppKit
 import SwiftUI
@@ -92,7 +93,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
            }
            else {
               // copyToClipboard(frontApp.bundleIdentifier!)
-          return frontApp.bundleIdentifier!
+               return frontApp.bundleIdentifier!
          }
        }
         else {
@@ -122,9 +123,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         statusBarExtra = StatusBarExtraController(mainExtraView)
         
         
-        
-        
-        
+       
+       
+       
         
         
         channel.setMethodCallHandler({ (_ call: FlutterMethodCall, _ result: FlutterResult) -> Void in
@@ -171,8 +172,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
         
         // Panel Variables
-        let panelRect = NSRect(x: 0, y: 0, width: 200, height: 25)
-        let styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
+       
         
         
 
@@ -183,14 +183,12 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
             
             if event.type == .mouseMoved {
-             
-                if NSCursor.currentSystem?.hotSpot.x == NSCursor.contextualMenu.hotSpot.x {
-                    print("aga")
-                }
+            
+            
              
                 
                 //first button active/passive
-               if(event.locationInWindow.x > 1 && event.locationInWindow.x < 50.0 && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+                if(event.locationInWindow.x > CGFloat(firstButtonX+1) && event.locationInWindow.x < CGFloat(secondButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
  
                    firstSelectionBarButton.isHighlighted = true
                 }
@@ -198,7 +196,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                   firstSelectionBarButton.isHighlighted = false
                 }
                 //second button active/passive
-                if(event.locationInWindow.x > 50 && event.locationInWindow.x < 100.0 && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+                if(event.locationInWindow.x > CGFloat(secondButtonX) && event.locationInWindow.x < CGFloat(thirdButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
                     
                   secondSelectionBarButton.isHighlighted = true
                 }
@@ -206,18 +204,30 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                    secondSelectionBarButton.isHighlighted = false
                 }
                 //third button active/passive
-                if(event.locationInWindow.x > 100 && event.locationInWindow.x < 150.0 && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+                if(event.locationInWindow.x > CGFloat(thirdButtonX) && event.locationInWindow.x < CGFloat(forthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
                    thirdSelectionBarButton.isHighlighted = true
                 }
                 else {
                  thirdSelectionBarButton.isHighlighted = false
                 }
                 //forth button active/passive
-                if(event.locationInWindow.x > 150 && event.locationInWindow.x < 200.0 && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+                if(event.locationInWindow.x > CGFloat(forthButtonX) && event.locationInWindow.x < CGFloat(fifthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
               forthSelectionBarButton.isHighlighted = true
                 }
                 else {
                  forthSelectionBarButton.isHighlighted = false
+                }
+                if(event.locationInWindow.x > CGFloat(fifthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+              fifthSelectionBarButton.isHighlighted = true
+                }
+                else {
+                 fifthSelectionBarButton.isHighlighted = false
+                }
+                if(event.locationInWindow.x > CGFloat(sixthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX+sixthButtonWidth) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+              sixthSelectionBarButton.isHighlighted = true
+                }
+                else {
+                 sixthSelectionBarButton.isHighlighted = false
                 }
             }
             if event.type == .leftMouseDragged {
@@ -245,11 +255,25 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         
                 self.customPanel?.orderOut(nil)
                 
-                self.customPanel = focusedPanelGetter(self.whichPlatformActive())
+            self.customPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
+                
+                focusedPanelExcel(self.whichPlatformActive())
+                
+                
+                
+                
+                
+                
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
+                    
+          
+                    
                     
                     self.sendGlobalCommandC()
                         if  let customPanel = self.customPanel {
+                            
+                       
+                         
 
                             // Calculate the location of the mouse click in screen coordinates
                             let mouseLocation = NSEvent.mouseLocation

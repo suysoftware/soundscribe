@@ -6,95 +6,111 @@
 //
 
 import Foundation
+import Cocoa
+import FlutterMacOS
 import AppKit
+import SwiftUI
+import TabularData
 
 
-let panelRect = NSRect(x: 0, y: 0, width: 200, height: 25)
-let styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
 
 
-func focusedPanelGetter(_ source: String) -> NSPanel {
+
+let url = Bundle.main.url(forResource: "platforms_file", withExtension: "csv")!
+let result = try? DataFrame(contentsOfCSVFile: url)
+
+
+
+var firstButtonWidth = firstSelectionBarButton.title.count*20
+var firstButtonX = 0
+var secondButtonWidth = secondSelectionBarButton.title.count*20
+var secondButtonX = firstSelectionBarButton.title.count*20
+var thirdButtonWidth = thirdSelectionBarButton.title.count*20
+var thirdButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20
+var forthButtonWidth = forthSelectionBarButton.title.count*20
+var forthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20
+var fifthButtonWidth = fifthSelectionBarButton.title.count*20
+var fifthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20
+var sixthButtonWidth = sixthSelectionBarButton.title.count*20
+var sixthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20 + fifthSelectionBarButton.title.count*20
+
+
+
+var panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*20+secondSelectionBarButton.title.count*20+thirdSelectionBarButton.title.count*20+forthSelectionBarButton.title.count*20+fifthSelectionBarButton.title.count*20+sixthSelectionBarButton.title.count*20), height: 25)
+var styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
+
+
+
+func focusedPanelExcel(_ source: String) {
     
-    switch source {
+    
+    result!.rows.forEach { row in
+        let leftString = row[1]!
         
+        if leftString as! String == source {
+            
+            
+            
+            firstSelectionBarButton.title = row[4] as! String
+            secondSelectionBarButton.title = row[4] as! String
+            thirdSelectionBarButton.title = row[4] as! String
+            forthSelectionBarButton.title = row[4] as! String
+            fifthSelectionBarButton.title = row[4] as! String
+            sixthSelectionBarButton.title = row[4] as! String
+          
+            changerFF()
+        }
         
-    case "com.apple.dt.Xcode":
-        return XcodePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.hnc.Discord":
-        return DiscordPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.spotify.client":
-        return SpotifyPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.microsoft.VSCode":
-        return VscodePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.apple.Notes":
-        return AppleNotesPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.apple.AppStore":
-       return AppleAppstorePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.figma.Desktop":
-        return FigmaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.binance.BinanceDesktop":
-       return BinancePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.tradingview.tradingviewapp.desktop":
-      return TrandingviewPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "desktop.WhatsAp":
-      return WhatsappPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.microsoft.Word":
-        return WordPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.microsoft.Powerpoint":
-        return PowerpointPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.microsoft.Excel":
-        return ExcelPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "com.google.android.studio":
-        return AndroidstudioPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.youtube.com":
-        return YoutubePanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "github.com":
-        return GithubPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "mail.google.com":
-        return GmailPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "twitter.com":
-        return TwitterPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.facebook.com":
-        return FacebookPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "tr.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "fr.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "en.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "de.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "hi.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.wikipedia.org":
-        return WikipediaPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "mail.yahoo.com":
-        return YahooPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.amazon.com":
-        return AmazonPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "outlook.live.com":
-        return OutlookPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.linkedin.com":
-        return LinkedinPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.reddit.com":
-        return RedditPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.netflix.com":
-        return NetflixPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.twitch.tv":
-        return TwitchPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.ebay.com":
-        return EbayPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "www.tiktok.com":
-        return TiktokPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "web.whatsapp.com":
-        return WhatsappPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    case "ImagePreview":
-        return ImagePreviewPanel(contentRect: NSRect(x: 0, y: 0, width: 1000, height: 1000), styleMask: styleMask, backing: .buffered, defer: false)
-    case "default":
-       return DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
-    default:
-        return DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
+  
+        
     }
+}
+
+
+func changerFF() {
+
+    
+    
+    /*result!.rows.forEach { row in
+        let leftString = row[1]!
+        
+        if leftString as! String == "Slack" {
+            
+            print("aha")
+        }
+        
+        print(leftString)
+    }
+    */
+    panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*20+secondSelectionBarButton.title.count*20+thirdSelectionBarButton.title.count*20+forthSelectionBarButton.title.count*20+fifthSelectionBarButton.title.count*20+sixthSelectionBarButton.title.count*20), height: 25)
+    
+    firstButtonWidth = firstSelectionBarButton.title.count*20
+    firstButtonX = 0
+    secondButtonWidth = secondSelectionBarButton.title.count*20
+    secondButtonX = firstSelectionBarButton.title.count*20
+    thirdButtonWidth = thirdSelectionBarButton.title.count*20
+    thirdButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20
+    forthButtonWidth = forthSelectionBarButton.title.count*20
+    forthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20
+    fifthButtonWidth = fifthSelectionBarButton.title.count*20
+    fifthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20
+    sixthButtonWidth = sixthSelectionBarButton.title.count*20
+    sixthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20 + fifthSelectionBarButton.title.count*20
+
+    
+    //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
+   
+    
+    
+
+    
+    
+    firstSelectionBarButton.frame = NSRect(x: firstButtonX, y: 0, width: firstButtonWidth, height:25)
+    secondSelectionBarButton.frame = NSRect(x: secondButtonX, y: 0, width: secondButtonWidth, height:25)
+    thirdSelectionBarButton.frame = NSRect(x: thirdButtonX, y: 0, width: thirdButtonWidth, height:25)
+    forthSelectionBarButton.frame = NSRect(x: forthButtonX, y: 0, width: forthButtonWidth, height:25)
+    fifthSelectionBarButton.frame = NSRect(x: fifthButtonX, y: 0, width: fifthButtonWidth, height:25)
+    sixthSelectionBarButton.frame = NSRect(x: sixthButtonX, y: 0, width: sixthButtonWidth, height:25)
 }
 
 

@@ -10,8 +10,6 @@ import 'package:soundscribe/MiddleWare.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:path/path.dart' as p;
 
-
-
 Future<void> main() async {
   await init();
 
@@ -35,9 +33,7 @@ Future<void> init() async {
     //await windowManager.focus();
   });
 
-
   await dotenv.load(fileName: ".env");
-
 }
 
 class SoundscribeApp extends StatelessWidget {

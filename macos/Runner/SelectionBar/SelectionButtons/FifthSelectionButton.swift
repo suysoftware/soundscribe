@@ -1,13 +1,12 @@
 //
-//  SelectionBarButton.swift
+//  FifthSelectionButton.swift
 //  Runner
 //
-//  Created by ILION INC on 10.03.2023.
+//  Created by ILION INC on 22.03.2023.
 //
 
-
-
 import Foundation
+
 import Cocoa
 import FlutterMacOS
 import AppKit
@@ -15,7 +14,7 @@ import SwiftUI
 
 
 
-class SelectionBarCustomButton: NSButton {
+class FifthSelectionButton: NSButton {
 
     
     required init(title string: String, frame rect: NSRect) {
@@ -94,59 +93,31 @@ class SelectionBarCustomButton: NSButton {
   
     
 override func mouseDown(with event: NSEvent) {
- 
-    if title == "speak"
-    {
+    
+     let buttonAction = buttonActionGetter(4, platformId: platformId)
+    
+    
+    
+    
+    
+    ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: buttonAction, result: {(r:Any?) -> () in
         
-        
-        ChannelSingleton.shared.channel.invokeMethod("sBar/startRecord", arguments: nil, result: {(r:Any?) -> () in
-            
-      
-            print(r.debugDescription);  // Never comes here
-                    })
-                print(title)
-        
-    }
-    else {
-        
-        
-        ChannelSingleton.shared.channel.invokeMethod("sBar/\(title)", arguments: nil, result: {(r:Any?) -> () in
-            
-      
-            print(r.debugDescription);  // Never comes here
-                    })
-                print(title)
-        
-    }
-        
-        
+  
+        print(r.debugDescription);  // Never comes here
+                })
+            print(title)
     
 
-        
-       
+    
+    
+
+
+    
+ 
+
 
     }
-    override func mouseUp(with event: NSEvent) {
-     
 
-        if title == "speak"
-        {
-            
-            
-            ChannelSingleton.shared.channel.invokeMethod("sBar/stopRecord", arguments: nil, result: {(r:Any?) -> () in
-                
-          
-                print(r.debugDescription);  // Never comes here
-                        })
-                    print(title)
-            
-        }
-       
-            
-            
-           
-
-        }
 
     
 }

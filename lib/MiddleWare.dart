@@ -20,7 +20,7 @@ class MiddleWare extends StatefulWidget {
 
 class _MiddleWareState extends State<MiddleWare>
     with WindowListener, ClipboardListener {
-        final record = Record();
+  final record = Record();
   static const methodChannel = MethodChannel('soundscribe.suy/methods');
   static const statusBarMethodChannel =
       MethodChannel('soundscribe.suy/statusBarChannel');
@@ -56,7 +56,6 @@ class _MiddleWareState extends State<MiddleWare>
         case "sBar/Dall-E":
           //debugPrint("Click 2 basti"); //
 
-       
           var dalleResult =
               await DalleServices.dalleGenerationsRequest(clipboardText);
 
@@ -75,26 +74,25 @@ class _MiddleWareState extends State<MiddleWare>
           fastRequester("Bu maile cevap hazırla");
 
           return;
-          case "sBar/startRecord":
+        case "sBar/startRecord":
           //debugPrint("Click 2 basti"); //
 
-              audioPath = (await AudioRecorder.audioRecordStart(record))!;
+          audioPath = (await AudioRecorder.audioRecordStart(record))!;
 
           return;
-          case "sBar/stopRecord":
+        case "sBar/stopRecord":
           //debugPrint("Click 2 basti"); //
-            await AudioRecorder.audioRecordStop(record);
-               // var data = await getClipboardData();
+          await AudioRecorder.audioRecordStop(record);
+          // var data = await getClipboardData();
 
-            var result = await OpenAiServices.audioSender(false, audioPath);
+          var result = await OpenAiServices.audioSender(false, audioPath);
 
-        var answer = await OpenAiServices.openAiQuestionRequest(
+          var answer = await OpenAiServices.openAiQuestionRequest(
               '"' + clipboardText.toString() + '"' + result);
 
-       
-        setState(() {
-        clipboardText = answer.choices.first.text;
-        });
+          setState(() {
+            clipboardText = answer.choices.first.text;
+          });
 
           return;
         case "sBar/xc1":
@@ -130,7 +128,8 @@ class _MiddleWareState extends State<MiddleWare>
           fastRequester("Bu metni özetle");
           return;
         default:
-          throw MissingPluginException('Not Implemented'); // Never comes here
+          print(methodCall.arguments);
+          return;
       }
     });
   }
@@ -168,13 +167,9 @@ class _MiddleWareState extends State<MiddleWare>
 
   Future<String?> getClipboardData() async {
     ClipboardData? clipboardData = await Clipboard.getData('text/plain');
-    if(clipboardData!.text !=null){
-
-
-
-    return clipboardData!.text;
+    if (clipboardData!.text != null) {
+      return clipboardData!.text;
     }
-
   }
 
 // Clipboard'a veri yazmak için aşağıdaki kodu kullanabilirsiniz
@@ -185,9 +180,7 @@ class _MiddleWareState extends State<MiddleWare>
   @override
   void onClipboardChanged() async {
     String? newClipboardData = await getClipboardData();
-       clipboardText = newClipboardData!;
-
-  
+    clipboardText = newClipboardData!;
   }
 
   @override

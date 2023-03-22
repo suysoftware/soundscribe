@@ -27,6 +27,13 @@
 		33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F22044A3C60003C045 /* Assets.xcassets */; };
 		33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33CC10F42044A3C60003C045 /* MainMenu.xib */; };
 		33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33CC11122044BFA00003C045 /* MainFlutterWindow.swift */; };
+		F00E59E029CAF63400FE7873 /* FirstSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59DF29CAF63400FE7873 /* FirstSelectionButton.swift */; };
+		F00E59E229CAF64900FE7873 /* SecondSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E129CAF64900FE7873 /* SecondSelectionButton.swift */; };
+		F00E59E429CAF66D00FE7873 /* ThirdSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E329CAF66D00FE7873 /* ThirdSelectionButton.swift */; };
+		F00E59E629CAF68200FE7873 /* ForthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E529CAF68200FE7873 /* ForthSelectionButton.swift */; };
+		F00E59E829CAF69700FE7873 /* FifthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E729CAF69700FE7873 /* FifthSelectionButton.swift */; };
+		F00E59EA29CAF6B300FE7873 /* SixthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E929CAF6B300FE7873 /* SixthSelectionButton.swift */; };
+		F00E59EE29CB07F400FE7873 /* platforms_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F00E59ED29CB07F400FE7873 /* platforms_file.csv */; };
 		F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */; };
 		F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE929B7676100BCC8D4 /* InternalBattery.swift */; };
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
@@ -40,13 +47,11 @@
 		F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */; };
 		F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */; };
 		F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */; };
-		F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56229BB809C008D515A /* SelectionBarButton.swift */; };
 		F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56629BB9122008D515A /* SelectionBarView.swift */; };
 		F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */; };
 		F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */; };
 		F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15829C64D4A008978A7 /* FileDownloader.swift */; };
 		F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */; };
-		F0E2E15F29C9EAC2008978A7 /* platforms_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F0E2E15E29C9EAC2008978A7 /* platforms_file.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +98,13 @@
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		A5C300E818C274342AF97DF3 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE9FFF837DCCDF9B72AC4F5D /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		F00E59DF29CAF63400FE7873 /* FirstSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59E129CAF64900FE7873 /* SecondSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59E329CAF66D00FE7873 /* ThirdSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59E529CAF68200FE7873 /* ForthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59E729CAF69700FE7873 /* FifthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59E929CAF6B300FE7873 /* SixthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixthSelectionButton.swift; sourceTree = "<group>"; };
+		F00E59ED29CB07F400FE7873 /* platforms_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platforms_file.csv; path = ../../../../../../Downloads/platforms_file.csv; sourceTree = "<group>"; };
 		F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalFinder.swift; sourceTree = "<group>"; };
 		F018ABE929B7676100BCC8D4 /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
@@ -106,13 +118,11 @@
 		F0D8D54E29BB68B7008D515A /* WindowSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55029BB68CF008D515A /* ChannelSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSingletonFile.swift; sourceTree = "<group>"; };
 		F0D8D55229BB68EF008D515A /* TaskSingletonFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskSingletonFile.swift; sourceTree = "<group>"; };
-		F0D8D56229BB809C008D515A /* SelectionBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarButton.swift; sourceTree = "<group>"; };
 		F0D8D56629BB9122008D515A /* SelectionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarView.swift; sourceTree = "<group>"; };
 		F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarContent.swift; sourceTree = "<group>"; };
 		F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtraController.swift; sourceTree = "<group>"; };
 		F0E2E15829C64D4A008978A7 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakButton.swift; sourceTree = "<group>"; };
-		F0E2E15E29C9EAC2008978A7 /* platforms_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platforms_file.csv; path = ../../../../../../Downloads/platforms_file.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -220,6 +230,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		F00E59D229CAF56200FE7873 /* SelectionButtons */ = {
+			isa = PBXGroup;
+			children = (
+				F00E59DF29CAF63400FE7873 /* FirstSelectionButton.swift */,
+				F00E59E129CAF64900FE7873 /* SecondSelectionButton.swift */,
+				F00E59E329CAF66D00FE7873 /* ThirdSelectionButton.swift */,
+				F00E59E529CAF68200FE7873 /* ForthSelectionButton.swift */,
+				F00E59E729CAF69700FE7873 /* FifthSelectionButton.swift */,
+				F00E59E929CAF6B300FE7873 /* SixthSelectionButton.swift */,
+			);
+			path = SelectionButtons;
+			sourceTree = "<group>";
+		};
 		F018ABE629B7670B00BCC8D4 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +256,7 @@
 		F018ABF129B8B82200BCC8D4 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				F0E2E15E29C9EAC2008978A7 /* platforms_file.csv */,
+				F00E59ED29CB07F400FE7873 /* platforms_file.csv */,
 				F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */,
 			);
 			path = assets;
@@ -267,9 +290,9 @@
 		F0D8D54529BB481A008D515A /* SelectionBar */ = {
 			isa = PBXGroup;
 			children = (
+				F00E59D229CAF56200FE7873 /* SelectionButtons */,
 				F0D604AE29C3466900809808 /* PlatformPanels */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
-				F0D8D56229BB809C008D515A /* SelectionBarButton.swift */,
 				F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */,
 			);
 			path = SelectionBar;
@@ -381,7 +404,7 @@
 				33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */,
 				F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */,
 				33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */,
-				F0E2E15F29C9EAC2008978A7 /* platforms_file.csv in Resources */,
+				F00E59EE29CB07F400FE7873 /* platforms_file.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,13 +497,17 @@
 			files = (
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
 				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
-				F0D8D56329BB809C008D515A /* SelectionBarButton.swift in Sources */,
 				F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */,
 				F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */,
 				F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */,
 				F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */,
+				F00E59EA29CAF6B300FE7873 /* SixthSelectionButton.swift in Sources */,
 				F0D8D54F29BB68B7008D515A /* WindowSingletonFile.swift in Sources */,
+				F00E59E829CAF69700FE7873 /* FifthSelectionButton.swift in Sources */,
+				F00E59E029CAF63400FE7873 /* FirstSelectionButton.swift in Sources */,
+				F00E59E229CAF64900FE7873 /* SecondSelectionButton.swift in Sources */,
 				F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */,
+				F00E59E429CAF66D00FE7873 /* ThirdSelectionButton.swift in Sources */,
 				F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */,
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
@@ -491,6 +518,7 @@
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
+				F00E59E629CAF68200FE7873 /* ForthSelectionButton.swift in Sources */,
 				F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

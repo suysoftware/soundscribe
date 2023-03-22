@@ -81,7 +81,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
        if let frontApp = NSWorkspace.shared.frontmostApplication{
            if chromium_variants.contains(frontApp.localizedName!){
                if let selectedText = self.runAppTitleAppleScript(scriptTextGetterForBrowsers(frontApp.localizedName!)) {
-                   
+                   print(selectedText)
                    let repOc = selectedText.replacingOccurrences(of:"https://", with: "")
                    let index = repOc.firstIndex(of: "/") ?? repOc.endIndex
                    let result = repOc[..<index]
@@ -259,7 +259,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                 
                 focusedPanelExcel(self.whichPlatformActive())
                 
-                
+              //  focusedPanelExcel("https://store.steampowered.com/*")
                 
                 
                 

@@ -19,36 +19,47 @@ import TabularData
 let url = Bundle.main.url(forResource: "platforms_file", withExtension: "csv")!
 let result = try? DataFrame(contentsOfCSVFile: url)
 
+var widthValue = 10
 
-
-var firstButtonWidth = firstSelectionBarButton.title.count*20
+var firstButtonWidth = firstSelectionBarButton.title.count*widthValue
 var firstButtonX = 0
-var secondButtonWidth = secondSelectionBarButton.title.count*20
-var secondButtonX = firstSelectionBarButton.title.count*20
-var thirdButtonWidth = thirdSelectionBarButton.title.count*20
-var thirdButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20
-var forthButtonWidth = forthSelectionBarButton.title.count*20
-var forthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20
-var fifthButtonWidth = fifthSelectionBarButton.title.count*20
-var fifthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20
-var sixthButtonWidth = sixthSelectionBarButton.title.count*20
-var sixthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20 + fifthSelectionBarButton.title.count*20
+var secondButtonWidth = secondSelectionBarButton.title.count*widthValue
+var secondButtonX = firstSelectionBarButton.title.count*widthValue
+var thirdButtonWidth = thirdSelectionBarButton.title.count*widthValue
+var thirdButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue
+var forthButtonWidth = forthSelectionBarButton.title.count*widthValue
+var forthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue
+var fifthButtonWidth = fifthSelectionBarButton.title.count*widthValue
+var fifthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue
+var sixthButtonWidth = sixthSelectionBarButton.title.count*widthValue
+var sixthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue + fifthSelectionBarButton.title.count*widthValue
 
 
 
-var panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*20+secondSelectionBarButton.title.count*20+thirdSelectionBarButton.title.count*20+forthSelectionBarButton.title.count*20+fifthSelectionBarButton.title.count*20+sixthSelectionBarButton.title.count*20), height: 25)
+var panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+sixthSelectionBarButton.title.count*widthValue), height: 25)
 var styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
 
 
 
 func focusedPanelExcel(_ source: String) {
     
+    firstSelectionBarButton.title = "Default1"
+    secondSelectionBarButton.title = "Default2"
+    thirdSelectionBarButton.title = "Default3"
+    forthSelectionBarButton.title = "Default4"
+    fifthSelectionBarButton.title = "Default5"
+    sixthSelectionBarButton.title = "Talk"
+    changerFF()
     
     result!.rows.forEach { row in
+       
+        
         let leftString = row[1]!
         
         if leftString as! String == source {
             
+            
+           platformId = row.index
             
             
             firstSelectionBarButton.title = row[4] as! String
@@ -59,12 +70,40 @@ func focusedPanelExcel(_ source: String) {
             sixthSelectionBarButton.title = row[4] as! String
           
             changerFF()
+       
         }
+      /*  else {
+       
+            firstSelectionBarButton.title = "aa1"
+            secondSelectionBarButton.title = "aa2"
+            thirdSelectionBarButton.title = "aa3"
+            forthSelectionBarButton.title = "aa4"
+            fifthSelectionBarButton.title = "aa5"
+            sixthSelectionBarButton.title = "aa6"
+          
+            changerFF()
+            
+        }*/
         
   
         
     }
+    
+
 }
+
+
+func buttonActionGetter(_ buttonActionLine: Int, platformId: Int) -> String {
+    
+    
+   let buttonAction = result!.rows[platformId][buttonActionLine] as! String
+    return buttonAction
+    
+    
+  
+}
+
+
 
 
 func changerFF() {
@@ -82,20 +121,20 @@ func changerFF() {
         print(leftString)
     }
     */
-    panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*20+secondSelectionBarButton.title.count*20+thirdSelectionBarButton.title.count*20+forthSelectionBarButton.title.count*20+fifthSelectionBarButton.title.count*20+sixthSelectionBarButton.title.count*20), height: 25)
+    panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+sixthSelectionBarButton.title.count*widthValue), height: 25)
     
-    firstButtonWidth = firstSelectionBarButton.title.count*20
+    firstButtonWidth = firstSelectionBarButton.title.count*widthValue
     firstButtonX = 0
-    secondButtonWidth = secondSelectionBarButton.title.count*20
-    secondButtonX = firstSelectionBarButton.title.count*20
-    thirdButtonWidth = thirdSelectionBarButton.title.count*20
-    thirdButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20
-    forthButtonWidth = forthSelectionBarButton.title.count*20
-    forthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20
-    fifthButtonWidth = fifthSelectionBarButton.title.count*20
-    fifthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20
-    sixthButtonWidth = sixthSelectionBarButton.title.count*20
-    sixthButtonX = firstSelectionBarButton.title.count*20 + secondSelectionBarButton.title.count*20 + thirdSelectionBarButton.title.count*20 + forthSelectionBarButton.title.count*20 + fifthSelectionBarButton.title.count*20
+    secondButtonWidth = secondSelectionBarButton.title.count*widthValue
+    secondButtonX = firstSelectionBarButton.title.count*widthValue
+    thirdButtonWidth = thirdSelectionBarButton.title.count*widthValue
+    thirdButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue
+    forthButtonWidth = forthSelectionBarButton.title.count*widthValue
+    forthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue
+    fifthButtonWidth = fifthSelectionBarButton.title.count*widthValue
+    fifthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue
+    sixthButtonWidth = sixthSelectionBarButton.title.count*widthValue
+    sixthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue + fifthSelectionBarButton.title.count*widthValue
 
     
     //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)

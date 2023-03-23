@@ -33,12 +33,15 @@
 		F00E59E629CAF68200FE7873 /* ForthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E529CAF68200FE7873 /* ForthSelectionButton.swift */; };
 		F00E59E829CAF69700FE7873 /* FifthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E729CAF69700FE7873 /* FifthSelectionButton.swift */; };
 		F00E59EA29CAF6B300FE7873 /* SixthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00E59E929CAF6B300FE7873 /* SixthSelectionButton.swift */; };
-		F00E59EE29CB07F400FE7873 /* platforms_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F00E59ED29CB07F400FE7873 /* platforms_file.csv */; };
 		F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */; };
 		F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE929B7676100BCC8D4 /* InternalBattery.swift */; };
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
 		F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */; };
+		F09FD8DE29CC715D00E3D3F7 /* WebNameTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */; };
+		F09FD8E929CCACC100E3D3F7 /* DesktopNameTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */; };
+		F09FD8EB29CCB4C200E3D3F7 /* platform_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */; };
+		F09FD8ED29CCB59900E3D3F7 /* ObjectSizeUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */; };
 		F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */; };
 		F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */; };
 		F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */; };
@@ -104,12 +107,15 @@
 		F00E59E529CAF68200FE7873 /* ForthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForthSelectionButton.swift; sourceTree = "<group>"; };
 		F00E59E729CAF69700FE7873 /* FifthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FifthSelectionButton.swift; sourceTree = "<group>"; };
 		F00E59E929CAF6B300FE7873 /* SixthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SixthSelectionButton.swift; sourceTree = "<group>"; };
-		F00E59ED29CB07F400FE7873 /* platforms_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platforms_file.csv; path = ../../../../../../Downloads/platforms_file.csv; sourceTree = "<group>"; };
 		F018ABE729B7672D00BCC8D4 /* InternalFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalFinder.swift; sourceTree = "<group>"; };
 		F018ABE929B7676100BCC8D4 /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
 		F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
+		F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNameTrimmer.swift; sourceTree = "<group>"; };
+		F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopNameTrimmer.swift; sourceTree = "<group>"; };
+		F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platform_file.csv; path = ../../../../../../Downloads/platform_file.csv; sourceTree = "<group>"; };
+		F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSizeUpdater.swift; sourceTree = "<group>"; };
 		F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserScriptGetter.swift; sourceTree = "<group>"; };
 		F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformButtonGetter.swift; sourceTree = "<group>"; };
 		F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedPanelGetter.swift; sourceTree = "<group>"; };
@@ -203,6 +209,7 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F09FD8DC29CC714200E3D3F7 /* BasicFunctions */,
 				F0D604B929C49F0F00809808 /* AppleScripts */,
 				F0D604A929C33F8200809808 /* FocusedPlatform */,
 				F0D8D54D29BB688A008D515A /* singletons */,
@@ -256,10 +263,20 @@
 		F018ABF129B8B82200BCC8D4 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				F00E59ED29CB07F400FE7873 /* platforms_file.csv */,
+				F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */,
 				F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		F09FD8DC29CC714200E3D3F7 /* BasicFunctions */ = {
+			isa = PBXGroup;
+			children = (
+				F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */,
+				F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */,
+				F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */,
+			);
+			path = BasicFunctions;
 			sourceTree = "<group>";
 		};
 		F0D604A929C33F8200809808 /* FocusedPlatform */ = {
@@ -404,7 +421,7 @@
 				33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */,
 				F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */,
 				33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */,
-				F00E59EE29CB07F400FE7873 /* platforms_file.csv in Resources */,
+				F09FD8EB29CCB4C200E3D3F7 /* platform_file.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,12 +529,15 @@
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
+				F09FD8ED29CCB59900E3D3F7 /* ObjectSizeUpdater.swift in Sources */,
 				F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */,
+				F09FD8DE29CC715D00E3D3F7 /* WebNameTrimmer.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
+				F09FD8E929CCACC100E3D3F7 /* DesktopNameTrimmer.swift in Sources */,
 				F00E59E629CAF68200FE7873 /* ForthSelectionButton.swift in Sources */,
 				F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */,
 			);

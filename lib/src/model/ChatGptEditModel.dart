@@ -11,9 +11,9 @@ String chatGptEditModelToJson(ChatGptEditModel data) => json.encode(data.toJson(
 class ChatGptEditModel {
     ChatGptEditModel({
         required this.object,
-        required this.created,
-        required this.choices,
-        required this.usage,
+          required this.created,
+          required this.choices,
+          required this.usage,
     });
 
     String object;

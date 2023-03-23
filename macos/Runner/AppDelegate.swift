@@ -41,11 +41,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     }
     
     func sendGlobalCommandC() -> Bool?{
-        
-   
-        
-        
-        
+            
         let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
         let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
 
@@ -81,19 +77,23 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
        if let frontApp = NSWorkspace.shared.frontmostApplication{
            if chromium_variants.contains(frontApp.localizedName!){
                if let selectedText = self.runAppTitleAppleScript(scriptTextGetterForBrowsers(frontApp.localizedName!)) {
-                   print(selectedText)
-                   let repOc = selectedText.replacingOccurrences(of:"https://", with: "")
-                   let index = repOc.firstIndex(of: "/") ?? repOc.endIndex
-                   let result = repOc[..<index]
-                   //copyToClipboard(String(result))
-                   return String(result)
+  
+                   return webNameTrimmer(selectedText)
                       } else {
                           return "default"
                       }
            }
            else {
-              // copyToClipboard(frontApp.bundleIdentifier!)
-               return frontApp.bundleIdentifier!
+               if(frontApp.bundleIdentifier!.starts(with: "com.apple.") ){
+                   return desktopNameTrimmer(source: frontApp.bundleIdentifier!, isApple: true)
+                   
+               }
+               else{
+                   
+                   return frontApp.localizedName!.lowercased()
+               }
+               
+
          }
        }
         else {
@@ -106,6 +106,9 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         pasteboard.clearContents()
         pasteboard.setString(string, forType: .string)
     }
+    
+    
+    
     override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return false
     }
@@ -258,23 +261,16 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             self.customPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
                 
                 focusedPanelExcel(self.whichPlatformActive())
-                
-              //  focusedPanelExcel("https://store.steampowered.com/*")
+
                 
                 
                 
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
-                    
-          
-                    
-                    
+
                     self.sendGlobalCommandC()
                         if  let customPanel = self.customPanel {
-                            
-                       
-                         
-
+ 
                             // Calculate the location of the mouse click in screen coordinates
                             let mouseLocation = NSEvent.mouseLocation
                             let panelOrigin = NSPoint(x: mouseLocation.x - panelRect.width*0.6 , y: mouseLocation.y + panelRect.height*0.2 )

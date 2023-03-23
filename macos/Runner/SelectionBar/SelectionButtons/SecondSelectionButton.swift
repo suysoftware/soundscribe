@@ -33,42 +33,22 @@ class SecondSelectionButton: NSButton {
 
 
     override func draw(_ dirtyRect: NSRect) {
-        // draw your custom appearance for the button here
-        // for example, a colored background with a border and text label
+
         
         if self.isHighlighted {
             NSColor.systemBlue.setFill()
-            //NSColor(red: 55, green: 116, blue: 244, alpha: 2.0).setFill()
-       //     NSColor.blue.setFill()
+    
             
         }
         else {
             NSColor.clear.setFill()
          
         }
-        //let path = NSBezierPath(ovalIn: dirtyRect)
+  
         let path = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
          path.fill()
         
     
-        
-
-       
-        //NSColor.blue.setStroke()
-        //path.lineWidth = 2
-        //path.stroke()
-        
-        //self.bezelStyle = .smallSquare
-       
-        
-        //self.layer?.backgroundColor = Color(red: 56, green: 117, blue: 244).cgColor
-        
-        //self.translatesAutoresizingMaskIntoConstraints = false
-        //let ss = Color(red: 56, green: 117, blue: 244);
-        
-        
-        
-        
         
         let text = self.title
       
@@ -79,24 +59,18 @@ class SecondSelectionButton: NSButton {
         let attributes = [NSAttributedString.Key.font: font,NSAttributedString.Key.foregroundColor: textColor]
          
         let textSize = text.size(withAttributes: attributes)
-        //let textRect = dirtyRect
+     
         let textRect = NSRect(x: dirtyRect.midX - (textSize.width / 2), y: dirtyRect.midY - (textSize.height / 2), width: textSize.width, height: textSize.height)
         text.draw(in: textRect, withAttributes: attributes)
         
-        
-        
-  
+
         
     }
     
-    
-    
-  
-  
-    
+
 override func mouseDown(with event: NSEvent) {
     
-    let buttonAction = buttonActionGetter(6, platformId: platformId)
+    let buttonAction = buttonActionGetter(11, platformId: platformId)
   
 
      

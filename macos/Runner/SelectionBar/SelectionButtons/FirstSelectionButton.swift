@@ -36,35 +36,20 @@ class FirstSelectionButton: NSButton {
         
         if self.isHighlighted {
             NSColor.systemBlue.setFill()
-            //NSColor(red: 55, green: 116, blue: 244, alpha: 2.0).setFill()
-       //     NSColor.blue.setFill()
+
             
         }
         else {
             NSColor.clear.setFill()
          
         }
-        //let path = NSBezierPath(ovalIn: dirtyRect)
+
         let path = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
          path.fill()
         
     
         
 
-       
-        //NSColor.blue.setStroke()
-        //path.lineWidth = 2
-        //path.stroke()
-        
-        //self.bezelStyle = .smallSquare
-       
-        
-        //self.layer?.backgroundColor = Color(red: 56, green: 117, blue: 244).cgColor
-        
-        //self.translatesAutoresizingMaskIntoConstraints = false
-        //let ss = Color(red: 56, green: 117, blue: 244);
-        
-        
         
         
         
@@ -94,7 +79,7 @@ class FirstSelectionButton: NSButton {
     
 override func mouseDown(with event: NSEvent) {
     
-   let buttonAction = buttonActionGetter(5, platformId: platformId)
+   let buttonAction = buttonActionGetter(8, platformId: platformId)
  
 
     

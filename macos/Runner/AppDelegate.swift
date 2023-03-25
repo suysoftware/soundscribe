@@ -14,69 +14,60 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     let channelName: String = "soundscribe.suy/statusBarChannel"
     var statusBarExtra: StatusBarExtraController?
     var customPanel: NSPanel?
-    var xcodePanel: NSPanel?
-    var discordPanel: NSPanel?
     var defaultPanel: NSPanel?
+    var toolTipPanel: NSPanel?
     var mouseEventMonitor: Any?
     let pasteboard = NSPasteboard.general
+    var counter = 0
+    var toolTipIntervalTime = 0.4
+    var timer : Timer?
 
 
-    let chromium_variants = ["Google Chrome", "Chromium", "Opera", "Vivaldi", "Brave Browser", "Microsoft Edge","Safari","Tor Browser","Yandex"]
-
-
-    func runAppTitleAppleScript(_ source: String) -> String? {
-        var error: NSDictionary?
-        if let scriptObject = NSAppleScript(source: source) {
-            let output: NSAppleEventDescriptor = scriptObject.executeAndReturnError(&error)
-            if error != nil {
-                print("AppleScript execution failed: \(error!)")
-                return nil
-            } else {
-                return output.stringValue
-            }
-        } else {
-            print("AppleScript compilation failed")
-            return nil
-        }
-    }
-    
-    func sendGlobalCommandC() -> Bool?{
+    func toolTipLocationUpdater(whichButton: String){
+        
+        self.toolTipPanel?.orderOut(nil)
+        var toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY+90, width: toolTipRect.width, height: toolTipRect.height)
+        
+        var offSetValue = CGFloat(35)
+        
+        
+        switch whichButton {
             
-        let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
-        let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up
-
-        let cKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: true) // C key down
-        let cKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x08, keyDown: false) // C key up
-
-        cmdKeyDown?.flags = .maskCommand
-        cKeyDown?.flags = .maskCommand
-
-        let eventTapLocation = CGEventTapLocation.cghidEventTap // System-wide event tap
-
-        cmdKeyDown?.post(tap: eventTapLocation)
-        cKeyDown?.post(tap: eventTapLocation)
-        cKeyUp?.post(tap: eventTapLocation)
-        cmdKeyUp?.post(tap: eventTapLocation)
+            
+        case "First":
+            toolTipResetRect = NSRect(x: toolTipRect.midX-CGFloat((firstButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+        case "Second":
+           toolTipResetRect = NSRect(x:toolTipRect.midX, y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+        case "Third":
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+        case "Forth":
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+        case "Fifth":
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth+forthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+        case "Sixth":
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth+forthButtonWidth+fifthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
         
-        return true
+        default:
+            toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY-90, width: toolTipRect.width, height: toolTipRect.height)
         
-    }
-    
-    
-    func getClipboardItem() -> String? {
-        guard let string = NSPasteboard.general.string(forType: .string) else {
-            // The clipboard is empty or does not contain a string
-            return nil
         }
-        // Found a string item on the clipboard
-        return string
+        
+        
+        
+       
+        
+        self.toolTipPanel = ToolTipPanel(contentRect: toolTipResetRect, styleMask: styleMask, backing: .buffered, defer: false)
+
+        self.toolTipPanel!.orderFront(nil)
     }
+
+
   
     func whichPlatformActive() -> String {
             // Get the app that currently has the focus.
        if let frontApp = NSWorkspace.shared.frontmostApplication{
            if chromium_variants.contains(frontApp.localizedName!){
-               if let selectedText = self.runAppTitleAppleScript(scriptTextGetterForBrowsers(frontApp.localizedName!)) {
+               if let selectedText = runAppTitleAppleScript(scriptTextGetterForBrowsers(frontApp.localizedName!)) {
   
                    return webNameTrimmer(selectedText)
                       } else {
@@ -101,12 +92,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         }
         }
 
-    func copyToClipboard(_ string: String) {
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setString(string, forType: .string)
-    }
-    
+
     
     
     override func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
@@ -125,59 +111,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         mainExtraView.frame =  NSRect(x: 0, y: 0, width: 250, height: 300)
         statusBarExtra = StatusBarExtraController(mainExtraView)
         
-        
-       
-       
-       
-        
-        
-        channel.setMethodCallHandler({ (_ call: FlutterMethodCall, _ result: FlutterResult) -> Void in
-            
-            if ("getAppIntents" == call.method) {
-                result("test")
-                return
-            }
-            if ("showUrlImage" == call.method) {
-               
-           
-               return
-            }
-            if ("firstTaskFinished" == call.method) {
-                FirstTaskSingleton.instance.SetData(value: true)
-                return
-            }
-            else if("getBatteryLevel" == call.method) {
-                let internalFinder = InternalFinder()
-                if let internalBattery = internalFinder.getInternalBattery() {
-                    result(internalBattery.charge)
-                    return
-                }
-                result(0.0)
-            } else if("isBatteryCharging" == call.method) {
-                let internalFinder = InternalFinder()
-                if let internalBattery = internalFinder.getInternalBattery() {
-                    result(internalBattery.isCharging)
-                    return
-                }
-                result(false)
-            } else if("getBatteryTimeLeft" == call.method) {
-                let internalFinder = InternalFinder()
-                if let internalBattery = internalFinder.getInternalBattery() {
-                    result(internalBattery.timeLeft)
-                    return
-                }
-                result("")
-            }else {
-                result(FlutterMethodNotImplemented)
-            }
-        });
-        
-    
-        
-        // Panel Variables
-       
-        
-        
+  
 
         
         self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel ]) { [weak self] event in
@@ -186,22 +120,67 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     
             
             if event.type == .mouseMoved {
-            
-            
-             
                 
-                //first button active/passive
+       
                 if(event.locationInWindow.x > CGFloat(firstButtonX+1) && event.locationInWindow.x < CGFloat(secondButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
  
                    firstSelectionBarButton.isHighlighted = true
+                
+                
+                   
+                    updateAllToolTipAnimate(whichButton: "First", whichOrder: true)
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateFirstToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "First")
+                            
+                     updateAllToolTipAnimate(whichButton: "First", whichOrder: false)
+                            
+                        }
+                      
+                       }
+
+                    
                 }
                 else {
                   firstSelectionBarButton.isHighlighted = false
+                    
+                    if((event.locationInWindow.x > CGFloat(secondButtonX) && event.locationInWindow.x < CGFloat(thirdButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ) || (event.locationInWindow.x > CGFloat(thirdButtonX) && event.locationInWindow.x < CGFloat(forthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ) || (event.locationInWindow.x > CGFloat(forthButtonX) && event.locationInWindow.x < CGFloat(fifthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25) || (event.locationInWindow.x > CGFloat(fifthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25) || (event.locationInWindow.x > CGFloat(sixthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX+sixthButtonWidth) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ) ){
+                        
+                    }
+                    else {
+                        
+                 updateAllToolTipAnimate(whichButton: "ALL", whichOrder: false)
+                        self.toolTipPanel?.orderOut(nil)
+                    }
+                 
+                    
+                    
+                    
+                    
+                    
+                    
                 }
                 //second button active/passive
                 if(event.locationInWindow.x > CGFloat(secondButtonX) && event.locationInWindow.x < CGFloat(thirdButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
                     
                   secondSelectionBarButton.isHighlighted = true
+                   updateAllToolTipAnimate(whichButton: "Second", whichOrder: true)
+                   
+                    
+                   
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateSecondToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "Second")
+                        updateAllToolTipAnimate(whichButton: "Second", whichOrder: false)
+                        }
+                      
+                       }
+                    
+                
+                    
+                    
                 }
                 else {
                    secondSelectionBarButton.isHighlighted = false
@@ -209,6 +188,16 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                 //third button active/passive
                 if(event.locationInWindow.x > CGFloat(thirdButtonX) && event.locationInWindow.x < CGFloat(forthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
                    thirdSelectionBarButton.isHighlighted = true
+               updateAllToolTipAnimate(whichButton: "Third", whichOrder: true)
+                   
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateThirdToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "Third")
+                          updateAllToolTipAnimate(whichButton: "Third", whichOrder: false)
+                        }
+                      
+                       }
                 }
                 else {
                  thirdSelectionBarButton.isHighlighted = false
@@ -216,18 +205,52 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                 //forth button active/passive
                 if(event.locationInWindow.x > CGFloat(forthButtonX) && event.locationInWindow.x < CGFloat(fifthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
               forthSelectionBarButton.isHighlighted = true
+                  updateAllToolTipAnimate(whichButton: "Forth", whichOrder: true)
+                   
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateForthToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "Forth")
+                            updateAllToolTipAnimate(whichButton: "Forth", whichOrder: false)
+                        }
+                      
+                       }
                 }
                 else {
                  forthSelectionBarButton.isHighlighted = false
                 }
                 if(event.locationInWindow.x > CGFloat(fifthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
+                    
               fifthSelectionBarButton.isHighlighted = true
+                  updateAllToolTipAnimate(whichButton: "Fifth", whichOrder: true)
+                   
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateFifthToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "Fifth")
+                           updateAllToolTipAnimate(whichButton: "Fifth", whichOrder: false)
+
+                        }
+                      
+                       }
                 }
                 else {
                  fifthSelectionBarButton.isHighlighted = false
                 }
                 if(event.locationInWindow.x > CGFloat(sixthButtonX) && event.locationInWindow.x < CGFloat(sixthButtonX+sixthButtonWidth) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
               sixthSelectionBarButton.isHighlighted = true
+                    
+              updateAllToolTipAnimate(whichButton: "Sixth", whichOrder: true)
+
+                   
+                    self.timer = Timer.scheduledTimer(withTimeInterval: TimeInterval(self.toolTipIntervalTime), repeats: false) { (_) in
+                        if(animateSixthToolTip == true ){
+                            
+                            self.toolTipLocationUpdater(whichButton: "Sixth")
+                           updateAllToolTipAnimate(whichButton: "Sixth", whichOrder: false)
+                        }
+                      
+                       }
                 }
                 else {
                  sixthSelectionBarButton.isHighlighted = false
@@ -237,6 +260,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                  // Hide the custom panel if it's currently visible
             
                  self.customPanel?.orderOut(nil)
+                self.toolTipPanel?.orderOut(nil)
                 
              }
 
@@ -245,10 +269,12 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                  clickedArea = event.locationInWindow
            
                 self.customPanel?.orderOut(nil)
+               self.toolTipPanel?.orderOut(nil)
                
             }
             else if event.type == .scrollWheel {
                 self.customPanel?.orderOut(nil)
+                self.toolTipPanel?.orderOut(nil)
                 
             }
           
@@ -268,7 +294,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
 
-                    self.sendGlobalCommandC()
+                  sendGlobalCommandC()
                         if  let customPanel = self.customPanel {
  
                             // Calculate the location of the mouse click in screen coordinates
@@ -278,6 +304,7 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                             
                             // Check if the panel would be offscreen and adjust if necessary
                             var panelFrame = NSRect(origin: panelOrigin, size: panelRect.size)
+                            var toolTipFrame = NSRect(origin: panelOrigin, size: toolTipRect.size)
                             if panelFrame.origin.x < screenFrame.origin.x {
                                 panelFrame.origin.x = screenFrame.origin.x
                             }
@@ -292,6 +319,8 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
                             }
                             // Show the custom panel at the calculated location
                             customPanel.setFrame(panelFrame, display: true)
+                            toolTipRect = toolTipFrame
+                            
                             
                            
                             customPanel.makeKeyAndOrderFront(nil)

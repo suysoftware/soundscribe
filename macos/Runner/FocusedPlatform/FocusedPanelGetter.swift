@@ -30,6 +30,9 @@ var fifthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelect
 var sixthButtonWidth = sixthSelectionBarButton.title.count*widthValue
 var sixthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue + fifthSelectionBarButton.title.count*widthValue
 var panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+sixthSelectionBarButton.title.count*widthValue), height: 25)
+
+var toolTipRect = NSRect(x: 0, y: 0, width:300, height: 150)
+
 var styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPanel,] )
 
 
@@ -37,6 +40,11 @@ var styleMask = NSWindow.StyleMask(arrayLiteral:[.borderless, .nonactivatingPane
 
 
 func focusedPanelExcel(_ source: String) {
+    
+    
+    
+    
+    
     
     let focusedPlatform = ">"+source+"<"
     
@@ -50,11 +58,17 @@ func focusedPanelExcel(_ source: String) {
     objectSizeUpdater()
     
     result!.rows.forEach { row in
+        
+ 
        
         let leftString = row[3]!
+        
+     
         let platformName = (leftString as! String).lowercased()
-
+        print(platformName)
+        print(focusedPlatform)
         if platformName.contains(focusedPlatform) {
+            
             
            platformId = row.index
             

@@ -40,10 +40,8 @@
 		F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */; };
 		F09FD8DE29CC715D00E3D3F7 /* WebNameTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */; };
 		F09FD8E929CCACC100E3D3F7 /* DesktopNameTrimmer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */; };
-		F09FD8EB29CCB4C200E3D3F7 /* platform_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */; };
 		F09FD8ED29CCB59900E3D3F7 /* ObjectSizeUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */; };
 		F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */; };
-		F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */; };
 		F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */; };
 		F0D604B629C35F1800809808 /* ButtonSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B529C35F1800809808 /* ButtonSingleton.swift */; };
 		F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D604B729C3610D00809808 /* DefaultPanel.swift */; };
@@ -53,6 +51,16 @@
 		F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D8D56629BB9122008D515A /* SelectionBarView.swift */; };
 		F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */; };
 		F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */; };
+		F0E1685629CF307500578BAF /* platform_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F0E1685529CF307500578BAF /* platform_file.csv */; };
+		F0E1685829CF368300578BAF /* ToolTipPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685729CF368300578BAF /* ToolTipPanel.swift */; };
+		F0E1685A29CF36B700578BAF /* PlatformObjectGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685929CF36B700578BAF /* PlatformObjectGetter.swift */; };
+		F0E1685D29CF370800578BAF /* ToolTipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685C29CF370800578BAF /* ToolTipText.swift */; };
+		F0E1685F29CF372500578BAF /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685E29CF372500578BAF /* ToolTipView.swift */; };
+		F0E1686129CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686029CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift */; };
+		F0E1686329CF7A5E00578BAF /* RunTitleAppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686229CF7A5E00578BAF /* RunTitleAppleScript.swift */; };
+		F0E1686729CF7B0B00578BAF /* SendGlobalCopyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686629CF7B0B00578BAF /* SendGlobalCopyEvent.swift */; };
+		F0E1686929CF7B3D00578BAF /* GetClipboardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686829CF7B3D00578BAF /* GetClipboardItem.swift */; };
+		F0E1686B29CF7B8100578BAF /* CopyToClipboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686A29CF7B8100578BAF /* CopyToClipboard.swift */; };
 		F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15829C64D4A008978A7 /* FileDownloader.swift */; };
 		F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */; };
 /* End PBXBuildFile section */
@@ -114,10 +122,8 @@
 		F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNameTrimmer.swift; sourceTree = "<group>"; };
 		F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesktopNameTrimmer.swift; sourceTree = "<group>"; };
-		F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platform_file.csv; path = ../../../../../../Downloads/platform_file.csv; sourceTree = "<group>"; };
 		F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectSizeUpdater.swift; sourceTree = "<group>"; };
 		F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserScriptGetter.swift; sourceTree = "<group>"; };
-		F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformButtonGetter.swift; sourceTree = "<group>"; };
 		F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusedPanelGetter.swift; sourceTree = "<group>"; };
 		F0D604B529C35F1800809808 /* ButtonSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonSingleton.swift; sourceTree = "<group>"; };
 		F0D604B729C3610D00809808 /* DefaultPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPanel.swift; sourceTree = "<group>"; };
@@ -127,6 +133,16 @@
 		F0D8D56629BB9122008D515A /* SelectionBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionBarView.swift; sourceTree = "<group>"; };
 		F0DDBF5A29BA154E00625D8F /* StatusBarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarContent.swift; sourceTree = "<group>"; };
 		F0DDBF5C29BA15E400625D8F /* StatusBarExtraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusBarExtraController.swift; sourceTree = "<group>"; };
+		F0E1685529CF307500578BAF /* platform_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platform_file.csv; path = ../../../../../../Downloads/platform_file.csv; sourceTree = "<group>"; };
+		F0E1685729CF368300578BAF /* ToolTipPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipPanel.swift; sourceTree = "<group>"; };
+		F0E1685929CF36B700578BAF /* PlatformObjectGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformObjectGetter.swift; sourceTree = "<group>"; };
+		F0E1685C29CF370800578BAF /* ToolTipText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipText.swift; sourceTree = "<group>"; };
+		F0E1685E29CF372500578BAF /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
+		F0E1686029CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipAnimateBoolUpdater.swift; sourceTree = "<group>"; };
+		F0E1686229CF7A5E00578BAF /* RunTitleAppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTitleAppleScript.swift; sourceTree = "<group>"; };
+		F0E1686629CF7B0B00578BAF /* SendGlobalCopyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendGlobalCopyEvent.swift; sourceTree = "<group>"; };
+		F0E1686829CF7B3D00578BAF /* GetClipboardItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetClipboardItem.swift; sourceTree = "<group>"; };
+		F0E1686A29CF7B8100578BAF /* CopyToClipboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToClipboard.swift; sourceTree = "<group>"; };
 		F0E2E15829C64D4A008978A7 /* FileDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileDownloader.swift; sourceTree = "<group>"; };
 		F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -263,7 +279,7 @@
 		F018ABF129B8B82200BCC8D4 /* assets */ = {
 			isa = PBXGroup;
 			children = (
-				F09FD8EA29CCB4C200E3D3F7 /* platform_file.csv */,
+				F0E1685529CF307500578BAF /* platform_file.csv */,
 				F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */,
 			);
 			path = assets;
@@ -275,6 +291,10 @@
 				F09FD8DD29CC715D00E3D3F7 /* WebNameTrimmer.swift */,
 				F09FD8E829CCACC100E3D3F7 /* DesktopNameTrimmer.swift */,
 				F09FD8EC29CCB59900E3D3F7 /* ObjectSizeUpdater.swift */,
+				F0E1686029CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift */,
+				F0E1686629CF7B0B00578BAF /* SendGlobalCopyEvent.swift */,
+				F0E1686829CF7B3D00578BAF /* GetClipboardItem.swift */,
+				F0E1686A29CF7B8100578BAF /* CopyToClipboard.swift */,
 			);
 			path = BasicFunctions;
 			sourceTree = "<group>";
@@ -282,8 +302,8 @@
 		F0D604A929C33F8200809808 /* FocusedPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				F0D604AC29C3405800809808 /* PlatformButtonGetter.swift */,
 				F0D604B329C347DA00809808 /* FocusedPanelGetter.swift */,
+				F0E1685929CF36B700578BAF /* PlatformObjectGetter.swift */,
 			);
 			path = FocusedPlatform;
 			sourceTree = "<group>";
@@ -292,6 +312,7 @@
 			isa = PBXGroup;
 			children = (
 				F0D604B729C3610D00809808 /* DefaultPanel.swift */,
+				F0E1685729CF368300578BAF /* ToolTipPanel.swift */,
 			);
 			path = PlatformPanels;
 			sourceTree = "<group>";
@@ -300,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				F0D604AA29C33FAF00809808 /* BrowserScriptGetter.swift */,
+				F0E1686229CF7A5E00578BAF /* RunTitleAppleScript.swift */,
 			);
 			path = AppleScripts;
 			sourceTree = "<group>";
@@ -307,7 +329,7 @@
 		F0D8D54529BB481A008D515A /* SelectionBar */ = {
 			isa = PBXGroup;
 			children = (
-				F00E59D229CAF56200FE7873 /* SelectionButtons */,
+				F0E1685B29CF36E200578BAF /* SelectionBarObjects */,
 				F0D604AE29C3466900809808 /* PlatformPanels */,
 				F0D8D56629BB9122008D515A /* SelectionBarView.swift */,
 				F0E2E15A29C85DE6008978A7 /* SpeakButton.swift */,
@@ -341,6 +363,16 @@
 				F0E2E15829C64D4A008978A7 /* FileDownloader.swift */,
 			);
 			path = trash;
+			sourceTree = "<group>";
+		};
+		F0E1685B29CF36E200578BAF /* SelectionBarObjects */ = {
+			isa = PBXGroup;
+			children = (
+				F00E59D229CAF56200FE7873 /* SelectionButtons */,
+				F0E1685C29CF370800578BAF /* ToolTipText.swift */,
+				F0E1685E29CF372500578BAF /* ToolTipView.swift */,
+			);
+			path = SelectionBarObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,7 +453,7 @@
 				33CC10F32044A3C60003C045 /* Assets.xcassets in Resources */,
 				F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */,
 				33CC10F62044A3C60003C045 /* MainMenu.xib in Resources */,
-				F09FD8EB29CCB4C200E3D3F7 /* platform_file.csv in Resources */,
+				F0E1685629CF307500578BAF /* platform_file.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,10 +544,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E1685D29CF370800578BAF /* ToolTipText.swift in Sources */,
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
 				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
 				F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */,
-				F0D604AD29C3405800809808 /* PlatformButtonGetter.swift in Sources */,
+				F0E1686929CF7B3D00578BAF /* GetClipboardItem.swift in Sources */,
+				F0E1685829CF368300578BAF /* ToolTipPanel.swift in Sources */,
+				F0E1686129CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift in Sources */,
+				F0E1686329CF7A5E00578BAF /* RunTitleAppleScript.swift in Sources */,
 				F0D604AB29C33FAF00809808 /* BrowserScriptGetter.swift in Sources */,
 				F0E2E15B29C85DE6008978A7 /* SpeakButton.swift in Sources */,
 				F00E59EA29CAF6B300FE7873 /* SixthSelectionButton.swift in Sources */,
@@ -525,16 +561,20 @@
 				F00E59E229CAF64900FE7873 /* SecondSelectionButton.swift in Sources */,
 				F0D604B429C347DA00809808 /* FocusedPanelGetter.swift in Sources */,
 				F00E59E429CAF66D00FE7873 /* ThirdSelectionButton.swift in Sources */,
+				F0E1686729CF7B0B00578BAF /* SendGlobalCopyEvent.swift in Sources */,
 				F0D604B829C3610D00809808 /* DefaultPanel.swift in Sources */,
 				F0DDBF5B29BA154E00625D8F /* StatusBarContent.swift in Sources */,
 				F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */,
+				F0E1685F29CF372500578BAF /* ToolTipView.swift in Sources */,
 				33CC11132044BFA00003C045 /* MainFlutterWindow.swift in Sources */,
+				F0E1686B29CF7B8100578BAF /* CopyToClipboard.swift in Sources */,
 				F09FD8ED29CCB59900E3D3F7 /* ObjectSizeUpdater.swift in Sources */,
 				F0D8D55329BB68EF008D515A /* TaskSingletonFile.swift in Sources */,
 				F09FD8DE29CC715D00E3D3F7 /* WebNameTrimmer.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
+				F0E1685A29CF36B700578BAF /* PlatformObjectGetter.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
 				F0D8D55129BB68CF008D515A /* ChannelSingletonFile.swift in Sources */,
 				F09FD8E929CCACC100E3D3F7 /* DesktopNameTrimmer.swift in Sources */,

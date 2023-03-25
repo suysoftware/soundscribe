@@ -68,7 +68,7 @@ class _MiddleWareState extends State<MiddleWare>
           print(deepLResult);
 
           return;
-        case "sBar/Reply":
+        case "sBar/Rewrite":
           //debugPrint("Click 2 basti"); //
 
           fastRequester("Bu maile cevap hazırla");

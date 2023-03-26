@@ -28,27 +28,45 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         self.toolTipPanel?.orderOut(nil)
         var toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY+90, width: toolTipRect.width, height: toolTipRect.height)
         
-        var offSetValue = CGFloat(35)
+        let offSetValue = CGFloat(35)
+        var toolTipHeight = CGFloat(((toolTipString.count/50)+2)*20)
+        
+       
+        print(toolTipRect.midX)
+        
+   
         
         
         switch whichButton {
             
             
         case "First":
-            toolTipResetRect = NSRect(x: toolTipRect.midX-CGFloat((firstButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(firstButtonWidth)
+            print(CGFloat((firstButtonWidth)))
+            toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         case "Second":
-           toolTipResetRect = NSRect(x:toolTipRect.midX, y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(secondButtonWidth)
+            print(CGFloat((secondButtonWidth)))
+           toolTipResetRect = NSRect(x:toolTipRect.midX+CGFloat((firstButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         case "Third":
-            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(thirdButtonWidth)
+            print(CGFloat((thirdButtonWidth)))
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((firstButtonWidth+secondButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         case "Forth":
-            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(forthButtonWidth)
+            print(CGFloat((forthButtonWidth)))
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((firstButtonWidth+secondButtonWidth+thirdButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         case "Fifth":
-            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth+forthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(fifthButtonWidth)
+            print(CGFloat((fifthButtonWidth)))
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((firstButtonWidth+secondButtonWidth+thirdButtonWidth+forthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         case "Sixth":
-            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((secondButtonWidth+thirdButtonWidth+forthButtonWidth+fifthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipRect.height)
+            print(sixthButtonWidth)
+            print(CGFloat((sixthButtonWidth)))
+            toolTipResetRect = NSRect(x: toolTipRect.midX+CGFloat((firstButtonWidth+secondButtonWidth+thirdButtonWidth+forthButtonWidth+fifthButtonWidth)), y: toolTipRect.midY - offSetValue, width: toolTipRect.width, height: toolTipHeight)
         
         default:
-            toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY-90, width: toolTipRect.width, height: toolTipRect.height)
+            toolTipResetRect = NSRect(x: toolTipRect.midX, y: toolTipRect.midY-90, width: toolTipRect.width, height: toolTipHeight)
         
         }
         

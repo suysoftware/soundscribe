@@ -19,8 +19,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
         
     case "First":
         if(whichOrder == true){
-            
-            toolTipText.title = result?.rows[platformId][8] as! String
+            toolTipString = result?.rows[platformId][8] as! String
+       
            animateFirstToolTip = true
             animateSecondToolTip = false
             animateThirdToolTip = false
@@ -38,7 +38,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
     case "Second":
         
         if(whichOrder == true){
-            toolTipText.title = result?.rows[platformId][11] as! String
+            toolTipString = result?.rows[platformId][11] as! String
+         
             animateSecondToolTip = true
             animateFirstToolTip = false
             animateThirdToolTip = false
@@ -54,7 +55,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
       
     case "Third":
         if(whichOrder == true){
-            toolTipText.title = result?.rows[platformId][14] as! String
+            toolTipString = result?.rows[platformId][14] as! String
+
             animateThirdToolTip = true
             animateFirstToolTip = false
             animateSecondToolTip = false
@@ -71,7 +73,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
       
     case "Forth":
         if(whichOrder == true){
-            toolTipText.title = result?.rows[platformId][17] as! String
+            toolTipString = result?.rows[platformId][17] as! String
+           
             animateForthToolTip = true
             animateThirdToolTip = false
             animateFirstToolTip = false
@@ -88,7 +91,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
        
     case "Fifth":
         if(whichOrder == true){
-            toolTipText.title = result?.rows[platformId][20] as! String
+            toolTipString = result?.rows[platformId][20] as! String
+  
             animateFifthToolTip = true
             animateFirstToolTip = false
             animateSecondToolTip = false
@@ -106,7 +110,8 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
     case "Sixth":
         
         if(whichOrder == true){
-            toolTipText.title = result?.rows[platformId][23] as! String
+            toolTipString = result?.rows[platformId][23] as! String
+      
             animateSixthToolTip = true
             animateFirstToolTip = false
             animateSecondToolTip = false

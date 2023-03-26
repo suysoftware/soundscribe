@@ -54,7 +54,6 @@
 		F0E1685629CF307500578BAF /* platform_file.csv in Resources */ = {isa = PBXBuildFile; fileRef = F0E1685529CF307500578BAF /* platform_file.csv */; };
 		F0E1685829CF368300578BAF /* ToolTipPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685729CF368300578BAF /* ToolTipPanel.swift */; };
 		F0E1685A29CF36B700578BAF /* PlatformObjectGetter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685929CF36B700578BAF /* PlatformObjectGetter.swift */; };
-		F0E1685D29CF370800578BAF /* ToolTipText.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685C29CF370800578BAF /* ToolTipText.swift */; };
 		F0E1685F29CF372500578BAF /* ToolTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1685E29CF372500578BAF /* ToolTipView.swift */; };
 		F0E1686129CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686029CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift */; };
 		F0E1686329CF7A5E00578BAF /* RunTitleAppleScript.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0E1686229CF7A5E00578BAF /* RunTitleAppleScript.swift */; };
@@ -136,7 +135,6 @@
 		F0E1685529CF307500578BAF /* platform_file.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = platform_file.csv; path = ../../../../../../Downloads/platform_file.csv; sourceTree = "<group>"; };
 		F0E1685729CF368300578BAF /* ToolTipPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipPanel.swift; sourceTree = "<group>"; };
 		F0E1685929CF36B700578BAF /* PlatformObjectGetter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformObjectGetter.swift; sourceTree = "<group>"; };
-		F0E1685C29CF370800578BAF /* ToolTipText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipText.swift; sourceTree = "<group>"; };
 		F0E1685E29CF372500578BAF /* ToolTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipView.swift; sourceTree = "<group>"; };
 		F0E1686029CF79EE00578BAF /* ToolTipAnimateBoolUpdater.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolTipAnimateBoolUpdater.swift; sourceTree = "<group>"; };
 		F0E1686229CF7A5E00578BAF /* RunTitleAppleScript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTitleAppleScript.swift; sourceTree = "<group>"; };
@@ -369,7 +367,6 @@
 			isa = PBXGroup;
 			children = (
 				F00E59D229CAF56200FE7873 /* SelectionButtons */,
-				F0E1685C29CF370800578BAF /* ToolTipText.swift */,
 				F0E1685E29CF372500578BAF /* ToolTipView.swift */,
 			);
 			path = SelectionBarObjects;
@@ -544,7 +541,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0E1685D29CF370800578BAF /* ToolTipText.swift in Sources */,
 				F018ABE829B7672D00BCC8D4 /* InternalFinder.swift in Sources */,
 				F0D8D56729BB9122008D515A /* SelectionBarView.swift in Sources */,
 				F0E2E15929C64D4A008978A7 /* FileDownloader.swift in Sources */,

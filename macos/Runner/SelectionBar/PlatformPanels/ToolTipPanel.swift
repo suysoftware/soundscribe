@@ -24,16 +24,27 @@ class ToolTipPanel: NSPanel {
         self.contentView = ToolTipView(frame: toolTipRect)
         self.isOpaque = false
         self.backgroundColor = NSColor.clear
-        self.level = .popUpMenu
+        self.level = .floating
         
  
         
      
-      
+        let textField = NSTextField(frame: NSMakeRect(10, 10, 300, 100))
+        textField.stringValue = toolTipString
+        textField.isEditable = false
+        textField.isBordered = false
+        textField.drawsBackground = false
+   
+        let maxSize = NSMakeSize(300, CGFloat.greatestFiniteMagnitude)
+        let textSize = textField.cell!.cellSize(forBounds: NSMakeRect(0, 0, 300, CGFloat.greatestFiniteMagnitude))
+        let contentRect = NSMakeRect(0, 0, textSize.width + 20, textSize.height + 20)
+        self.setContentSize(contentRect.size)
+        textField.frame = NSMakeRect(10, 10, textSize.width, textSize.height)
         
+
+        self.contentView?.addSubview(textField)
         
-        
-       self.contentView?.addSubview(toolTipText)
+      // self.contentView?.addSubview(toolTipText)
       
         
         

@@ -20,7 +20,7 @@ class SixthSelectionButton: NSButton {
     required init(title string: String, frame rect: NSRect) {
           super.init(frame: rect)
           self.title = string
- 
+  
         
       }
       
@@ -37,13 +37,28 @@ class SixthSelectionButton: NSButton {
         if self.isHighlighted {
             NSColor.systemBlue.setFill()
             //NSColor(red: 55, green: 116, blue: 244, alpha: 2.0).setFill()
-       //     NSColor.blue.setFill()
+            //     NSColor.blue.setFill()
             
         }
         else {
             NSColor.clear.setFill()
-         
+            
         }
+        
+        if self.isEnabled {
+         
+            if self.isHighlighted == false {
+                NSColor.clear.setFill()
+            }
+            else {
+                NSColor.systemBlue.setFill()
+            }
+        }
+        else {
+            NSColor.systemYellow.setFill()
+            
+        }
+      
         //let path = NSBezierPath(ovalIn: dirtyRect)
         let path = NSBezierPath(roundedRect: dirtyRect, xRadius: 0, yRadius: 0)
          path.fill()
@@ -66,7 +81,21 @@ class SixthSelectionButton: NSButton {
         
         
         
+     
+       
         
+       
+        
+        
+        let image = NSImage(named: "mic_icon_x3")
+        let imageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 20, height: 20))
+        imageView.image = image
+     
+        self.addSubview(imageView)
+  
+        
+        
+
         
         let text = self.title
       

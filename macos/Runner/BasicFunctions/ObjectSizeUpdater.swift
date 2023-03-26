@@ -10,7 +10,7 @@ import Foundation
 func objectSizeUpdater() {
 
  
-    panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+sixthSelectionBarButton.title.count*widthValue), height: 25)
+    panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+40), height: 25)
     
     firstButtonWidth = firstSelectionBarButton.title.count*widthValue
     firstButtonX = 0
@@ -22,7 +22,7 @@ func objectSizeUpdater() {
     forthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue
     fifthButtonWidth = fifthSelectionBarButton.title.count*widthValue
     fifthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue
-    sixthButtonWidth = sixthSelectionBarButton.title.count*widthValue
+    sixthButtonWidth = 40
     sixthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue + fifthSelectionBarButton.title.count*widthValue
 
     

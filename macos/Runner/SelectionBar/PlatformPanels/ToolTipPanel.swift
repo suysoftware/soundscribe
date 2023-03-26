@@ -28,6 +28,12 @@ class ToolTipPanel: NSPanel {
         
  
         
+        
+        
+        
+        
+    
+        
      
         let textField = NSTextField(frame: NSMakeRect(10, 10, 300, 100))
         textField.stringValue = toolTipString

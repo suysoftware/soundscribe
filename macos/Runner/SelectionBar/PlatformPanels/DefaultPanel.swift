@@ -20,6 +20,8 @@ class DefaultPanel: NSPanel {
         super.init(contentRect: contentRect, styleMask: [.borderless, .nonactivatingPanel,], backing: backingStoreType, defer: flag)
        
         
+  
+        
                //self.contentView?.frame = NSRect(x: 0, y: 0, width: 300, height: 35)
         /*
              firstSelectionBarButton.title = "Default saasf1"

@@ -27,7 +27,7 @@ var forthButtonWidth = forthSelectionBarButton.title.count*widthValue
 var forthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue
 var fifthButtonWidth = fifthSelectionBarButton.title.count*widthValue
 var fifthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue
-var sixthButtonWidth = sixthSelectionBarButton.title.count*widthValue
+var sixthButtonWidth = 40
 var sixthButtonX = firstSelectionBarButton.title.count*widthValue + secondSelectionBarButton.title.count*widthValue + thirdSelectionBarButton.title.count*widthValue + forthSelectionBarButton.title.count*widthValue + fifthSelectionBarButton.title.count*widthValue
 var panelRect = NSRect(x: 0, y: 0, width: (firstSelectionBarButton.title.count*widthValue+secondSelectionBarButton.title.count*widthValue+thirdSelectionBarButton.title.count*widthValue+forthSelectionBarButton.title.count*widthValue+fifthSelectionBarButton.title.count*widthValue+sixthSelectionBarButton.title.count*widthValue), height: 25)
 
@@ -54,7 +54,8 @@ func focusedPanelExcel(_ source: String) {
     thirdSelectionBarButton.title = result!.rows[0][13] as! String
     forthSelectionBarButton.title = result!.rows[0][16] as! String
     fifthSelectionBarButton.title = result!.rows[0][19] as! String
-    sixthSelectionBarButton.title = result!.rows[0][22] as! String
+    sixthSelectionBarButton.title = "  "
+   // sixthSelectionBarButton.title = result!.rows[0][22] as! String
     objectSizeUpdater()
     
     result!.rows.forEach { row in
@@ -76,7 +77,8 @@ func focusedPanelExcel(_ source: String) {
             thirdSelectionBarButton.title = row[13] as! String
             forthSelectionBarButton.title = row[16] as! String
             fifthSelectionBarButton.title = row[19] as! String
-            sixthSelectionBarButton.title = row[22] as! String
+            sixthSelectionBarButton.title = "  "
+         //   sixthSelectionBarButton.title = row[22] as! String
           
             objectSizeUpdater()
         }

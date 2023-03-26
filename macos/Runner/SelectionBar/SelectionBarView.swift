@@ -32,6 +32,14 @@ class SelectionBarView: NSView {
           layer?.backgroundColor = Color(white: 0.1445,opacity: 0.75).cgColor
           
           layer?.cornerRadius = 5.0
+          
+          
+         /* let image = NSImage(named: "mic_icon_x1")
+          let imageView = NSImageView(frame: NSRect(x: sixthButtonX + (sixthButtonWidth/3), y: 0, width: 20, height: 20))
+          imageView.image = image
+       
+          self.addSubview(imageView)*/
+    
         
       }
       

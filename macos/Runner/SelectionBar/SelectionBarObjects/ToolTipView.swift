@@ -66,6 +66,9 @@ class ToolTipView: NSView {
               layer.frame = endRect
               completion?()
           }
+     
+          
+          
           
           // Fade in the layer
           let fadeInAnimation = CABasicAnimation(keyPath: "opacity")

@@ -17,12 +17,18 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
     var defaultPanel: NSPanel?
     var toolTipPanel: NSPanel?
     var mouseEventMonitor: Any?
+    var currentEvent: Any?
     let pasteboard = NSPasteboard.general
     var counter = 0
     var toolTipIntervalTime = 0.4
     var timer : Timer?
+    let currentCursor = NSCursor.current
 
-
+    
+    
+   
+    
+    
     func toolTipLocationUpdater(whichButton: String){
         
         self.toolTipPanel?.orderOut(nil)
@@ -129,17 +135,33 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
         mainExtraView.frame =  NSRect(x: 0, y: 0, width: 250, height: 300)
         statusBarExtra = StatusBarExtraController(mainExtraView)
         
-  
-
+   
+       
+        getDataFromSheet()
         
-        self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel ]) { [weak self] event in
+        
+        
+   
+        
+        self.mouseEventMonitor = NSEvent.addGlobalMonitorForEvents(matching: [.leftMouseUp, .leftMouseDown, .leftMouseDragged, .mouseMoved, .scrollWheel, .cursorUpdate, ]) { [weak self] event in
             guard let self = self else { return }
             
-    
+            
             
             if event.type == .mouseMoved {
+                // Get the cursor type
                 
-       
+             
+             
+              
+             
+                
+            
+           
+                       
+                
+
+                
                 if(event.locationInWindow.x > CGFloat(firstButtonX+1) && event.locationInWindow.x < CGFloat(secondButtonX) && event.locationInWindow.y > 0 && event.locationInWindow.y < 25 ){
  
                    firstSelectionBarButton.isHighlighted = true
@@ -284,6 +306,13 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
 
            if event.type == .leftMouseDown {
                 // Hide the custom panel if it's currently visible
+               
+               
+               
+      
+               
+               
+               
                  clickedArea = event.locationInWindow
            
                 self.customPanel?.orderOut(nil)
@@ -299,52 +328,73 @@ class AppDelegate: FlutterAppDelegate, NSMenuDelegate {
             else if    event.type == .leftMouseUp && clickedArea != nil {
                 
            
-        
+                
                 self.customPanel?.orderOut(nil)
                 
             self.customPanel = DefaultPanel(contentRect: panelRect, styleMask: styleMask, backing: .buffered, defer: false)
                 
-                focusedPanelExcel(self.whichPlatformActive())
+                
+                
+                
+                let focusedPlatformName = self.whichPlatformActive()
+                
+                
+                
+                focusedPanelExcel(focusedPlatformName)
 
                 
-                
+       
+                    // Get the cursor image
+              
                 
                 
                 if event.locationInWindow.x -  clickedArea!.x > 20 ||    clickedArea!.x - event.locationInWindow.x > 20 || event.locationInWindow.y -  clickedArea!.y > 20 ||    clickedArea!.y - event.locationInWindow.y > 20 {
-
-                  sendGlobalCommandC()
-                        if  let customPanel = self.customPanel {
- 
-                            // Calculate the location of the mouse click in screen coordinates
-                            let mouseLocation = NSEvent.mouseLocation
-                            let panelOrigin = NSPoint(x: mouseLocation.x - panelRect.width*0.6 , y: mouseLocation.y + panelRect.height*0.2 )
-                            let screenFrame = NSScreen.main?.frame ?? NSRect.zero
-                            
-                            // Check if the panel would be offscreen and adjust if necessary
-                            var panelFrame = NSRect(origin: panelOrigin, size: panelRect.size)
-                            var toolTipFrame = NSRect(origin: panelOrigin, size: toolTipRect.size)
-                            if panelFrame.origin.x < screenFrame.origin.x {
-                                panelFrame.origin.x = screenFrame.origin.x
-                            }
-                            if panelFrame.origin.y < screenFrame.origin.y {
-                                panelFrame.origin.y = screenFrame.origin.y
-                            }
-                            if panelFrame.maxX > screenFrame.maxX {
-                                panelFrame.origin.x = screenFrame.maxX - panelFrame.width
-                            }
-                            if panelFrame.maxY > screenFrame.maxY {
-                                panelFrame.origin.y = screenFrame.maxY - panelFrame.height
-                            }
-                            // Show the custom panel at the calculated location
-                            customPanel.setFrame(panelFrame, display: true)
-                            toolTipRect = toolTipFrame
-                            
-                            
-                           
-                            customPanel.makeKeyAndOrderFront(nil)
-                        }
+                    print(focusedPlatformName)
+                    if(focusedPlatformName != "finder"){
+                        sendGlobalCommandC()
+                          
+                          
                         
-                    
+                           
+                       
+                          
+                          
+                          
+                              if  let customPanel = self.customPanel {
+       
+                                  // Calculate the location of the mouse click in screen coordinates
+                                  let mouseLocation = NSEvent.mouseLocation
+                                  let panelOrigin = NSPoint(x: mouseLocation.x - panelRect.width*0.6 , y: mouseLocation.y + panelRect.height*0.2 )
+                                  let screenFrame = NSScreen.main?.frame ?? NSRect.zero
+                                  
+                                  // Check if the panel would be offscreen and adjust if necessary
+                                  var panelFrame = NSRect(origin: panelOrigin, size: panelRect.size)
+                                  var toolTipFrame = NSRect(origin: panelOrigin, size: toolTipRect.size)
+                                  if panelFrame.origin.x < screenFrame.origin.x {
+                                      panelFrame.origin.x = screenFrame.origin.x
+                                  }
+                                  if panelFrame.origin.y < screenFrame.origin.y {
+                                      panelFrame.origin.y = screenFrame.origin.y
+                                  }
+                                  if panelFrame.maxX > screenFrame.maxX {
+                                      panelFrame.origin.x = screenFrame.maxX - panelFrame.width
+                                  }
+                                  if panelFrame.maxY > screenFrame.maxY {
+                                      panelFrame.origin.y = screenFrame.maxY - panelFrame.height
+                                  }
+                                  // Show the custom panel at the calculated location
+                                  customPanel.setFrame(panelFrame, display: true)
+                                  toolTipRect = toolTipFrame
+                                  
+                                  
+                                 
+                                  customPanel.makeKeyAndOrderFront(nil)
+                              }
+                              
+                          
+                    }
+
+                 
                   
                     
                  

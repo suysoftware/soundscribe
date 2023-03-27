@@ -88,7 +88,7 @@ class SixthSelectionButton: NSButton {
         
         
         let image = NSImage(named: "mic_icon_x3")
-        let imageView = NSImageView(frame: NSRect(x: 0, y: 0, width: 20, height: 20))
+        let imageView = NSImageView(frame: NSRect(x: 10, y: 2.5, width: 20, height: 20) )
         imageView.image = image
      
         self.addSubview(imageView)

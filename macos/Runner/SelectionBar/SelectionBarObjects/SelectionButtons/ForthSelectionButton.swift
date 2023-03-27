@@ -59,7 +59,7 @@ class ForthSelectionButton: NSButton {
     }
 override func mouseDown(with event: NSEvent) {
     
-    let buttonAction = buttonActionGetter(17, platformId: platformId)
+    let buttonAction = buttonActionGetter(17, platformNo: platformNo)
   
 
          

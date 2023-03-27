@@ -22,7 +22,7 @@ var sixthSelectionBarButton = SixthSelectionButton(title: " ", frame: NSRect(x: 
 var toolTipString = ""
 let chromium_variants = ["Google Chrome", "Chromium", "Opera", "Vivaldi", "Brave Browser", "Microsoft Edge","Safari","Tor Browser","Yandex"]
 
-var platformId = 0
+var platformNo = 0
 
 
 var animateFirstToolTip = false

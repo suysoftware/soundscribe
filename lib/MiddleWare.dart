@@ -53,6 +53,17 @@ class _MiddleWareState extends State<MiddleWare>
       debugPrint(
           "CAUGHT METHOD WITH HANDLER: ${methodCall.method}"); // Never comes here
       switch (methodCall.method) {
+        case "sBar/testFunction":
+          //debugPrint("Click 2 basti"); //
+
+          var clD = await getClipboardData();
+          print(clD);
+          if (clD != null) {
+            var sonuc = await methodChannel.invokeMethod('copyData');
+            print(sonuc);
+          }
+
+          return;
         case "sBar/Dall-E":
           //debugPrint("Click 2 basti"); //
 

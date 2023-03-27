@@ -69,7 +69,7 @@ class ThirdSelectionButton: NSButton {
     
 override func mouseDown(with event: NSEvent) {
     
-    let buttonAction = buttonActionGetter(14, platformId: platformId)
+    let buttonAction = buttonActionGetter(14, platformNo: platformNo)
   
 
      

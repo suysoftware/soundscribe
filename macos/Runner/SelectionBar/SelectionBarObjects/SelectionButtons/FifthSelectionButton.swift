@@ -64,7 +64,7 @@ class FifthSelectionButton: NSButton {
     
 override func mouseDown(with event: NSEvent) {
     
-     let buttonAction = buttonActionGetter(20, platformId: platformId)
+     let buttonAction = buttonActionGetter(20, platformNo: platformNo)
     
     
     

@@ -15,6 +15,9 @@ import ApplicationServices // Import the ApplicationServices framework
 import CoreGraphics
 
 func sendGlobalCommandC(){
+ 
+    
+    
         
     let cmdKeyDown = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: true) // CMD key down
     let cmdKeyUp = CGEvent(keyboardEventSource: nil, virtualKey: 0x37, keyDown: false) // CMD key up

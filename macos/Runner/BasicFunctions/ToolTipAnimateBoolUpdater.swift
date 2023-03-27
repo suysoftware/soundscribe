@@ -19,7 +19,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
         
     case "First":
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][8] as! String
+            toolTipString = result?.rows[platformNo][8] as! String
        
            animateFirstToolTip = true
             animateSecondToolTip = false
@@ -38,7 +38,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
     case "Second":
         
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][11] as! String
+            toolTipString = result?.rows[platformNo][11] as! String
          
             animateSecondToolTip = true
             animateFirstToolTip = false
@@ -55,7 +55,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
       
     case "Third":
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][14] as! String
+            toolTipString = result?.rows[platformNo][14] as! String
 
             animateThirdToolTip = true
             animateFirstToolTip = false
@@ -73,7 +73,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
       
     case "Forth":
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][17] as! String
+            toolTipString = result?.rows[platformNo][17] as! String
            
             animateForthToolTip = true
             animateThirdToolTip = false
@@ -91,7 +91,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
        
     case "Fifth":
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][20] as! String
+            toolTipString = result?.rows[platformNo][20] as! String
   
             animateFifthToolTip = true
             animateFirstToolTip = false
@@ -110,7 +110,7 @@ func updateAllToolTipAnimate(whichButton: String, whichOrder: Bool){
     case "Sixth":
         
         if(whichOrder == true){
-            toolTipString = result?.rows[platformId][23] as! String
+            toolTipString = result?.rows[platformNo][23] as! String
       
             animateSixthToolTip = true
             animateFirstToolTip = false

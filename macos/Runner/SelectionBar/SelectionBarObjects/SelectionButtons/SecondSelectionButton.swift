@@ -70,7 +70,7 @@ class SecondSelectionButton: NSButton {
 
 override func mouseDown(with event: NSEvent) {
     
-    let buttonAction = buttonActionGetter(11, platformId: platformId)
+    let buttonAction = buttonActionGetter(11, platformNo: platformNo)
   
 
      

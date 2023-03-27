@@ -37,6 +37,7 @@
 		F018ABEA29B7676100BCC8D4 /* InternalBattery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABE929B7676100BCC8D4 /* InternalBattery.swift */; };
 		F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */; };
 		F018ABF329B8B82E00BCC8D4 /* soundscribe_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */; };
+		F02D218629D217370081111C /* PlatformModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02D218529D217370081111C /* PlatformModel.swift */; };
 		F02D5E3229C19DF600CD60B0 /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */; };
 		F04DBCDF29D0AA01002512BA /* mic_icon_x1.png in Resources */ = {isa = PBXBuildFile; fileRef = F04DBCDC29D0AA01002512BA /* mic_icon_x1.png */; };
 		F04DBCE029D0AA01002512BA /* mic_icon_x2.png in Resources */ = {isa = PBXBuildFile; fileRef = F04DBCDD29D0AA01002512BA /* mic_icon_x2.png */; };
@@ -121,6 +122,7 @@
 		F018ABE929B7676100BCC8D4 /* InternalBattery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalBattery.swift; sourceTree = "<group>"; };
 		F018ABEB29B8857800BCC8D4 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		F018ABF229B8B82E00BCC8D4 /* soundscribe_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = soundscribe_icon.png; path = ../../../../../../Downloads/soundscribe_icon.png; sourceTree = "<group>"; };
+		F02D218529D217370081111C /* PlatformModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlatformModel.swift; sourceTree = "<group>"; };
 		F02D5E3129C19DF600CD60B0 /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = System/Library/Frameworks/ApplicationServices.framework; sourceTree = SDKROOT; };
 		F04DBCDC29D0AA01002512BA /* mic_icon_x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mic_icon_x1.png; path = ../../../../../../Downloads/iOS/mic_icon_x1.png; sourceTree = "<group>"; };
 		F04DBCDD29D0AA01002512BA /* mic_icon_x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = mic_icon_x2.png; path = ../../../../../../Downloads/iOS/mic_icon_x2.png; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		33FAB671232836740065AC1E /* Runner */ = {
 			isa = PBXGroup;
 			children = (
+				F02D218429D2172D0081111C /* Models */,
 				F09FD8DC29CC714200E3D3F7 /* BasicFunctions */,
 				F0D604B929C49F0F00809808 /* AppleScripts */,
 				F0D604A929C33F8200809808 /* FocusedPlatform */,
@@ -290,6 +293,14 @@
 				F04DBCDE29D0AA01002512BA /* mic_icon_x3.png */,
 			);
 			path = assets;
+			sourceTree = "<group>";
+		};
+		F02D218429D2172D0081111C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F02D218529D217370081111C /* PlatformModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		F09FD8DC29CC714200E3D3F7 /* BasicFunctions */ = {
@@ -581,6 +592,7 @@
 				F09FD8DE29CC715D00E3D3F7 /* WebNameTrimmer.swift in Sources */,
 				F018ABEC29B8857800BCC8D4 /* CustomButtonView.swift in Sources */,
 				33CC10F12044A3C60003C045 /* AppDelegate.swift in Sources */,
+				F02D218629D217370081111C /* PlatformModel.swift in Sources */,
 				F0DDBF5D29BA15E400625D8F /* StatusBarExtraController.swift in Sources */,
 				F0E1685A29CF36B700578BAF /* PlatformObjectGetter.swift in Sources */,
 				335BBD1B22A9A15E00E9071D /* GeneratedPluginRegistrant.swift in Sources */,
